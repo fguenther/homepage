@@ -105,6 +105,13 @@ def find(entries: list[dict], query: str) -> list[tuple[float, dict]]:
         score = difflib.SequenceMatcher(None, fq, ft).ratio()
         if fq and fq in ft:
             score = max(score, 0.9)
+        # share of the query's words that occur in the title (handles "gold student star model")
+        qwords = [w for w in fq.split() if w not in STOPWORDS]
+        twords = set(ft.split())
+        if qwords:
+            cover = sum(any(t.startswith(w) for t in twords) for w in qwords) / len(qwords)
+            if cover >= 0.75:
+                score = max(score, 0.6 + 0.35 * cover)
         if score >= 0.55:
             scored.append((score, e))
     return sorted(scored, key=lambda t: -t[0])[:8]

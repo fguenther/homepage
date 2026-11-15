@@ -60,7 +60,7 @@ Write the entry (one YAML list item, or a plain mapping) to a temp file in the s
   refuses duplicates and inserts the entry in the right group (accepted → preprints → years, newest first),
   alphabetically by first author.
 - existing: `pub_tool.py update <id> <file>` with only the changed fields (`field: null` deletes a field);
-  it moves the entry if status/year changed.
+  it moves the entry if status/year changed. Keep the existing `id` (it is the link anchor), even if the year changes.
 
 Field reference (see the comment block at the top of `data/publications.yaml` for the full list):
 
