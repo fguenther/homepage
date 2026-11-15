@@ -520,7 +520,7 @@
   pages: e0327794
   doi: 10.1371/journal.pone.0327794
   url: https://doi.org/10.1371/journal.pone.0327794
-  data: https://osf.io/m6yda/?view_only=135e7be5a131458e89acc0%205c74247b09
+  data: https://osf.io/m6yda/?view_only=135e7be5a131458e89acc05c74247b09
   abstract: Understanding the limits of language is a prerequisite for Large Language Models (LLMs) to act as theories of natural language. LLM performance in some language tasks presents both quantitative and qualitative differences from that of humans, however it remains to be determined whether such differences are amenable to model size. This work investigates the critical role of model scaling, determining whether increases in size make up for such differences between humans and models. We test three LLMs from different families (Bard, 137 billion parameters; ChatGPT-3.5, 175 billion; ChatGPT-4, 1.5 trillion) on a grammaticality judgment task featuring anaphora, center embedding, comparatives, and negative polarity. N = 1,200 judgments are collected and scored for *accuracy*, *stability*, and *improvements in accuracy* upon repeated presentation of a prompt. Results of the best performing LLM, ChatGPT-4, are compared to results of n = 80 humans on the same stimuli. We find that humans are overall less accurate than ChatGPT-4 (76% vs. 80% accuracy, respectively), but that this is due to ChatGPT-4 outperforming humans only in one task condition, namely on grammatical sentences. Additionally, ChatGPT-4 wavers more than humans in its answers (12.5% vs. 9.6% likelihood of an oscillating answer, respectively). Thus, while increased model size may lead to better performance, LLMs are still not sensitive to (un)grammaticality the same way as humans are. It seems possible but unlikely that scaling alone can fix this issue. We interpret these results by comparing language learning in vivo and in silico, identifying three critical differences concerning (i) the type of evidence, (ii) the poverty of the stimulus, and (iii) the occurrence of semantic hallucinations due to impenetrable linguistic reference.
 
 - id: guenther2025monkeylope
@@ -592,7 +592,7 @@
   doi: 10.3758/s13423-024-02583-4
   url: https://doi.org/10.3758/s13423-024-02583-4
   pdf: https://psyarxiv.com/cxkzt
-  data: https://osf.io/2vad8/?view_only=e79503f8b6a447eb9b5547face0%20ecc4a
+  data: https://osf.io/2vad8/?view_only=e79503f8b6a447eb9b5547face0ecc4a
   abstract: 'The search surface is a foundational concept in visual search literature. It describes the impact of target-distractor (TD) and distractor-distractor (DD) similarity on search efficiency. However, the search surface shape lacks direct quantitative support, being a summary approximation of a wide range of lab-based results poorly generalisable to real-world scenarios. This study exploits convolutional neural networks to quantitatively assess the similarity effects in search tasks using real images as stimuli and determine which levels of feature complexity the similarity effects rely on. Besides providing ecological converging evidence supporting the established search surface, our results reveal that TD and DD similarity mainly operate at two distinct layers of the network: DD similarity at the layer of coarse object features, while TD similarity at the layer of complex features used for classification. This suggests that these forms of similarities exert their major effects at two distinct levels of perceptual processing.'
 
 - id: ulrich2025indirect
