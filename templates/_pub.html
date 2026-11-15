@@ -1,0 +1,18 @@
+{# One publication entry. Expects `p`, optional `show_status`. #}
+<article class="pub" id="{{ p.id }}" data-tags="{{ p._tags }}">
+  <div class="y" aria-hidden="true">{{ p.year if p.year else "New" }}</div>
+  <div>
+    {% if show_status and p.status != "published" %}<span class="st">{{ p.status | capitalize }}{% if p.venue %} · {{ p.venue }}{% endif %}</span>{% endif %}
+    <h3 class="t">{{ p.title }}</h3>
+    <div class="a">{{ p._authors }}{% if p.status == "accepted" %} (accepted){% endif %}</div>
+    {% if p._venue %}<div class="v">{{ p._venue }}</div>{% endif %}
+    {% if p.notes %}<div class="n">{{ p.notes }}</div>{% endif %}
+    <div class="l">
+      {% for link in p._links %}<a href="{{ link.url }}" rel="noopener">{{ link.label }}</a>{% endfor %}
+      {% if p._abstract %}<button type="button" class="toggle" data-target="abs" aria-expanded="false">Abstract</button>{% endif %}
+      <button type="button" class="toggle" data-target="bib" aria-expanded="false">BibTeX</button>
+    </div>
+    {% if p._abstract %}<div class="abs" hidden>{{ p._abstract }}</div>{% endif %}
+    <pre class="bib" hidden>{{ p._bibtex }}</pre>
+  </div>
+</article>

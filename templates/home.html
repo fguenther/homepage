@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block bandclass %} band--home{% endblock %}
+{% block head %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": profile.name or site.title,
+  "jobTitle": profile.position or "",
+  "affiliation": {"@type": "Organization", "name": profile.university or ""},
+  "url": site.base_url,
+  "sameAs": profile.links | map(attribute="url") | list
+} | tojson }}
+</script>
+{% endblock %}
+
+{% block band %}
+<div class="hero">
+  <div>
+    <h1>{{ site.headline | safe }}</h1>
+    <div class="intro">{{ page.html }}</div>
+    <div class="meta">
+      {% if profile._mail %}<a class="js-mail" data-m="{{ profile._mail }}" href="/contact/">Email</a>{% endif %}
+      {% for l in profile.links %}<a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endfor %}
+      {% if profile.cv_pdf %}<a href="{{ profile.cv_pdf }}" rel="noopener">CV (PDF)</a>{% elif "cv" in pages %}<a href="{{ pages['cv'].url }}">CV</a>{% endif %}
+    </div>
+  </div>
+  {% if profile.photo %}
+  <img class="portrait" src="{{ profile.photo }}" alt="Portrait of {{ profile.name or site.title }}" width="200" height="240">
+  {% else %}
+  <div class="portrait portrait--initials" aria-hidden="true">{{ (profile.name or site.title).split()|map("first")|join }}</div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block main %}
+{% if site.themes %}
+<section><div class="container">
+  <div class="label">Research</div>
+  <h2>What I work on</h2>
+  <div class="themes">
+    {% for t in site.themes %}
+    <div class="theme"><div class="num">{{ "%02d" % loop.index }}</div><h3>{{ t.title }}</h3><p>{{ t.text }}</p></div>
+    {% endfor %}
+  </div>
+</div></section>
+{% endif %}
+
+{% if profile.projects %}
+<section class="alt"><div class="container">
+  <div class="label">Funding</div>
+  <h2>Current projects</h2>
+  <div class="proj">
+    {% for pr in profile.projects %}
+    {% set funding = pr.funding or pr.funder %}
+    {% if pr.description %}
+    <details>
+      <summary>{% if funding %}<small>{{ funding }}</small>{% endif %}<span class="t">{{ pr.title }}</span><br><span class="more-hint">About the project ↓</span></summary>
+      <p>{{ pr.description }}</p>
+      {% if pr.url %}<p><a href="{{ pr.url }}" rel="noopener">Project page (GEPRIS) →</a></p>{% endif %}
+    </details>
+    {% elif pr.url %}
+    <a href="{{ pr.url }}" rel="noopener">{% if funding %}<small>{{ funding }}</small>{% endif %}{{ pr.title }}</a>
+    {% else %}
+    <div>{% if funding %}<small>{{ funding }}</small>{% endif %}{{ pr.title }}</div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div></section>
+{% endif %}
+
+{% if recent %}
+<section><div class="container">
+  <div class="label">Output</div>
+  <h2>Recent publications</h2>
+  {% for p in recent %}{% with show_status=true %}{% include "_pub.html" %}{% endwith %}{% endfor %}
+  {% if "publications" in pages %}<a class="more" href="{{ pages['publications'].url }}">All publications →</a>{% endif %}
+</div></section>
+{% endif %}
+
+{% if "software-resources" in pages and pages["software-resources"].children %}
+<section class="alt"><div class="container">
+  <div class="label">Open science</div>
+  <h2>Data, software &amp; resources</h2>
+  <div class="tiles">
+    {% for c in pages["software-resources"].children[:6] %}
+    <a class="tile" href="{{ c.url }}"><h3>{{ c.title }}</h3>{% if c.summary %}<p>{{ c.summary }}</p>{% endif %}</a>
+    {% endfor %}
+  </div>
+  <a class="more" href="{{ pages['software-resources'].url }}">All resources →</a>
+</div></section>
+{% endif %}
+{% endblock %}

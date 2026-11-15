@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<section><div class="container">
+  {% if page.html | trim %}<div class="prose">{{ page.html }}</div>{% endif %}
+  <div class="toolbar" role="search">
+    <div class="chips">
+      {% for c in chips %}<button type="button" class="chip{% if loop.first %} on{% endif %}" data-f="{{ c.f }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ c.label }}</button>{% endfor %}
+    </div>
+    <input class="search" type="search" placeholder="Search title, author, journal…" aria-label="Search publications">
+  </div>
+  <p class="count"><span id="pubcount">{{ publications | length }}</span> publications · <a href="/publications.bib" download>Download all as BibTeX</a></p>
+  {% for g in groups %}
+  <div class="pubgroup" data-group="{{ g.key }}">
+    <h2 class="grouphead">{{ g.label }}</h2>
+    {% for p in g.pubs %}{% with show_status=false %}{% include "_pub.html" %}{% endwith %}{% endfor %}
+  </div>
+  {% endfor %}
+  <p class="empty" hidden>No publications match.</p>
+</div></section>
+{% endblock %}

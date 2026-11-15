@@ -1,0 +1,140 @@
+# Personal data for templates (header, footer, home page). Imported from the old site's
+# home, profiles and contact pages.
+
+name: Fritz Günther
+title_prefix: Dr.
+position: Junior research group leader (DFG Emmy Noether Programme)
+group: Emmy Noether Group "Computational Modelling"
+group_url: https://www.psychologie.hu-berlin.de/de/prof/emmy/komputationelle_modellierung
+department: Department of Psychology
+university: Humboldt-Universität zu Berlin
+department_url: https://www.psychology.hu-berlin.de/de/1695813/1693894
+# E-mail written out like this on purpose (spam protection); the site turns it into a mailto: link.
+email_display: fritz -dot- guenther [AT] hu-berlin -dot- de
+office_address:
+- Dr. Fritz Günther
+- Institut für Psychologie
+- Rudower Chaussee 18, Room 3'205
+- 12489 Berlin
+postal_address:
+- Dr. Fritz Günther
+- Unter den Linden 6
+- 10099 Berlin
+photo: /static/img/portrait.jpg
+links:
+  hu: https://www.psychologie.hu-berlin.de/de/mitarbeiter/1693894
+  gepris: https://gepris.dfg.de/gepris/person/392119874?language=en
+  researchgate: https://www.researchgate.net/profile/Fritz_Guenther
+  scholar: https://scholar.google.de/citations?user=PFp5HhQAAAAJ
+  orcid: https://orcid.org/0000-0002-9205-6786
+  scopus: https://www.scopus.com/authid/detail.uri?authorId=56430641000
+  cv_pdf: https://drive.google.com/file/d/1y_NUKKMSQD0S8xEgOtfxaWcSES0YDQOr/view?usp=sharing
+orcid: 0000-0002-9205-6786
+# The home-page intro text is in content/home.md.
+projects:
+- title: What's in a name? Computational modeling and experimental investigations on the non-arbitrariness
+    of word label choices
+  funding: DFG Emmy-Noether Group
+  url: https://gepris.dfg.de/gepris/projekt/459717703
+  description: >-
+    It is traditionally assumed that words are assigned to concepts as arbitrary labels. In reality however,
+    labels are always selected in a specific linguistic, historical, and social context, which informs
+    and restricts label choices: For example, the existence of the word “phone” makes it very sensible
+    to use the word “mobile phone” for a portable phone. On the other hand, labels almost always bring
+    with them certain connotations and implications: the German “Völkerwanderung” describes the exact
+    same concept as the Italian “invasione barbariche”, but the associations are quite different. In the
+    project proposed here, we plan to investigate both sides of this phenomenon – why do we pick the labels
+    we choose, and what are the consequences of these choices – from a cognitive point of view. To this
+    end, central properties of both existing and novel words – related to their form and especially their
+    meaning – will be represented in an objective and quantitative manner, by employing recent developments
+    from the artificial intelligence field of natural language processing. Thus, combining computational
+    modelling techniques with experimental methodology from general and social psychology, the present
+    project aims at establishing a comprehensive theoretical framework for the choice and implications
+    of word labels. The project consists of three major work packages. The studies of the first work package
+    investigate when and which new word labels are coined by speakers. On the one hand, this includes
+    examining the concept properties and contexts that lead speakers to generate a new label for a given
+    concept. On the other hand, it includes predicting which labels are chosen, with the aim of establishing
+    a computational model for the goodness/adequacy of labels given a concept. The methods of the first
+    work package range from large-scale corpus studies over observation of natural communication to various
+    signaling game-paradigms. The studies of the second work package examine direct social influences
+    on label choices, since labels are always a social convention of a speaker community. The main factors
+    of interest here are variables connected to the interaction partners in a social setting where both
+    partners start with different labels for the same concept (such as their willingness to accept new
+    labels, or their social status). The studies of this work package thus employ methods from social
+    psychology in personal communication settings to examine how such social factors interact with the
+    “goodness of labels” to determine which label is finally adapted by a speaker.Finally, the studies
+    of the third work package investigate the implications and connotations of labels, in terms of semantic
+    association, affective evaluation, and sensory perception. In these studies, where different labels
+    for the very same concept will be presented to different speakers, we aim at predicting the connotations
+    from the quantitative properties of the word labels.
+- title: A computational implementation of the Swinging Lexical Network model of language production
+  funding: DFG Research Project
+  url: https://gepris.dfg.de/gepris/projekt/532390335
+  description: >-
+    Behavioral studies on semantic effects in language production have observed apparently contradictory
+    context effects: In come studies, the presence of semantically related distractors (such as the word
+    "LION" when participants have to name the picture of a tiger) has resulted in facilitation (i.e.,
+    faster responses), while others have observed interference (i.e., slower responses). In order to explain
+    these effects in a unified, comprehensive model, Abdel Rahman and Melinger (2009, 2019) have proposed
+    the Swinging Lexical Network Model of language production. This model relies on two core assumptions:
+    (1) it assumes priming at the conceptual-semantic level as a consequence of spreading activation (leading
+    to faster responses in the presence of semantically related context words) but competition during
+    word selection at the lexical level (since only one word is to be selected for production), and (2)
+    it assumes that the amount of priming and competition does not only result from the activation of
+    the target and context, but is also influenced by a co-activated cohort - other concepts that are
+    mutually activated by the target, the context word, and by each other during processing (such as,
+    in our example, "leopard" or "cat"). However, as acknowledged by the authors, the fact that this model
+    is currently a purely verbal theory and not yet computationally implemented makes it very difficult
+    to rigorously assess ist actual explanatory power and empirical validity. The aim of the current project
+    is to provide this computational implementation and empirical evaluation. This model consists of the
+    following components: (I) We will employ distributional semantic models/word embeddings as a state-of-the-art
+    computational model of semantic memory, and (II) apply Kintsch’s (1988) construction-integration algorithm
+    to model the mutual co-activation of the cohort. We start from very simplistic assumptions about (III)
+    activation spread between the semantic and lexical level and (IV) selection at the lexical level.
+    The first work package focuses on implementing this model and making the implemented model accessible
+    to the research community. The second work package focuses on estimating the free parameters of the
+    model from already existing and published studies on semantic context effects in language processing.
+    Finally, the third work package focuses on empirically validating the model in experimental studies,
+    generating new item material for which specific context effects would be expected according to the
+    model predictions.
+- title: Measuring Semantic Similarity in Bilinguals and Language Models
+  funding: Joint AEI-DFG Research Project
+  url: https://gepris.dfg.de/gepris/projekt/566296599?language=en
+  description: >-
+    Many studies have provided evidence that bilinguals systematically differ from monolinguals across
+    a wide range of cognitive phenomena. The specific patterns are complex, with these bilingual adaptations
+    sometimes playing out as advantages and sometimes as disadvantages. The exact origins of these effects
+    remains unclear. In a recent meta-analysis, we have advanced the understanding of these effects by
+    showing that the similarity between the bilinguals’ two languages can act as a modulator of these
+    bilingual adaptations. However, current metrics of language similarity only take into account the
+    similarity of the lexicon or morpho-syntactic similarities. A crucial component, cross-language semantic
+    similarity, remains unaddressed. The present project (MESSI) aims to establish such a measure. Due
+    to their scalability across many different languages, it would be desirable to automatize this measurement
+    with Large Language Models (LLMs). However, the reliability and validity of semantic similarity measures
+    derived from LLMs across different languages needs to be established first. To this end, we will systematically
+    compare LLMs’ semantic similarities, within and across languages, to analogous similarity data derived
+    from monolingual and bilingual human speakers of eight different languages. In the next step, we then
+    examine how the obtained cross-language semantic similarity measures modulate bilingual adaptations.
+- title: A multidimensional adaptive test for the psychometric assessment of LLM capabilities
+  funding: DFG Priority Programme LaSTing
+  url: https://gepris.dfg.de/gepris/projekt/578866898
+  description: >-
+    With the rise of Large Language Models (LLMs), we see new models being released on a constant basis.
+    This is accompanied by the equally fast release of new benchmark datasets to assess the performance
+    of these models in various domains – from language processing and problem solving to more specialized
+    capabilities such as emotion detection and theory of mind. In this dynamic environment, assessing
+    the performance of each new model on the entire item pool of each relevant benchmark is not only a
+    technical challenge, but raises fundamental concerns about the scalability, resource demands, and
+    sustainability of benchmark performance assessment. In the present project, we address these issues
+    by adopting a multidimensional item response theory (mIRT) framework developed in psychometric assessment
+    to LLM benchmarking. In the IRT framework, population-invariant and item-specific difficulty and discrimination
+    parameters of each individual item are estimated from the empirical performance of a norming sample,
+    which allows us to identify the most informative items for assessing LLMs’ latent abilities. The mIRT
+    framework extends this towards multiple different ability dimensions. Here, we will collect responses
+    of a norming sample of LLMs on a diverse set of benchmark items from various domains, and use mIRT
+    to estimate the item parameters. We will then use the most informative items to implement a computerized
+    adaptive test (CAT) for LLM capabilities: Here, items are presented successively until the LLM capability
+    parameters are estimated with sufficient confidence, allowing for a maximally efficient capability
+    assessment. This assessment infrastructure – which will be designed as a future-proof “living environment”
+    where new items can be added and those that turn uninformative over time can be removed – will be
+    made available in the form of local software packages as well as via an online interface.

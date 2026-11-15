@@ -1,0 +1,1301 @@
+# Publications, in the order shown on the website (newest first within each group).
+#
+# Groups: status 'accepted' first, then 'preprint', then 'published' by year (desc).
+# Fields (leave out what is empty):
+#   id          unique key: <firstauthor><year><firstword>, e.g. guenther2016latent
+#   status      accepted | preprint | published
+#   type        only for non-journal items: chapter | proceedings
+#               (these may also have editors, edition, publisher; venue = book/proceedings title)
+#   year        publication year (omitted for 'accepted' entries)
+#   authors     list of "Last, F. M."; '*'/'**' after initials = equal contribution (see notes);
+#               a bare '…' stands for authors omitted on the original list
+#   title, venue, volume, issue, pages
+#   doi         bare DOI (10.xxxx/...), taken from the main link
+#   url         main link ("Link/Download" or "Link" button)
+#   pdf         separate "Download" link (author copy: Drive / preprint server)
+#   data        "Data, Material, & Scripts" link
+#   extra_links list of {label, url}, e.g. Trained model
+#   notes       footnotes such as equal-contribution markers, "Advance online publication"
+#   abstract    abstract text (Markdown), shown behind an "Abstract" button
+#   featured    true = show on the home page under "Recent publications" (otherwise the newest are shown)
+
+- id: moskvina2026multilingual
+  status: accepted
+  authors:
+  - Moskvina, N. B.
+  - Montero, R.
+  - Yoshida, M.
+  - Hubers, F.
+  - Morosi, P.
+  - Irhaymi, W.
+  - Yan, J.
+  - Serrano, T.
+  - Pagliarini, E.
+  - Günther, F.
+  - Leivada, E.
+  title: Multilingual Large Language Models do not comprehend all natural languages to equal degrees
+  venue: Scientific Reports
+  doi: 10.1038/s41598-026-69546-8
+  url: https://doi.org/10.1038/s41598-026-69546-8
+  data: https://osf.io/tvybq/overview?view_only=0d6da027a8c14aeebd9c39ed00e9970f
+  abstract: Large Language Models (LLMs) play a critical role in how humans access information. While their core use relies on comprehending written requests, our understanding of this ability is currently limited, because most benchmarks evaluate LLMs in high-resource languages predominantly spoken by Western, Educated, Industrialised, Rich, and Democratic (WEIRD) communities. The default assumption is that English is the best-performing language for LLMs, while smaller, low-resource languages are linked to less reliable outputs, even in multilingual, state-of-the-art models. To track variation in the comprehension abilities of LLMs, we prompt 3 popular models on a language comprehension task across 12 languages, representing the Indo-European, Afro-Asiatic, Turkic, Sino-Tibetan, and Japonic language families. Our results suggest that the models exhibit remarkable linguistic accuracy across typologically diverse languages, yet they fall behind human baselines in all of them, albeit to different degrees. Contrary to what was expected, English is not the best-performing language, as it was systematically outperformed by several Romance languages, even lower-resource ones. We frame the results by discussing the role of several factors that drive LLM performance, such as tokenization, language distance from Spanish and English, size of training data, and data origin in high- vs. low-resource languages and WEIRD vs. non-WEIRD communities.
+
+- id: raveling2026predicting
+  status: accepted
+  authors:
+  - Raveling, L.
+  - Günther, F.
+  title: Predicting the Rate of Novel Words from Word-Level Semantic Measures in a Taboo Game Setting
+  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
+  doi: 10.31219/osf.io/4cxtw_v1
+  url: https://doi.org/10.31219/osf.io/4cxtw_v1
+  data: https://osf.io/vyjrz
+  abstract: The present study investigates novel word production rates for word meaning expressed by single words in an exploratory-confirmatory design. To capture a wide variety of semantic nuances of word meaning that influence individual processes of word creation we quantify distributional categorical and psychological semantic factors of single words. These features are tested for their correlation with novel word response rates in an online study employing the Taboo Game Paradigm, where speakers are presented with a word for which they have to express one meaning as accurately as possible in a single word. They are not allowed to use the target word itself. We first investigate a range of semantic predictors from a distributional semantic model (word2vec), a hierarchical taxonomic network model (WordNet) and psychological semantic ratings in an exploratory study. In a next step, we conduct a larger, preregistered confirmatory study to examine whether the identified effects can be replicated. Based on the results from these studies, we conclude that participants produce a higher rate of novel words for more concrete word meanings, as well as for word meanings that have lower connectivity within a network of taxonomically related words.
+
+- id: schiekiera2026associations
+  status: accepted
+  authors:
+  - Schiekiera, L.
+  - Zimmer, M.
+  - Roux, C.
+  - Pokutta, S.
+  - Günther, F.
+  title: 'From Associations to Activations: Comparing Behavioral and Hidden-State Semantic Geometry in LLMs'
+  venue: 43rd International Conference on Machine Learning (ICML)
+  doi: 10.48550/arXiv.2602.00628
+  url: https://doi.org/10.48550/arXiv.2602.00628
+  data: https://github.com/schiekiera/llm-association-geometry
+  abstract: We investigate the extent to which an LLM's hidden-state geometry can be recovered from its behavior in psycholinguistic experiments. Across eight instruction-tuned transformer models, we run two experimental paradigms -- similarity-based forced choice and free association -- over a shared 5,000-word vocabulary, collecting 17.5M+ trials to build behavior-based similarity matrices. Using representational similarity analysis, we compare behavioral geometries to layerwise hidden-state similarity and benchmark against FastText, BERT, and cross-model consensus. We find that forced-choice behavior aligns substantially more with hidden-state geometry than free association. In a held-out-words regression, behavioral similarity (especially forced choice) predicts unseen hidden-state similarities beyond lexical baselines and cross-model consensus, indicating that behavior-only measurements retain recoverable information about internal semantic geometry. Finally, we discuss implications for the ability of behavioral tasks to uncover hidden cognitive states.
+
+- id: binz2026post
+  status: preprint
+  year: 2026
+  authors:
+  - Binz, M.
+  - Akata, E.
+  - Almaatouq, A.
+  - Alsobay, M.
+  - Ariasov, O.
+  - Brändle, F.
+  - …
+  - Günther, F.
+  - …
+  - Schulz, E.
+  title: Post-training makes large language models less human-like
+  venue: arXiv preprint
+  doi: 10.48550/arXiv.2605.07632
+  url: https://doi.org/10.48550/arXiv.2605.07632
+  abstract: Large language models (LLMs) are increasingly used as surrogates for human participants, but it remains unclear which models best capture human behavior and why. To address this, we introduce Psych-201, a novel dataset that enables us to measure behavioral alignment at scale. We find that post-training -- the stage that turns base models into useful assistants -- consistently reduces alignment with human behavior across model families, sizes, and objectives. Moreover, this misalignment widens in newer model generations even as base models continue to improve. Finally, we find that persona-induction -- a popular technique for eliciting human-like behavior by conditioning models on participant-specific information -- does not improve predictions at the level of individuals. Taken together, our results suggest that the very processes that are currently employed to turn LLMs into useful assistants also make them less accurate models of human behavior.
+
+- id: cassani2023meaning
+  status: preprint
+  year: 2023
+  authors:
+  - Cassani, G.
+  - Günther, F.
+  - Attanasio, G.
+  - Bianchi, F.
+  - Marelli, M.
+  title: 'Meaning Modulations and Stability in Large Language Models: An Analysis of BERT Embeddings for Psycholinguistic Research'
+  venue: PsyArXiv preprint
+  url: https://psyarxiv.com/b45ys
+  data: https://osf.io/94ena/?view_only=4e29d179b7664f27b6b7b7ba6b75edf7
+  abstract: 'Computational models of semantic representations have long assumed and produced a single static representation for each word type, ignoring the influence of linguistic context on semantic representations. Recent Large Language Models (LLMs) introduced in Natural Language Processing, however, learn token-level contextualised representations, holding promise to study how semantic representations change in different contexts. In this study we probe type- and token-level representations learned using a prominent example of such models, Bidirectional Encoder Representations from Transformers (BERT), for their ability to i) explain semantic effects found for isolated words (semantic relatedness and similarity ratings, lexical decision, and semantic priming), but critically also to ii) exhibit systematic interactions between lexical semantics and context, and iii) explain meaning modulations in context. Across a wide range of empirical studies on each of these topics, we show that BERT representations satisfy two desiderata for psychologically valid semantic representations: i) they have a stable semantic core which allows people to interpret words in isolation and prevents words to be used arbitrarily and ii) they interact with sentence context in systematic ways, with representations shifting as a function of their semantic core and the context. This demonstrates that a single, comprehensive model which simultaneously learns abstract, type-level prototype representations as well as mechanisms of how these interact with context can explain both isolated word effects and context-dependent variations. Notably, these variations are not limited to discrete word senses, eschewing a strict dichotomy between exemplar and prototype models and re-framing traditional notions of polysemy.'
+
+- id: guenther2025gold
+  status: preprint
+  year: 2025
+  authors:
+  - Günther, F.
+  - Bell, M. J.
+  - Schäfer, M.
+  title: 'Gold student meets star model: Predicting the interpretational diversity of novel compounds in an exploratory-confirmatory approach'
+  venue: PsyArXiv preprint
+  url: https://psyarxiv.com/2ypfs_v1
+  data: https://osf.io/8yb7p/
+  abstract: Almost all linguistic expressions are ambiguous to some extent, and can be interpreted in various different ways. This is especially the case for novel expressions a speaker has never encountered before, in particular combined concepts expressed via compounds such as /gold student/ or /monkey ring/. Although previous studies have shown that word embeddings (meaning representations derived from text-based language models), can encode the interpretational diversity of such expressions, these previous studies have been limited to a small, rigid and high-level closed set of relational interpretations (e.g., \`student MADE OF gold', \`student ABOUT gold'). In contrast, the present study uses more ecologically-valid open-format interpretations provided by human participants, which are afterwards classified in a bottom-up manner in order to compute quantitative estimates of interpretational diversity. In an exploratory study on pre-existing data, we first investigate what measures derived from word embeddings capture interpretational diversity, with the vector norm of the embeddings emerging as the best predictor. In a subsequent high-powered confirmatory study, we then systematically select new items for maximal variation of this vector norm, and replicate the same pattern. This is the first study to show that text-based language models encode the unconstrained interpretational diversity of linguistic expressions, even within a single vector representation, and even for novel expressions that have never been observed in their training data.
+
+- id: leivada2024multi
+  status: preprint
+  year: 2024
+  authors:
+  - Leivada, E.
+  - Günther, F.
+  - Masullo, C.
+  - Morosi, P.
+  - Westergaard, M.
+  title: A multi-metric analysis of 50,000 linguistic profiles provides sparse evidence that language distance modulates bilingual cognition
+  venue: PsyArXiv preprint
+  url: https://psyarxiv.com/9uqbm
+  data: https://osf.io/kwmrp/
+  abstract: Similarity in mental, linguistic representations modulates the degree of recruitment of cognitive control mechanisms, which have been linked to neurocognitive adaptations in bilingual populations. While ample evidence exists for this claim, its coverage is limited, as testing is geared towards WEIRD communities that use sizeable, Indo-European languages, thus potentially providing a biased view of bilingual cognition. We assess the role of distance as a key moderator of bilingual adaptations through a large-scale aggregation analysis of 510 experiments. To measure distance, we develop a multi-metric approach, using state-of-the-art databases, such as Grambank. Analyzing data from 56,122 participants who speak 79 different languages, spanning 11 language families and a language isolate, we find sparse evidence for a distance effect. Our results suggest that moderators such as language distance can shed light on the cognitive divide between language and dialects in a way that addresses the perennial question of what makes bilinguals distinct.
+
+- id: leivada2025large
+  status: preprint
+  year: 2025
+  authors:
+  - Leivada, E.
+  - Montero, R.
+  - Morosi, P.
+  - Moskvina, N.
+  - Serrano, T.
+  - Aguilar, M.
+  - Günther, F.
+  title: Large Language Model probabilities cannot distinguish between possible and impossible language
+  venue: arXiv preprint
+  doi: 10.48550/arXiv.2509.15114
+  url: https://doi.org/10.48550/arXiv.2509.15114
+  data: https://osf.io/pgqab/
+  abstract: A controversial test for Large Language Models concerns the ability to discern possible from impossible language. While some evidence attests to the models' sensitivity to what crosses the limits of grammatically impossible language, this evidence has been contested on the grounds of the soundness of the testing material. We use model-internal representations to tap directly into the way Large Language Models represent the 'grammatical-ungrammatical' distinction. In a novel benchmark, we elicit probabilities from 4 models and compute minimal-pair surprisal differences, juxtaposing probabilities assigned to grammatical sentences to probabilities assigned to (i) lower frequency grammatical sentences, (ii) ungrammatical sentences, (iii) semantically odd sentences, and (iv) pragmatically odd sentences. The prediction is that if string-probabilities can function as proxies for the limits of grammar, the ungrammatical condition will stand out among the conditions that involve linguistic violations, showing a spike in the surprisal rates. Our results do not reveal a unique surprisal signature for ungrammatical prompts, as the semantically and pragmatically odd conditions consistently show higher surprisal. We thus demonstrate that probabilities do not constitute reliable proxies for model-internal representations of syntactic knowledge. Consequently, claims about models being able to distinguish possible from impossible language need verification through a different methodology.
+
+- id: martineztomas2026lexical
+  status: preprint
+  year: 2026
+  authors:
+  - Martinez-Tomás, C.
+  - Günther, F.
+  - Hinojosa, J. A.
+  - Gatti, D.
+  title: Lexical and affective organizers of (novel) meaning
+  venue: PsyArXiv preprint
+  doi: 10.31234/osf.io/kp6bt_v1
+  url: https://osf.io/preprints/psyarxiv/kp6bt_v1
+  data: https://osf.io/nr7uq/overview?view_only=e5a764daf47a4610a06c710b5da34b76
+  abstract: Affective dimensions (i.e., valence and arousal) and discrete basic emotions (i.e., anger, disgust, fear, happiness, sadness) are the main affective sources of information that explain the semantic features of words. Recent studies suggest that humans are able to assign emotionality even to pseudowords, plausible verbal stimuli that do not belong to a given language which serve as proxies for never encountered, real words (i.e., novel words). So far, evidence at our disposal is mainly limited to valence (i.e., the hedonic tone of a words’ reference, from pleasant to unpleasant), while investigating discrete emotionality is required for a more refined understanding of the processes at hand. Here, across three experiments, we probed i) humans’ ability to convey discrete emotions when generating novel word stimuli to express the meanings of given emotional words, and ii) humans’ ability to decode or understand such emotionality when processing these human-generated novel words. Leveraging estimates from a word embedding model, results showed that individuals can reliably encode and decode novel conceptual information carrying emotional information, with a better performance for anger and happiness stimuli. Theoretically, these processes can be interpreted from an evolutionary perspective and, more broadly, they can be traced back to humans’ ability to process systematic, non-arbitrary form-meaning information.
+
+- id: morosi2026tracing
+  status: preprint
+  year: 2026
+  authors:
+  - Morosi, P.
+  - Pantelidou, N.
+  - Günther, F.
+  - Pagliarini, E.
+  - Leivada, E.
+  title: Tracing the ongoing emergence of human-like reasoning in Large Language Models
+  venue: arXiv preprint
+  doi: 10.48550/arXiv.2605.21299
+  url: https://doi.org/10.48550/arXiv.2605.21299
+  abstract: 'Humans effortlessly go beyond literal meanings: If you mow the lawn, I will give you fifty dollars, is typically understood as implying that the speaker will pay only if the lawn is mowed, whereas If you are hungry, there is pizza in the oven implies that pizza is available regardless of the hearers hunger. Large Language Models - LLMs - show human-like performance on many tasks, yet it remains unclear whether they reason like humans. To address this, we conducted a population-matching experiment assessing how twentyfive LLMs compute conditional inferences across four languages, compared to an equal number of humans per language. We find that humans enrich logical reasoning through pragmatic inferences across languages. Model behavior is more variable. Some LLMs perfectly follow the truth-table of conditionals but they ignore pragmatic inferences, while others deviate from the truth-table, adhering to a single interpretation across the board, thus reflecting accurate rule-based processing but not human-like reasoning. Overall, LLMs are accurate semantic operators, but fail to capture the pragmatic enrichments characteristic of human reasoning. Crucially, LLM accuracy is neither predicted nor boosted by open vs. closed status, training orientation, or architecture type, suggesting that pragmatic reasoning is still an emerging ability in the cognitive toolkit of artificial systems.'
+
+- id: schiekiera2026harmonized
+  status: preprint
+  year: 2026
+  authors:
+  - Schiekiera, L.
+  - Abdel Rahman, R.
+  - Gruber, V.
+  - Bürki, A.
+  - Lorenz, A.
+  - Stark, K.
+  - Günther, F.
+  title: A harmonized trial-level dataset of picture-word interference
+  venue: PsyArXiv preprint
+  doi: 10.31234/osf.io/xp69t_v1
+  url: https://osf.io/preprints/psyarxiv/xp69t_v1
+  data: https://osf.io/2b3sx
+  abstract: 'The picture-word interference (PWI) paradigm is among the most widely used experimental tools for studying lexical access during language production. Despite decades of research, trial-level data from individual PWI studies remain fragmented across laboratories, repositories, and formats, limiting large-scale reuse and cross-study comparison. Here we present a harmonized, openly accessible dataset comprising 688,976 trials from 86 experiments across 42 studies, involving 3,353 participants naming pictures in English or German. Data were collected from five sources: an in-house dataset, raw data from a prior meta-analysis, systematic literature searches (OpenAlex, PubMed), direct author contributions, and the Open Science Framework. All datasets were cleaned and harmonized into a common 28-variable schema covering trial-level responses, experimental design characteristics, and basic psycholinguistic properties of target and distractor words. The full data-collection and cleaning pipeline is openly released, so that the resource can be readily extended with additional studies, languages, or harmonized variables in future releases. The dataset enables mega-analyses, computational modeling of naming latencies, replication studies, and methodological investigations that require statistical power beyond what individual studies can provide.'
+
+- id: schiekiera2026computational
+  status: preprint
+  year: 2026
+  authors:
+  - Schiekiera, L.
+  - Abdel Rahman, R.
+  - Melinger, A.
+  - Gruber, V.
+  - Günther, F.
+  title: 'A Computational Swinging Lexical Network: Cohort Concentration Predicts Semantic Interference in a Large-Scale Picture–Word Interference Dataset'
+  venue: PsyArXiv preprint
+  doi: 10.31234/osf.io/whu3d_v1
+  url: https://doi.org/10.31234/osf.io/whu3d_v1
+  data: https://osf.io/g6s87
+  abstract: 'The Swinging Lexical Network (SLN) model explains semantic context effects in word production through the lexical cohort that a target and distractor co-activate: whether naming is facilitated or slowed depends on the balance between semantic priming and lexical competition within this cohort. As a verbal theory the SLN leaves open what counts as a competitor: any co-activated word, or only words whose activation stands out. We implemented the SLN computationally, letting activation spread through a 30,000-word distributional semantic network. From this process we derived two measures. Cohort concentration is the degree to which co-activation falls on a few words instead of being spread thinly across many. The swing is how much the activation pattern still changes over later spreading steps. In a harmonized picture–word interference dataset of 392,156 trials from 86 English and German experiments, cohort concentration was the only semantic predictor with a reliable effect in both languages: naming was slower when a few words stood out as strongly activated competitors and faster when activation was diffuse. Competitors are thus the words whose activation stands out from the background, not every word that receives some activation. Adding the swing improved fit, but its effect could not be separated from cohort concentration, with which it was strongly correlated. Because spreading converges on the same network-wide state for every word pair, later steps largely re-express the initial cohort. In line with the SLN, our computational implementation shows that semantic interference depends on how co-activation is distributed across the cohort.'
+
+- id: schiekiera2026linearpfn
+  status: preprint
+  year: 2026
+  authors:
+  - Schiekiera, L.
+  - Zimmer, M.
+  - Roux, C.
+  - Arnold, M.
+  - Pokutta, S.
+  - Günther, F.
+  title: 'LinearPFN: Amortized variable selection for linear models with interactions'
+  venue: arXiv preprint
+  doi: 10.48550/arXiv.2610.06580
+  url: https://doi.org/10.48550/arXiv.2610.06580
+  data: https://github.com/schiekiera/LinearPFN
+  extra_links:
+  - label: Trained model
+    url: https://huggingface.co/schiekiera/LinearPFN
+  abstract: 'Spike-and-slab regression is a standard Bayesian formulation of variable selection: it returns a posterior distribution over which candidate effects are active rather than a single selected subset, so that every candidate effect carries an inclusion probability. Its cost grows exponentially with the number of candidate effects, so the posterior can be enumerated exactly only when the number of predictors is small. Beyond that reach, the posterior has to be approximated, typically by Markov chain Monte Carlo over the model space, which requires a fresh run for every dataset and, within a fixed budget of steps, may fail to converge. We present LinearPFN, a prior-data fitted transformer network that amortizes spike-and-slab inference for linear models with main effects and pairwise interactions. The network is pretrained once on synthetic datasets, drawn from an explicitly specified prior, and a single forward pass over a new dataset returns posterior inclusion probabilities, posterior-mean coefficients and posterior predictive distributions with no per-dataset fitting. The prior is conjugate by design, so that the posterior for each fixed set of active effects has a closed form, and wherever the exact posterior is still computable by enumeration we verify the network''s outputs against it. On real predictor matrices from published social-science datasets, with outcomes drawn from the prior so that the true active set is known, LinearPFN attains a higher per-dataset selection AUC and a higher F1 under the median probability model rule than five classical baselines. The lead holds when the coefficients, the interactions or the noise depart from the prior.'
+
+- id: schoenegger2025large
+  status: preprint
+  year: 2025
+  authors:
+  - Schoenegger, P.*
+  - Salvi, F.*
+  - Liu, J.*
+  - Nan, X.*
+  - Debnath, R.*
+  - Fasolo, B.**
+  - Leivada, E.**
+  - Recchia, G.**
+  - Günther, F.**
+  - Zarifhonarvar, A.
+  - Kwon, J.
+  - Islam, Z. U.
+  - Dehnert, M.
+  - Lee, D. Y. H.
+  - Reinecke, M. G.
+  - Kamper, D. G.
+  - Kobaş, M.
+  - Sandford, A.
+  - Kgomo, J.
+  - Hewitt, L.
+  - Kapoor, S.
+  - Oktar, K.
+  - Kucuk, E. E.
+  - Feng, B.
+  - Jones, C. R.
+  - Gainsburg, I.
+  - Olschewski, S.
+  - Heinzelmann, N.
+  - Cruz, F.
+  - Tappin, B. M.
+  - Ma, T.
+  - Park, P. S.
+  - Onyonka, R.
+  - Hjorth, A.
+  - Slattery, P.
+  - Zeng, Q.
+  - Finke, L.
+  - Grossmann, I.
+  - Salatiello, A.
+  - Karger, E.
+  title: Large Language Models Are More Persuasive Than Incentivized Human Persuaders
+  venue: arXiv preprint
+  url: https://arxiv.org/abs/2505.09662
+  notes: '* equal contribution; ** equal contribution'
+  abstract: We directly compare the persuasion capabilities of a frontier large language model (LLM; Claude Sonnet 3.5) against incentivized human persuaders in an interactive, real-time conversational quiz setting. In this preregistered, large-scale incentivized experiment, participants (quiz takers) completed an online quiz where persuaders (either humans or LLMs) attempted to persuade quiz takers toward correct or incorrect answers. We find that LLM persuaders achieved significantly higher compliance with their directional persuasion attempts than incentivized human persuaders, demonstrating superior persuasive capabilities in both truthful (toward correct answers) and deceptive (toward incorrect answers) contexts. We also find that LLM persuaders significantly increased quiz takers' accuracy, leading to higher earnings, when steering quiz takers toward correct answers, and significantly decreased their accuracy, leading to lower earnings, when steering them toward incorrect answers. Overall, our findings suggest that AI's persuasion capabilities already exceed those of humans that have real-money bonuses tied to performance. Our findings of increasingly capable AI persuaders thus underscore the urgency of emerging alignment and governance frameworks.
+
+- id: dudschig2026cognitive
+  status: published
+  year: 2026
+  authors:
+  - Dudschig, C.
+  - Günther, F.
+  - Mackenzie, I. G.
+  title: 'Cognitive plausibility of count-based versus prediction-based word embeddings: A large-scale N400 study'
+  venue: Biological Psychology
+  volume: '204'
+  pages: '109079'
+  doi: 10.1016/j.biopsycho.2025.109079
+  url: https://doi.org/10.1016/j.biopsycho.2025.109079
+  abstract: The N400 is a central electrophysiological event-related-potential (ERP) marker thought to reflect meaning comprehension in the human brain. Typically, the N400 is larger when a word does not fit into a specific context (e.g., I drink coffee with cream and *dog*). Thus, one core factor determining the N400 amplitude is thought to be the predictability of a word within its context. Here, both long-term memory associations and short-term discourse context influence the N400 amplitude. In the present study, we used the N400 as a marker to investigate the cognitive plausibility of semantic similarity measures. Specifically, we compared traditional count-based measures to modern machine learning tools such as prediction-based word embeddings to assess whether prediction-based techniques potentially encapsulate learning mechanisms that align more closely with psychological plausibility. To do so, we examined the relationship between different similarity measures (LSA, HAL and word2vec) and the N400 amplitude in a large scale re-analysis of previously published EEG data. Model comparison suggested a superiority of HAL over LSA as a predictor in explaining single-trial N400 amplitudes, and also a benefit of prediction-based methods over count-based methods. This result aligns with the notion that such models might in the future provide further insights into how the brain navigates language understanding.
+
+- id: finklamotte2026chancen
+  status: published
+  year: 2026
+  authors:
+  - Fink-Lamotte, J.
+  - Günther, F.
+  - Haaf, J.
+  - Specht, J.
+  - Cludius, B.
+  - Hilbert, K.
+  - Saulin, A.
+  title: 'Chancen der Künstlichen Intelligenz für das wissenschaftliche Arbeiten in der Psychologie: Ein Best-Case-Szenario [Opportunities offered by artificial intelligence for scientific work in psychology: a best-case scenario]'
+  venue: Psychologische Rundschau
+  volume: '77'
+  pages: 269–280
+  doi: 10.1026/0033-3042/a000788
+  url: https://doi.org/10.1026/0033-3042/a000788
+  abstract: 'The rapid development of artificial intelligence (AI) is fundamentally changing psychological research and teaching. So far, the debate has focused primarily on risks, such as hallucinations, lack of transparency, bias, data-protection issues, ecological costs, and new forms of „bypassing” in learning. In contrast, this article sketches a realistic and ambitious best-case scenario for the year 2030, in which AI acts as a scientific assistance system in a scientist-in-the-loop setup: AI takes on scalable routine tasks throughout the entire research cycle, supporting methodology, data analysis, open science, and personalized teaching, while theoretical work, evaluation, interpretation, and responsibility remain clearly with humans. Against this background, the article derives key structural prerequisites: (1) widely available, legally secure access to powerful, open, European AI infrastructures, (2) binding guidelines for transparent, documented, and fair use of AI across all phases of the research process, and (3) teaching and examination practices that specifically strengthen and test critical thinking, deep reading, and self-regulation, even under AI conditions. The responsibility then remains with humans; even if AI can support and consolidate scientific practice, it must not replace a transparent, critical, and human-centered culture of discussion.'
+
+- id: gatti2026zero
+  status: published
+  year: 2026
+  authors:
+  - Gatti, D.
+  - Günther, F.
+  title: Zero-shot pseudowords memorability via representational content analysis
+  venue: Psychonomic Bulletin & Review
+  volume: '33'
+  pages: '137'
+  doi: 10.3758/s13423-026-02875-x
+  url: https://doi.org/10.3758/s13423-026-02875-x
+  data: https://osf.io/z43fy/overview?view_only=f7cac6befee440ee80e8c80d292f08c6
+  abstract: Novel strings of letters (i.e., pseudowords) lack established meaning(s), yet they may still evoke systematic, distributional signals that influence human behavior. Here, we tested whether distributional determinants of word memorability generalize to these novel strings. To do so, we leveraged a word-embedding model that was able to represent in a vector space not only attested words but also unmapped strings as bags of character *n*-grams. A ridge model trained on item-level word memorability norms learned a linear mapping from 300-dimensional embeddings to recognition memorability and achieved strong out-of-fold performance. We then applied this model zero-shot to predict memorability for 2,100 phonotactically legal pseudowords, whose baseline predictability was captured by orthographic and frequency features. Adding the zero-shot distributional score significantly improved the baseline model. These findings show that distributional representations derived from subword statistics carry mnemonic information that is not reducible to orthographic familiarity, and that novel strings are interpreted within a shared representational space learned from language experience. More broadly, they support the view that memorability is an intrinsic attribute predictable from representational information, even in the absence of learned meanings.
+
+- id: guenther2026large
+  status: published
+  type: chapter
+  year: 2026
+  authors:
+  - Günther, F.
+  - Cassani, G.
+  title: Large Language Models in psycholinguistic studies
+  venue: International Encyclopedia of Language and Linguistics
+  editors: H. Nesi & P. Milin
+  edition: 3rd ed.
+  volume: '13'
+  pages: 286–292
+  publisher: Elsevier
+  doi: 10.1016/B978-0-323-95504-1.00749-3
+  url: https://doi.org/10.1016/B978-0-323-95504-1.00749-3
+  pdf: https://osf.io/preprints/psyarxiv/cvnam_v1
+  abstract: We are currently witnessing a veritable explosion of studies employing Large Language Models (LLMs) in the cognitive sciences. Here, we focus on their use in psycholinguistics, that is, for the study of human language processing. LLMs are primarily trained to predict upcoming or masked words in a given context. We briefly describe the transformer architecture which endows LLMs with impressive abilities to achieve this objectives, and review how the components of this architecture are of interest to psycholinguistics. We then review how LLMs are applied in research, focusing on (1) measuring surprisal/probabilities of a word given a context; (2) extracting representations/embeddings these models produce, and (3) prompting/probing these models to produce an output, treating them similarly to human participants.
+
+- id: guenther2026cross
+  status: published
+  year: 2026
+  authors:
+  - Günther, F.
+  - Petrenco, A.
+  - Gatti, D.
+  title: Cross-linguistic zero-shot communication via ad-hoc pseudowords
+  venue: Cognition
+  volume: '271'
+  pages: '106440'
+  doi: 10.1016/j.cognition.2026.106440
+  url: https://doi.org/10.1016/j.cognition.2026.106440
+  data: https://osf.io/dawzy/
+  abstract: In verbal communication, speakers must encode meanings into signs such as words. Within a given language community, the correspondence between word forms and meanings can become conventionalized. However, speakers from different language communities cannot rely on these shared conventions. Here, we investigate whether purely verbal communication using single words is still possible in such a context, enabled by generalized form-meaning mappings. In a pre-registered experiment, we presented Italian speakers with words and instructed them to come up with corresponding German translations. The resulting German-like pseudowords were then shown to German speakers, who were asked to guess the original words. Supporting our hypotheses, results showed that the German participants’ guesses were semantically closer to the original words than to randomly selected control words. These findings highlight the remarkable human ability to spontaneously create and interpret meaningful signals, even across language boundaries and without relying on an established mutually-known lexicon.
+
+- id: guenther2026interpretability
+  status: published
+  type: chapter
+  year: 2026
+  authors:
+  - Günther, F.
+  - Raveling, L.
+  title: Interpretability norms for novel words and nonwords
+  venue: International Encyclopedia of Language and Linguistics
+  editors: H. Nesi & P. Milin
+  edition: 3rd ed.
+  volume: '12'
+  pages: 510–514
+  publisher: Elsevier
+  doi: 10.1016/B978-0-323-95504-1.00399-9
+  url: https://doi.org/10.1016/B978-0-323-95504-1.00399-9
+  pdf: https://doi.org/10.31234/osf.io/t3krs_v1
+  abstract: The lexicon of a language is subject to constant change, and new words constantly enter the lexicon. In principle, any word form that is not currently in the lexicon but adheres to the orthotactic rules of a language can be a novel word, including morphologically complex words but also pseudowords. However, such novel words differ in their semantic interpretability—how easily speakers can come up with an interpretation for them—which is of interest as both an independent and dependent variable in theory-building, computational modeling, and empirical studies. Here, we provide an overview of studies that make available (large) norms of semantic interpretability ratings and judgments, which will serve as a useful resource for future research.
+
+- id: guenther2026compositionality
+  status: published
+  type: chapter
+  year: 2026
+  authors:
+  - Günther, F.
+  - Schulte im Walde, S.
+  title: Compositionality Estimates for Morphologically Complex Words
+  venue: International Encyclopedia of Language and Linguistics
+  editors: H. Nesi & P. Milin
+  edition: 3rd ed.
+  volume: '12'
+  pages: 412–418
+  publisher: Elsevier
+  doi: 10.1016/B978-0-323-95504-1.00041-7
+  url: https://doi.org/10.1016/B978-0-323-95504-1.00041-7
+  pdf: https://doi.org/10.31234/osf.io/bkw3g
+  abstract: According to Frege's principle of compositionality, the meaning of a complex expression is determined as a function of its constituents and the type of construction that combines the constituents. For a given expression, the compositionality refers to the degree to which the expression fulfills this principle, in particular when determined for complex words such as blackbird or globalize. Here, we present an overview of studies providing compositionality estimates for complex words, by defining a classification system that includes (1) the type of expression (compound nouns, particle verbs, derivations), (2) the language, (3) the level of description (i.e., focusing on individual constituents vs. the entire complex word), and (4) the information source providing the estimate (human judgments vs. computational models). Typical applications for compositionality estimates are discussed.
+
+- id: leivada2026sentence
+  status: published
+  year: 2026
+  authors:
+  - Leivada, E.
+  - Marcus, G.
+  - Günther, F.
+  - Murphy, E.
+  title: 'A Sentence is Worth a Thousand Pictures: Can Large Language Models Understand Hum4n L4ngu4ge and the W0rld behind W0rds?'
+  venue: Philosophical Transactions of the Royal Society A
+  volume: '384'
+  pages: '20250008'
+  doi: 10.1098/rsta.2025.0008
+  url: https://doi.org/10.1098/rsta.2025.0008
+  data: https://osf.io/nuvh8/?view_only=81f2d52c74ac44528f52d99b9fb44023
+  abstract: Modern Artificial Intelligence applications show great potential for language-related tasks that rely on next-word prediction. The current generation of Large Language Models (LLMs) have been linked to claims about human-like linguistic performance and their applications are hailed both as a step towards artificial general intelligence and as a major advance in understanding the cognitive, and even neural basis of human language. To assess these claims, first we analyze the contribution of LLMs as theoretically informative representations of a target cognitive system vs. atheoretical mechanistic tools. Second, we evaluate the models' ability to see the bigger picture, through top-down feedback from higher levels of processing, which requires grounding in previous expectations and past world experience. We hypothesize that since models lack grounded cognition, they cannot take advantage of these features and instead solely rely on fixed associations between represented words and word vectors. To assess this, we designed and ran a novel 'leet task' (l33t t4sk), which requires decoding sentences in which letters are systematically replaced by numbers. The results suggest that humans excel in this task whereas models struggle, confirming our hypothesis. We interpret the results by identifying the key abilities that are still missing from the current state of development of these models, which require solutions that go beyond increased system scaling.
+
+- id: martineztomas2026conveying
+  status: published
+  year: 2026
+  authors:
+  - Martinez-Tomás, C.
+  - Günther, F.
+  - Hinojosa, J. A.
+  - Gatti, D.
+  title: Conveying (discrete) emotionality with novel words
+  venue: 'Journal of Experimental Psychology: General'
+  volume: '155'
+  pages: 2001–2020
+  doi: 10.1037/xge0001960
+  url: https://psycnet.apa.org/doi/10.1037/xge0001960
+  pdf: https://osf.io/preprints/psyarxiv/gcnkx_v1
+  data: https://osf.io/9zbx6/
+  abstract: Affective dimensions (i.e., valence and arousal) and discrete basic emotions (i.e., anger, disgust, fear, happiness, sadness) are the main affective sources of information that explain the semantic features of words. Recent studies suggest that humans are able to assign emotionality even to pseudowords, plausible verbal stimuli that do not belong to a given language which serve as proxies for never encountered, real words (i.e., novel words). So far, evidence at our disposal is mainly limited to valence (i.e., the hedonic tone of a words’ reference, from pleasant to unpleasant), while investigating discrete emotionality is required for a more refined understanding of the processes at hand. Here, across three experiments, we probed i) humans’ ability to convey discrete emotions when generating novel word stimuli to express the meanings of given emotional words, and ii) humans’ ability to decode or understand such emotionality when processing these human-generated novel words. Leveraging estimates from a word embedding model, results showed that individuals can reliably encode and decode novel conceptual information carrying emotional information, with a better performance for anger and happiness stimuli. Theoretically, these processes can be interpreted from an evolutionary perspective and, more broadly, they can be traced back to humans’ ability to process systematic, non-arbitrary form-meaning information.
+
+- id: petilli2026image
+  status: published
+  type: chapter
+  year: 2026
+  authors:
+  - Petilli, M. A.
+  - Günther, F.
+  title: Image-based word frequency norms
+  venue: International Encyclopedia of Language and Linguistics
+  editors: H. Nesi & P. Milin
+  edition: 3rd ed.
+  volume: '12'
+  pages: 505–509
+  publisher: Elsevier
+  doi: 10.1016/B978-0-323-95504-1.00859-0
+  url: https://doi.org/10.1016/B978-0-323-95504-1.00859-0
+  abstract: Traditional word frequency norms are derived from text corpora. This article discusses word frequency derived from domain-specific visual corpora, where words are used to denote or label content in real-world scene images from large-scale datasets. These image-based frequency estimates capture aspects of language usage missing from traditional frequency measures, reflecting their nature at the intersection between language and vision. The article reviews the main approaches for creating these metrics (as well as measures derived from them), discusses studies validating their role as hybrid measures, and highlights their utility in complementing traditional word frequency norms to better address theoretical questions empirically.
+
+- id: petilli2026vision
+  status: published
+  type: chapter
+  year: 2026
+  authors:
+  - Petilli, M. A.
+  - Günther, F.
+  title: Vision Spaces (ViSpa) in Language Sciences
+  venue: International Encyclopedia of Language and Linguistics
+  editors: H. Nesi & P. Milin
+  edition: 3rd ed.
+  volume: '12'
+  pages: 767–772
+  publisher: Elsevier
+  doi: 10.1016/B978-0-323-95504-1.00221-0
+  url: https://doi.org/10.1016/B978-0-323-95504-1.00221-0
+  abstract: A Vision Space (ViSpa) is a mathematical structure in which concept's visual features are represented in a high-dimensional vector space, enabling quantitative analyses of relationships between them. By representing concepts as numeric vectors, ViSpa integrates visual knowledge into semantic models of concept representation, enriching how language research characterizes word meaning. The article presents the main approach for creating ViSpa systems, discusses studies demonstrating their validity as psychological models of concept representations with a special focus on language processing, and highlights their utility in addressing theoretical questions empirically. Additionally, it indicates some accessible resources and tools facilitating the creation and use of ViSpa.
+
+- id: petrenco2026centroid
+  status: published
+  year: 2026
+  authors:
+  - Petrenco, A.
+  - Günther, F.
+  title: 'Centroid analysis: Inferring concept representations from open-ended word responses'
+  venue: Behavior Research Methods
+  volume: '58'
+  pages: '147'
+  doi: 10.3758/s13428-026-03031-y
+  url: https://doi.org/10.3758/s13428-026-03031-y
+  data: https://osf.io/tq6ja/
+  abstract: The present research proposes and evaluates a novel method - centroid analysis - for measuring representations and concepts at both individual and group levels by mapping open-ended responses onto a pre-existing semantic vector space. Centroid analysis allows to retrace the target concept as the geometric center of the semantic vectors of the responses generated by this concept. At the group level, centroid analysis enables researchers to compare conceptual structures across different populations to investigate how factors such as language, culture, cognitive differences, educational background, or exposure to specific narratives shape shared representations. At the individual level, centroid analysis allows for fine-grained assessments of how personal experiences, expertise, cognitive styles, or even temporary contextual influences affect conceptual representations. We evaluate this method using two distributional semantic models across several calculation methods, reference lexicon sizes, response types, and datasets with tasks ranging from single word substitutions to single and multiple free associations and multiple feature generation. We conclude that at the group level, the best method to retrace the response-generating concept as a vector in a multi-dimensional semantic space from the averaged vectors of participant responses is to collect multiple free associations (70 unique and 245 total responses per cue), use fastText for meaning-to-vector mapping for responses and cues, and to consider each response in the centroid calculation as often as it occurred in the data. At the individual level, the best results are achieved by employing fastText and considering at least 8 responses per item per participant in the centroid calculation.
+
+- id: wang2026adding
+  status: published
+  year: 2026
+  authors:
+  - Wang, A.
+  - Brysbaert, M.
+  - Günther, F.
+  title: 'Adding volition to word processing: Expected utility norms for 80 thousand English words and multiword expressions'
+  venue: Behavior Research Methods
+  volume: '58'
+  pages: '176'
+  doi: 10.3758/s13428-026-03051-8
+  url: https://doi.org/10.3758/s13428-026-03051-8
+  data: https://osf.io/4nwgx/
+  abstract: This study examined the concept of word usefulness by analyzing expected utility ratings for over 80,000 English words and multiword expressions. Participants used best-worst ratings to indicate how useful it is to know each word/expression. Our findings show a high level of agreement regarding the usefulness of words and expressions. Stimuli were rated as more useful if they were more frequent, widely known, learned early in life and central to the semantic network. Concreteness had a substantial negative correlation, indicating that abstract words in general received higher utility scores than concrete words. Positive stimuli received slightly lower utility scores than negative stimuli. Expected utility was a good predictor of which words are known to speakers of English as a first and second language, but did not contribute to predicting response times to known words. These findings suggest that expected utility is a variable affecting which words are likely to be learned, but does not affect word processing times (much). The expected utility scores are freely available for research and education.
+
+- id: dentella2025language
+  status: published
+  year: 2025
+  authors:
+  - Dentella, V.
+  - Günther, F.
+  - Leivada, E.
+  title: 'Language in vivo vs. in silico: Size matters but Larger Language Models still do not comprehend language on a par with humans due to impenetrable semantic reference'
+  venue: PLoS One
+  volume: '20'
+  issue: '7'
+  pages: e0327794
+  doi: 10.1371/journal.pone.0327794
+  url: https://doi.org/10.1371/journal.pone.0327794
+  data: https://osf.io/m6yda/?view_only=135e7be5a131458e89acc0%205c74247b09
+  abstract: Understanding the limits of language is a prerequisite for Large Language Models (LLMs) to act as theories of natural language. LLM performance in some language tasks presents both quantitative and qualitative differences from that of humans, however it remains to be determined whether such differences are amenable to model size. This work investigates the critical role of model scaling, determining whether increases in size make up for such differences between humans and models. We test three LLMs from different families (Bard, 137 billion parameters; ChatGPT-3.5, 175 billion; ChatGPT-4, 1.5 trillion) on a grammaticality judgment task featuring anaphora, center embedding, comparatives, and negative polarity. N = 1,200 judgments are collected and scored for *accuracy*, *stability*, and *improvements in accuracy* upon repeated presentation of a prompt. Results of the best performing LLM, ChatGPT-4, are compared to results of n = 80 humans on the same stimuli. We find that humans are overall less accurate than ChatGPT-4 (76% vs. 80% accuracy, respectively), but that this is due to ChatGPT-4 outperforming humans only in one task condition, namely on grammatical sentences. Additionally, ChatGPT-4 wavers more than humans in its answers (12.5% vs. 9.6% likelihood of an oscillating answer, respectively). Thus, while increased model size may lead to better performance, LLMs are still not sensitive to (un)grammaticality the same way as humans are. It seems possible but unlikely that scaling alone can fix this issue. We interpret these results by comparing language learning in vivo and in silico, identifying three critical differences concerning (i) the type of evidence, (ii) the poverty of the stimulus, and (iii) the occurrence of semantic hallucinations due to impenetrable linguistic reference.
+
+- id: guenther2025monkeylope
+  status: published
+  year: 2025
+  authors:
+  - Günther, F.
+  - Raveling, L.
+  - Baier, F.
+  - Petrenco, A.
+  title: '"This is a monkeylope!" - A registered report on the factors of novel word creation'
+  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
+  doi: 10.1037/xlm0001531
+  url: https://doi.org/10.1037/xlm0001531
+  pdf: https://doi.org/10.31234/osf.io/s6p7j_v1
+  data: https://osf.io/bzpuv/
+  notes: Advance online publication
+  abstract: While native speakers of a language have tens of thousands of words at their disposal, they still regularly create and use novel words. Since this comes with communicative risks and costs – most importantly, not being understood by recipients – there have to be (perceived) advantages to creating novel words that outweigh these issues. We systematically explore these factors in a controlled experimental setting. We presented participants with images of existing and new animals with increasing degrees of conceptual distance to existing animals. Participants have to refer to these images either in an open format or with single words. The images are presented either in isolation (Experiment 1), or with two distractors created from different (Experiment 2) or the same base animals (Experiment 3). Each image is repeatedly presented to investigate effects of repeated reference and presentation. We measure how often participants create novel word labels for the stimuli, and derive hypotheses for the main effects and key interactions of conceptual distance, target frequency, distractor frequency, response format, and task setting from a theoretical framework based on the Gricean pragmatic principles as well as the concept of common ground. Conceptual distance, response format, and experimental task setting have clear effects on the number of novel word responses. However, we observe no effects for target or distractor frequency, suggesting no effect of common ground in our experimental setting. Participants also tend to over-specify their responses, rather than strictly adhering to pragmatic principles.
+
+- id: kaup2025interplay
+  status: published
+  type: chapter
+  year: 2025
+  authors:
+  - Kaup, B.
+  - Günther, F.
+  - Dudschig, C.
+  title: The Interplay of Modal and Amodal Processes in Language Comprehension at the Word Level and Beyond
+  venue: Psychology of Learning and Motivation
+  editors: K. Federmeier
+  volume: '83'
+  pages: 97–154
+  publisher: Elsevier
+  doi: 10.1016/bs.plm.2025.08.001
+  url: http://dx.doi.org/10.1016/bs.plm.2025.08.001
+  abstract: 'According to the grounded framework of language comprehension, sensorimotor processes play an important role for language comprehension: Comprehenders are assumed to mentally simulate the objects, situations and events referred to in the linguistic input. More specifically, it is usually assumed that words automatically activate experiential traces that stem from the comprehenders’ interactions with the referents of these words. When words appear in larger units, the activated experiential traces are presumably combined to yield an experiential simulation consistent with the meaning of the larger phrase or sentence. Thus, accounts in this framework postulate that language comprehension is based on purely modal meaning representations. In this review paper, we will discuss experimental work conducted to investigate these assumptions. The results of these studies call into question that grounded representations are the only meaning representations utilized in language comprehension. Instead, they speak for a more hybrid view of language comprehension, according to which comprehenders make use of both modal and amodal representations during comprehension, including representations of the linguistic experiences people have had. In our chapter we first address broader theoretical issues surrounding mental representations in cognitive psychology and then narrow the focus to language comprehension, tracing how representational debates have shaped the field over the past 25 years. We then outline competing models, review the empirical evidence supporting the proposed model components, and conclude by synthesizing insights and proposing directions for future research.'
+
+- id: murphy2025fundamental
+  status: published
+  year: 2025
+  authors:
+  - Murphy, E.
+  - Leivada, E.
+  - Dentella, V.
+  - Montero, R.
+  - Günther, F.
+  - Marcus, G.
+  title: Fundamental Principles of Linguistic Structure Are Not Represented by ChatGPT
+  venue: Biolinguistics
+  volume: '19'
+  pages: e19021
+  doi: 10.5964/bioling.19021
+  url: https://doi.org/10.5964/bioling.19021
+  data: https://doi.org/10.23668/psycharchives.21439
+  abstract: A core component of a successful artificial general intelligence would be the rapid creation and manipulation of grounded compositional abstractions and the demonstration of expertise in the family of recursive hierarchical syntactic objects necessary for the creative use of human language. We evaluated the recently released o3 model (OpenAI; o3-mini-high) from ChatGPT and discovered that while it succeeds on some basic linguistic tests relying on linear, surface statistics (e.g., the Strawberry Test), it fails to generalize basic phrase structure rules; it fails with comparative sentences involving semantically illegal cardinality comparisons (‘Escher sentences’); it fails to correctly rate and explain acceptability dynamics; and it fails to distinguish between instructions to generate unacceptable semantic vs. unacceptable syntactic outputs. When tasked with generating simple violations of grammatical rules, it is seemingly incapable of representing multiple parses to evaluate against various possible semantic interpretations. We ran all of these prompts multiple times again through the API and provide basic accuracy scores. In stark contrast to many recent claims that artificial language models are on the verge of replacing the field of linguistics, our results suggest not only that deep learning is hitting a wall with respect to compositionality ([Marcus, 2022](https://bioling.psychopen.eu/index.php/bioling/article/download/19021/19021.html?inline=1#r25)), but that it is hitting [*a* [*stubbornly* [*resilient wall*]]] that cannot readily be surmounted to reach human-like compositional reasoning simply through more compute.
+
+- id: petilli2025visual
+  status: published
+  year: 2025
+  authors:
+  - Petilli, M. A.
+  - Rodio, F.
+  - Günther, F.
+  - Marelli, M.
+  title: 'Visual search and real-image similarity: an empirical assessment of the search surface through the lens of deep learning'
+  venue: Psychonomic Bulletin & Review
+  volume: '32'
+  pages: 822–838
+  doi: 10.3758/s13423-024-02583-4
+  url: https://doi.org/10.3758/s13423-024-02583-4
+  pdf: https://psyarxiv.com/cxkzt
+  data: https://osf.io/2vad8/?view_only=e79503f8b6a447eb9b5547face0%20ecc4a
+  abstract: 'The search surface is a foundational concept in visual search literature. It describes the impact of target-distractor (TD) and distractor-distractor (DD) similarity on search efficiency. However, the search surface shape lacks direct quantitative support, being a summary approximation of a wide range of lab-based results poorly generalisable to real-world scenarios. This study exploits convolutional neural networks to quantitatively assess the similarity effects in search tasks using real images as stimuli and determine which levels of feature complexity the similarity effects rely on. Besides providing ecological converging evidence supporting the established search surface, our results reveal that TD and DD similarity mainly operate at two distinct layers of the network: DD similarity at the layer of coarse object features, while TD similarity at the layer of complex features used for classification. This suggests that these forms of similarities exert their major effects at two distinct levels of perceptual processing.'
+
+- id: ulrich2025indirect
+  status: published
+  year: 2025
+  authors:
+  - Ulrich, M.
+  - Harpaintner, M.
+  - Trumpp, N. M.
+  - Berger, A.
+  - Günther, F.
+  - Kiefer, M.
+  title: 'Indirect experiential grounding: Semantic similarity of abstract scientific concepts is reflected in activity patterns in visual and motor cortex'
+  venue: Scientific Reports
+  volume: '15'
+  pages: '43814'
+  doi: 10.1038/s41598-025-32189-2
+  url: https://doi.org/10.1038/s41598-025-32189-2
+  abstract: Grounded cognition theories propose that interactions with situations establish experiential memory traces that constitute conceptual meaning. However, as abstract scientific concepts are frequently learned through language, a proposed indirect grounding mechanism postulates that modal representations are extrapolated from distributional language-based representations, which are themselves mapped onto existing modal representations. Using functional magnetic resonance imaging (n = 51), we tested the mapping of distributed language representations on modal representations by asking whether semantic similarity of distributional language representations of scientific concepts corresponds to the similarity of neural activation patterns in modal brain systems. Semantic similarity based on both distributed language representations and experiential features was reflected in the multi-voxel activity pattern within occipital and fronto-parietal cortex, overlapping with activation induced by real visual perception and hand action, in addition to multimodal areas outside the brain regions sensitive to perception or action. Although its functional relevance for extrapolating modal representations remains to be determined, this mapping between language and the visuo-motor system is a fundamental element of the indirect grounding mechanism. This mechanism provides sensory-motor experience for the unseen and enriches knowledge for concepts learned exclusively from language.
+
+- id: devarda2024meaning
+  status: published
+  year: 2024
+  authors:
+  - De Varda, A.
+  - Gatti, D.
+  - Marelli, M.
+  - Günther, F.
+  title: 'Meaning Beyond Lexicality: Capturing Pseudoword Definitions with Language Models'
+  venue: Computational Linguistics
+  volume: '50'
+  pages: 1313–1343
+  doi: 10.1162/coli_a_00527
+  url: https://doi.org/10.1162/coli_a_00527
+  data: https://doi.org/10.17605/OSF.IO/5BV8R
+  abstract: Pseudowords such as “knackets” or “spechy” – letter strings that are consistent with the orthotactical rules of a language but do not appear in its lexicon – are traditionally considered to be meaningless, and employed as such in empirical studies. However, recent studies that show specific semantic patterns associated to these words as well as semantic effects on human pseudoword processing have cast doubt on this view. While these studies suggest that pseudowords have meanings, they provide only extremely limited insight as to whether humans are able to ascribe explicit and declarative semantic content to unfamiliar word forms. In the present study, we employed an exploratory-confirmatory study design to examine this question. In a first exploratory study, we started from a pre-existing dataset of words and pseudowords alongside human-generated definitions for these items. Employing 18 different language models, we showed that the definitions actually produced for (pseudo)words were closer to their respective (pseudo)words than the definitions for the other items. Based on these initial results, we conducted a second, pre-registered, high-powered confirmatory study collecting a new, controlled set of (pseudo)word interpretations. This second study confirmed the results of the first one. Taken together, these findings support the idea that meaning construction is supported by a flexible form-to-meaning mapping system based on statistical regularities in the language environment that can accommodate novel lexical entries as soon as they are encountered.
+
+- id: dentella2024testing
+  status: published
+  year: 2024
+  authors:
+  - Dentella, V.
+  - Günther, F.
+  - Murphy, E.
+  - Marcus, G.
+  - Leivada, E.
+  title: Testing AI on language comprehension tasks reveals insensitivity to underlying meaning
+  venue: Scientific Reports
+  volume: '14'
+  pages: '28083'
+  doi: 10.1038/s41598-024-79531-8
+  url: https://doi.org/10.1038/s41598-024-79531-8
+  data: https://osf.io/dfgmr/
+  abstract: Large Language Models (LLMs) are recruited in applications that span from clinical assistance and legal support to question answering and education. Their success in specialized tasks has led to the claim that they possess human-like linguistic capabilities related to compositional understanding and reasoning. Yet, reverse-engineering is bound by Moravec’s Paradox, according to which easy skills are hard. We systematically assess 7 state-of-the-art models on a novel benchmark. Models answered a series of comprehension questions, each prompted multiple times in two settings, permitting one-word or open-length replies. Each question targets a short text featuring high-frequency linguistic constructions. To establish a baseline for achieving human-like performance, we tested 400 humans on the same prompts. Based on a dataset of *n* = 26,680 datapoints, we discovered that LLMs perform at chance accuracy and waver considerably in their answers. Quantitatively, the tested models are outperformed by humans, and qualitatively their answers showcase distinctly non-human errors in language understanding. We interpret this evidence as suggesting that, despite their usefulness in various tasks, current AI models fall short of understanding language in a way that matches humans, and we argue that this may be due to their lack of a compositional operator for regulating grammatical and semantic information.
+
+- id: gatti2024body
+  status: published
+  year: 2024
+  authors:
+  - Gatti, D.
+  - Günther, F.
+  - Rinaldi, L.
+  title: A body map beyond perceptual experience
+  venue: Journal of Cognition
+  volume: '7'
+  pages: '22'
+  doi: 10.5334/joc.347
+  url: https://doi.org/10.5334/joc.347
+  pdf: https://storage.googleapis.com/jnl-up-j-jc-files/journals/1/articles/347/65bba19831b02.pdf
+  data: https://osf.io/dnt2p
+  abstract: The human body is perhaps the most ubiquitous and salient visual stimulus that we encounter in our daily lives. Given the prevalence of images of human bodies innatural scene statistics, it is no surprise that our mental representations of the body are thought to strongly originate from visual experience. Yet, little is still known about high-level cognitive representations of the body. Here, we retrieved a body map from natural language, taking this as a window into high-level cognitive processes. We first extracted a matrix of distances between body parts from natural language data and employed this matrix to extrapolate a body map. To test the effectiveness of this high-level body map, we then conducted a series of experiments in which participants were asked to classify the distance between pairs of body parts, presented either as words or images. We found that the high-level body map was systematically activated when participants were making these distance judgments. Crucially, the linguistic map explained participants’ performance over and above the visual body map, indicating that the former cannot be simply conceived as a by-product of perceptual experience. These findings, therefore, establish the existence of a behaviorally relevant, high-level representation of the human body.
+
+- id: gatti2024valence
+  status: published
+  year: 2024
+  authors:
+  - Gatti, D.
+  - Raveling, L.
+  - Petrenco, A.
+  - Günther, F.
+  title: 'Valence without meaning: Investigating form and semantic components in pseudowords valence'
+  venue: Psychonomic Bulletin & Review
+  volume: '31'
+  pages: 2357–2369
+  doi: 10.3758/s13423-024-02487-3
+  url: https://doi.org/10.3758/s13423-024-02487-3
+  data: https://osf.io/kv9at/
+  abstract: Valence is a dominant semantic dimension, and it is fundamentally linked to basic approach-avoidance behavior within a broad range of contexts. Previous studies have shown that it is possible to approximate the valence of existing words based on several surface-level and semantic components of the stimuli. Parallelly, recent studies have shown that even completely novel and (apparently) meaningless stimuli, like pseudowords, can be informative of meaning based on the information that they carry at the sub-word level. Here, we aimed to further extend this evidence by investigating whether humans can reliably assign valence to pseudowords and, additionally, to identify the factors explaining such valence judgments. In Experiment 1, we trained several models to predict valence judgments for existing words from their combined form and meaning information. Then, in Experiment 2 and Experiment 3, we extended the results by predicting participants’ valence judgments for pseudowords, using a set of models indexing different (possible) sources of valence and selected the best performing model in a completely data-driven procedure. Results showed that the model including basic surface-level (i.e., letters composing the pseudoword) and orthographic neighbors information performed best, thus, tracing back pseudoword valence to these components. These findings support perspectives on the non-arbitrariness of language and provide insights regarding how humans process the valence of novel stimuli.
+
+- id: guenther2024challenge
+  status: published
+  type: proceedings
+  year: 2024
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  - Petilli, M. A.
+  title: 'The challenge of representation learning: Improved accuracy in deep vision models does not come with better predictions of perceptual similarity'
+  venue: Proceedings of the 46th Annual Meeting of the Cognitive Science Society (CogSci 2024)
+  editors: L. K. Samuelson, S. L. Frank, M. Toneva, A. Mackey, & E. Hazeltine
+  pages: 5236–5243
+  url: https://escholarship.org/uc/item/5rq7811b
+  data: https://osf.io/sx5u3/?view_only=09c05b84a52246d5b8b061cbbee10350
+  abstract: Over the last years, advancements in deep learning models for computer vision have led to a dramatic improvement in their image classification accuracy. However, models with a higher accuracy in the task they were trained on do not necessarily develop better image representations that allow them to also perform better in other tasks they were not trained on. In order to investigate the representation learning capabilities of prominent high-performing computer vision models, we investigated how well they capture various indices of perceptual similarity from large-scale behavioral datasets. We find that higher image classification accuracy rates are not associated with a better performance on these datasets, and in fact we observe no improvement in performance since GoogLeNet (released 2015) and VGG-M (released 2014). We speculate that more accurate classification may result from hyper-engineering towards very fine-grained distinctions between highly similar classes, which does not incentivize the models to capture overall perceptual similarities.
+
+- id: leivada2024evaluating
+  status: published
+  year: 2024
+  authors:
+  - Leivada, E.
+  - Dentella, V.
+  - Günther, F.
+  title: 'Evaluating the Language Abilities of Large Language Models vs. Humans: Three Caveats'
+  venue: Biolinguistics
+  volume: '18'
+  pages: e14391
+  doi: 10.5964/bioling.14391
+  url: https://doi.org/10.5964/bioling.14391
+  pdf: https://bioling.psychopen.eu/index.php/bioling/article/view/14391/14391.pdf
+  abstract: We identify and analyze three caveats that may arise when analyzing the linguistic abilities of Large Language Models. The problem of unlicensed generalizations refers to the danger of interpreting performance in one task as predictive of the models’ overall capabilities, based on the assumption that because a specific task performance is indicative of certain underlying capabilities in humans, the same association holds for models. The human-like paradox refers to the problem of lacking human comparisons, while at the same time attributing human-like abilities to the models. Last, the problem of double standards refers to the use of tasks and methodologies that either cannot be applied to humans or they are evaluated differently in models vs. humans. While we recognize the impressive linguistic abilities of LLMs, we conclude that specific claims about the models’ human-likeness in the grammatical domain are premature.
+
+- id: leivada2024reply
+  status: published
+  year: 2024
+  authors:
+  - Leivada, E.
+  - Günther, F.
+  - Dentella, V.
+  title: 'Reply to Hu et al.: Applying different evaluation standards to humans vs. Large Language Models overestimates AI performance'
+  venue: PNAS
+  volume: '121'
+  issue: '36'
+  pages: e2406752121
+  doi: 10.1073/pnas.2406752121
+  url: https://www.pnas.org/doi/10.1073/pnas.2406752121
+  pdf: https://www.pnas.org/doi/epub/10.1073/pnas.2406752121
+
+- id: petilli2024flickr
+  status: published
+  year: 2024
+  authors:
+  - Petilli, M. A.
+  - Günther, F.
+  - Marelli, M.
+  title: 'The Flickr frequency norms: what 17 years of images tagged online tell us about lexical processing'
+  venue: Behavior Research Methods
+  volume: '56'
+  pages: 126–147
+  doi: 10.3758/s13428-022-02031-y
+  url: https://doi.org/10.3758/s13428-022-02031-y
+  pdf: https://psyarxiv.com/h4q86/
+  data: https://osf.io/2zfs3/
+  abstract: 'Word frequency is one of the best predictors of language processing. Typically, word frequency norms are entirely based on natural-language text data, thus representing what the literature typically refers to as purely linguistic experience. This study presents Flickr frequency norms as a novel word frequency measure from a domain-specific corpus inherently tied to extra-linguistic information: words used as image tags on social media. To obtain Flickr frequency measures, we exploited the photo-sharing platform Flickr Image (containing billions of photos) and extracted the number of uploaded images tagged with each of the words considered in the lexicon. Here we systematically examine the peculiarities of Flickr frequency norms and show that Flickr frequency is a hybrid metric, lying at the intersection between language and visual experience and with specific biases induced by being based on image-focused social media. Moreover, regression analyses indicate that Flickr frequency captures additional information beyond what is already encoded in existing norms of linguistic, sensorimotor, and affective experience. Therefore, these new norms capture aspects of language usage that are missing from traditional frequency measures: a portion of language usage capturing the interplay between language and vision, which – this study demonstrates - has its own impact on word processing. The Flickr frequency norms are openly available on the Open Science Framework ([https://osf.io/2zfs3/](https://osf.io/2zfs3/)).'
+
+- id: pugacheva2024lexical
+  status: published
+  year: 2024
+  authors:
+  - Pugacheva, V.
+  - Günther, F.
+  title: Lexical choice and word formation in a taboo game paradigm
+  venue: Journal of Memory and Language
+  volume: '135'
+  pages: '104477'
+  doi: 10.1016/j.jml.2023.104477
+  url: https://doi.org/10.1016/j.jml.2023.104477
+  pdf: https://psyarxiv.com/7x8sb/
+  data: https://osf.io/4xn83
+  abstract: We investigate the onomasiological question of which words speakers actually use and produce when trying to convey an intended meaning. This is not limited to selecting the best-fitting available existing word, but also includes word formation, the coinage of novel words. In the first two experiments, we introduce the taboo game paradigm in which participants were instructed to produce a single-word substitution for different words so that others can later identify them. Using distributional semantic models with the capability to produce quantitative representations for existing and novel word responses, we find that (a) responses tend to be semantically close to the targets and (b) existing words were represented closer than novel words, but (c) even novel compounds were often closer than the targets’ free associates. In a final third experiment, we find that other participants are more likely to guess the correct original word (a) for responses closer to the original targets, and (b) for novel compound responses as compared to existing word responses. This shows that the production of both existing and novel words can be accurately captured in a unified computational framework of the semantic mechanisms driving word choice.
+
+- id: sulpizio2024taboo
+  status: published
+  year: 2024
+  authors:
+  - Sulpizio, S.*
+  - Günther, F.*
+  - Badan, L.
+  - Basclain, B.
+  - Brysbaert, M.
+  - Chan, Y. L.
+  - Ciaccio, L. A.
+  - Dudschig, C.
+  - Duñabeitia, J. A.
+  - Fasoli, F.
+  - Ferrand, L.
+  - Filipović Đurđević, D.
+  - Guerra, E.
+  - Hollis, G.
+  - Job, R.
+  - Jornkokgoud, K.
+  - Kahraman, H.
+  - Kgolo-Lotshwao, N.
+  - Kinoshita, S.
+  - Kos, J.
+  - Lee, L.
+  - Lee, N. H.
+  - Mackenzie, I. G.
+  - Manojlović, M.
+  - Manouilidou, C.
+  - Martinic, M.
+  - del Carmen Méndez, M.
+  - Mišić, K.
+  - Na Chiangmai, N.
+  - Nikolaev, A.
+  - Oganyan, M.
+  - Rusconi, P.
+  - Samo, G.
+  - Tse, C.-S.
+  - Westbury, C.
+  - Wongupparaj, P.
+  - Yap, M. J.
+  - Marelli, M.*
+  title: 'Taboo language across the globe: A multi-lab study'
+  venue: Behavior Research Methods
+  volume: '56'
+  pages: 3794–3813
+  doi: 10.3758/s13428-024-02376-6
+  url: https://doi.org/10.3758/s13428-024-02376-6
+  data: https://osf.io/ecr32
+  notes: '* shared first authorship'
+  abstract: The use of taboo words represents one of the most common and arguably universal linguistic behaviors, fulfilling a wide range of psychological and social functions. However, in the scientific literature, taboo language is poorly characterized, and how it is realized in different languages and populations remains largely unexplored. Here we provide a database of taboo words, collected from different linguistic communities (Study 1, N = 1,046), along with their speaker-centered semantic characterization (Study 2, N = 455 for each of six rating dimensions), covering 13 languages and 17 countries from all five permanently inhabited continents. Our results show that, in all languages, taboo words are mainly characterized by extremely low valence and high arousal, and very low written frequency. However, a significant amount of cross-country variability in words’ tabooness and offensiveness proves the importance of community-specific sociocultural knowledge in the study of taboo language.
+
+- id: ulrich2024mental
+  status: published
+  year: 2024
+  authors:
+  - Ulrich, R.
+  - de la Vega, I.
+  - Eikmeier, V.
+  - Günther, F.
+  - Kaup, B.
+  title: Mental association of time and valence
+  venue: Memory & Cognition
+  volume: '52'
+  pages: 444–458
+  doi: 10.3758/s13421-023-01473-9
+  url: https://doi.org/10.3758/s13421-023-01473-9
+  data: https://osf.io/uys6g/?view_only=003444519d014499a7b693410d31a3fa
+  abstract: Five experiments investigated the association between time and valence. In the first experiment, participants classified temporal expressions (e.g., past, future) and positively or negatively connotated words (e.g., glorious, nasty) based on temporal reference or valence. They responded slower and made more errors in the mismatched condition (positive/past mapped to one hand, negative/future to the other) compared with the matched condition (positive/future to one hand, negative/past to the other hand). Experiment 2 confirmed the generalization of the match effect to nonspatial responses, while Experiment 3 found no reversal of this effect for left-handers. Overall, the results of the three experiments indicate a robust match effect, associating the past with negative valence and the future with positive valence. Experiment 4 involved rating the valence of time-related words, showing higher ratings for future-related words. Additionally, Experiment 5 employed latent semantic analysis and revealed that linguistic experiences are unlikely to be the source of this time–valence association. An interactive activation model offers a quantitative explanation of the match effect, potentially arising from a favorable perception of the future over the past.
+
+- id: chaiallah2023mining
+  status: published
+  year: 2023
+  authors:
+  - Chai-allah, A.
+  - Fox, N.
+  - Günther, F.
+  - Bentayeb, F.
+  - Brunschwig, G.
+  - Bimonte, S.
+  - Joly, F.
+  title: Mining crowdsourced text to capture hikers' perceptions associated with landscape features and outdoor physical activities
+  venue: Ecological Informatics
+  volume: '78'
+  pages: '102332'
+  doi: 10.1016/j.ecoinf.2023.102332
+  url: https://doi.org/10.1016/j.ecoinf.2023.102332
+  abstract: Outdoor recreation provides vital interactions between humans and ecological systems with a range of mental and physical benefits for people. Despite the increased number of studies using crowdsourced online data to assess how people interact with the landscape during recreational activities, the focus remains largely on mapping the spatial distribution of visitors or analyzing the content of shared images and little work has been done to quantify the perceptions and emotions people assign to the landscape. In this study, we used crowdsourced textual data from an outdoor activity-sharing platform (Wikiloc), and applied Natural Language Processing (NLP) methods and correlation analysis to capture hikers' perceptions associated with landscape features and physical outdoor activities. Our results indicate eight clusters based on the semantic similarity between words ranging from four clusters describing landscape features (“ecosystems, animals & plants”, “geodiversity”, “climate & weather”, and “built cultural heritage”), to one cluster describing the range of physical outdoor activities and three clusters indicating hikers' perceptions and emotions (“aesthetics”, “joy & restoration” and “physical effort sensation”). The association analysis revealed that the cluster “ecosystems, animals & plants” is likely to stimulate all three identified perceptions, suggesting that these natural features are important for hikers during their outdoor experience. Moreover, hikers strongly associate the cluster “outdoor physical activities” with both “joy & restoration” and “physical effort sensation” perceptions, highlighting the health and well-being benefits of physical activities in natural landscapes. Our study shows the potential of Wikiloc as a valuable data source to assess human-nature interactions and how textual data can provide significant advances in understanding peoples' preferences and perceptions while recreating. These findings can help inform outdoor recreation planners in the study region by focusing on the elements of the landscape that peoples perceive to be important (i.e. “ecosystems, animals & plants”).
+
+- id: dentella2023systematic
+  status: published
+  year: 2023
+  authors:
+  - Dentella, V.
+  - Günther, F.
+  - Leivada, E.
+  title: Systematic testing of three Language Models reveals low language accuracy, absence of response stability, and a yes-response bias
+  venue: PNAS
+  volume: '120'
+  issue: '51'
+  pages: e2309583120
+  doi: 10.1073/pnas.2309583120
+  url: http://www.pnas.org/doi/10.1073/pnas.2309583120
+  pdf: https://www.pnas.org/doi/epdf/10.1073/pnas.2309583120
+  data: https://osf.io/7ajxr/
+  abstract: 'Humans are universally good in providing stable and accurate judgments about what forms part of their language and what not. Large Language Models (LMs) are claimed to possess human-like language abilities; hence, they are expected to emulate this behavior by providing both stable and accurate answers, when asked whether a string of words complies with or deviates from their next-word predictions. This work tests whether stability and accuracy are showcased by GPT-3/text-davinci-002, GPT-3/text-davinci-003, and ChatGPT, using a series of judgment tasks that tap on 8 linguistic phenomena: plural attraction, anaphora, center embedding, comparatives, intrusive resumption, negative polarity items, order of adjectives, and order of adverbs. For every phenomenon, 10 sentences (5 grammatical and 5 ungrammatical) are tested, each randomly repeated 10 times, totaling 800 elicited judgments per LM (total n = 2,400). Our results reveal variable above-chance accuracy in the grammatical condition, below-chance accuracy in the ungrammatical condition, a significant instability of answers across phenomena, and a yes-response bias for all the tested LMs. Furthermore, we found no evidence that repetition aids the Models to converge on a processing strategy that culminates in stable answers, either accurate or inaccurate. We demonstrate that the LMs’ performance in identifying (un)grammatical word patterns is in stark contrast to what is observed in humans (n = 80, tested on the same tasks) and argue that adopting LMs as theories of human language is not motivated at their current stage of development.'
+
+- id: guenther2023caoss
+  status: published
+  year: 2023
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: 'CAOSS and Transcendence: Modeling role-dependent constituent meanings in compounds'
+  venue: Morphology
+  volume: '33'
+  pages: 409–432
+  doi: 10.1007/s11525-021-09386-6
+  url: https://doi.org/10.1007/s11525-021-09386-6
+  pdf: https://link.springer.com/content/pdf/10.1007/s11525-021-09386-6.pdf
+  data: https://doi.org/10.17605/OSF.IO/JXYRN
+  abstract: 'Many theories on the role of semantics in morphological representation and processing focus on the interplay between the lexicalized meaning of the complex word on the one hand, and the individual constituent meanings on the other hand. However, the constituent meaning representations at play do not necessarily correspond to the free-word meanings of the constituents: Role-dependent constituent meanings can be subject to sometimes substantial semantic shift from their corresponding free-word meanings (such as *-bill* in *hornbill* and *razorbill*, or *step-* in *stepmother* and *stepson*). While this phenomenon is extremely difficult to operationalize using the standard psycholinguistic toolkit, we demonstrate how these as-constituent meanings can be represented in a quantitative manner using a data-driven computational model. After a qualitative exploration, we validate the model against a large database of human ratings of the meaning retention of constituents in compounds. With this model at hand, we then proceed to investigate the internal semantic structure of compounds, focussing on differences in semantic shift and semantic transparency between the two constituents.'
+
+- id: guenther2023vispa
+  status: published
+  year: 2023
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  - Tureski, S.
+  - Petilli, M. A.
+  title: 'ViSpa (Vision Spaces): A computer-vision-based representation system for individual images and concept prototypes, with large-scale evaluation'
+  venue: Psychological Review
+  volume: '130'
+  pages: 896–934
+  doi: 10.1037/rev0000392
+  url: https://doi.org/10.1037/rev0000392
+  pdf: https://psyarxiv.com/n4dmq/
+  data: https://doi.org/10.17605/OSF.IO/QVW9C
+  abstract: 'Quantitative, data-driven models for mental representations have long enjoyed popularity and success in psychology (for example, distributional semantic models in the language domain), but have largely been missing for the visual domain. To overcome this, we present ViSpa (Vision Spaces), high-dimensional vector spaces that include vision-based representation for naturalistic images as well as concept prototypes. These vectors are derived directly from visual stimuli through a deep convolutional neural network (DCNN) trained to classify images, and allow us to compute vision-based similarity scores between any pair of images and/or concept prototypes. We successfully evaluate these similarities against human behavioral data in a series of large-scale studies, including off-line judgments – visual similarity judgments for the referents of word pairs (Study 1) and for image pairs (Study 2), and typicality judgments for images given a label (Study 3) – as well as on-line processing times and error rates in a discrimination (Study 4) and priming task (Study 5) with naturalistic image material. ViSpa similarities predict behavioral data across all tasks, which renders ViSpa a theoretically appealing model for vision-based representations and a valuable research tool for data analysis and the construction of experimental material: ViSpa allows for precise control over experimental material consisting of images (also in combination with words), and introduces a specifically vision-based similarity for word pairs. To make ViSpa available to a wide audience, this article a) includes (video) tutorials on how to use ViSpa in R, and b) presents a user-friendly web interface at [http://vispa.fritzguenther.de](http://vispa.fritzguenther.de).'
+
+- id: koerner2023embodied
+  status: published
+  year: 2023
+  authors:
+  - Körner, A.
+  - Castillo, M.
+  - Drijvers, L.
+  - Fischer, M. H.
+  - Günther, F.
+  - Marelli, M.
+  - Platonova, O.
+  - Rinaldi, L.
+  - Shaki, S.
+  - Trujillo, J. P.
+  - Tsaregorodtseva, O.
+  - Glenberg, A. M.
+  title: 'Embodied Processing at Six Linguistic Granularity Levels: A Consensus Paper'
+  venue: Journal of Cognition
+  volume: '6'
+  issue: '1'
+  pages: '60'
+  doi: 10.5334/joc.231
+  url: https://doi.org/10.5334/joc.231
+  abstract: Language processing is influenced by sensorimotor experiences. Here, we review behavioral evidence for embodied and grounded influences in language processing across six linguistic levels of granularity. We examine (a) sub-word features, discussing grounded influences on iconicity (systematic associations between word form and meaning); (b) words, discussing boundary conditions and generalizations for the simulation of color, sensory modality, and spatial position; (c) sentences, discussing boundary conditions and applications of action direction simulation; (d) texts, discussing how the teaching of simulation can improve comprehension in beginning readers; (e) conversations, discussing how multi-modal cues improve turn taking and alignment; and (f) text corpora, discussing how distributional semantic models can reveal how grounded and embodied knowledge is encoded in texts. These approaches are converging on a convincing account of the psychology of language, but at the same time, there are important criticisms of the embodied approach and of specific experimental paradigms. The surest way forward requires the adoption of a wide array of scientific methods. By providing complimentary evidence, a combination of multiple methods on various levels of granularity can help us gain a more complete understanding of the role of embodiment and grounding in language processing.
+
+- id: guenther2022patterns
+  status: published
+  year: 2022
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: 'Patterns in CAOSS: Distributed representations predict variation in relational interpretations for familiar and novel compound words'
+  venue: Cognitive Psychology
+  volume: '134'
+  pages: '101471'
+  doi: 10.1016/j.cogpsych.2022.101471
+  url: https://doi.org/10.1016/j.cogpsych.2022.101471
+  pdf: https://psyarxiv.com/w3zqj
+  data: https://doi.org/10.17605/OSF.IO/YCD64
+  abstract: While distributional semantic models that represent word meanings as high-dimensional vectors induced from large text corpora have been shown to successfully predict human behavior across a wide range of tasks, they have also received criticism from different directions. These include concerns over their interpretability (how can numbers specifying abstract, latent dimensions represent meaning?) and their ability to capture variation in meaning (how can a single vector representation capture multiple different interpretations for the same expression?). Here, we demonstrate that semantic vectors can indeed rise up to these challenges, by training a mapping system (a simple linear regression) that predicts inter-individual variation in relational interpretations for compounds such as *wood brush* (for example *brush FOR wood*, or *brush MADE OF wood*) from (compositional) semantic vectors representing the meanings of these compounds. These predictions consistently beat different random baselines, both for familiar compounds (*moon light*, Experiment 1) as well as novel compounds (*wood brush*, Experiment 2), demonstrating that distributional semantic vectors encode variations in qualitative interpretations that can be decoded using techniques as simple as linear regression.
+
+- id: guenther2022images
+  status: published
+  year: 2022
+  authors:
+  - Günther, F.
+  - Petilli, M. A.
+  - Vergallito, A.
+  - Marelli, M.
+  title: 'Images of the unseen: Extrapolating visual representations for abstract and concrete words in a data-driven computational model'
+  venue: Psychological Research
+  volume: '86'
+  pages: 2512–2532
+  doi: 10.1007/s00426-020-01429-7
+  url: https://link.springer.com/article/10.1007/s00426-020-01429-7
+  pdf: https://link.springer.com/content/pdf/10.1007/s00426-020-01429-7.pdf
+  data: https://doi.org/10.17605/OSF.IO/45HDZ
+  abstract: 'Theories of grounded cognition assume that conceptual representations are grounded in sensorimotor experience. However, abstract concepts such as *jealousy* or *childhood* have no directly associated referents with which such sensorimotor experience can be made; therefore, the grounding of abstract concepts has long been a topic of debate. Here, we propose (a) that systematic relations exist between semantic representations learned from language on the one hand and perceptual experience on the other hand, (b) that these relations can be learned in a bottom-up fashion, and (c) that it is possible to extrapolate from this learning experience to predict expected perceptual representations for words even where direct experience is missing. To test this, we implement a data-driven computational model that is trained to map language-based representations (obtained from text corpora, representing language experience) onto vision-based representations (obtained from an image database, representing perceptual experience), and apply its mapping function onto language-based representations for abstract and concrete words outside the training set. In three experiments, we present participants with these words, accompanied by two images: the image predicted by the model and a random control image. Results show that participants’ judgements were in line with model predictions even for the most abstract words. This preference was stronger for more concrete items and decreased for the more abstract ones. Taken together, our findings have substantial implications in support of the grounding of abstract words, suggesting that we can tap into our previous experience to create possible visual representation we don’t have.'
+
+- id: guenther2022limits
+  status: published
+  year: 2022
+  authors:
+  - Günther, F.
+  - Press, S. A.
+  - Dudschig, C.
+  - Kaup, B.
+  title: 'The limits of automatic sensorimotor processing during word processing: Investigations with repeated linguistic experience, memory consolidation during sleep, and rich linguistic learning contexts'
+  venue: Psychological Research
+  volume: '86'
+  pages: 1792–1803
+  doi: 10.1007/s00426-021-01620-4
+  url: https://link.springer.com/article/10.1007%2Fs00426-021-01620-4
+  pdf: https://link.springer.com/content/pdf/10.1007/s00426-021-01620-4.pdf
+  data: https://doi.org/10.17605/OSF.IO/VXRHN
+  abstract: While a number of studies have repeatedly demonstrated an automatic activation of sensorimotor experience during language processing in the form of action-congruency effects, as predicted by theories of grounded cognition, more recent research has not found these effects for words that were just learned from linguistic input alone, without sensorimotor experience with their referents. In the present study, we investigate whether this absence of effects can be attributed to a lack of repeated experience and consolidation of the associations between words and sensorimotor experience in memory. To address these issues, we conducted four experiments in which (1 and 2) participants engaged in two separate learning phases in which they learned novel words from language alone, with an intervening period of memory-consolidating sleep, and (3 and 4) we employed familiar words whose referents speakers have no direct experience with (such as *plankton*). However, we again did not observe action-congruency effects in subsequent test phases in any of the experiments. This indicates that direct sensorimotor experience with word referents is a necessary requirement for automatic sensorimotor activation during word processing.
+
+- id: guenther2022language
+  status: published
+  year: 2022
+  authors:
+  - Günther, F.
+  - Rinaldi, L.
+  title: Language statistics as a window into mental representations
+  venue: Scientific Reports
+  volume: '12'
+  pages: '8043'
+  doi: 10.1038/s41598-022-12027-5
+  url: https://doi.org/10.1038/s41598-022-12027-5
+  pdf: https://www.nature.com/articles/s41598-022-12027-5.pdf
+  data: https://doi.org/10.17605/OSF.IO/6ZK8S
+  abstract: Large-scale linguistic data is nowadays available in abundance. Using this source of data, previous research has identified redundancies between the statistical structure of natural language and properties of the (physical) world we live in. For example, it has been shown that we can gauge city sizes by analyzing their respective word frequencies in corpora. However, since natural language is always produced by human speakers, we point out that such redundancies can only come about indirectly and should necessarily be restricted cases where human representations largely retain characteristics of the physical world. To demonstrate this, we examine the statistical occurrence of words referring to body parts in very different languages, covering nearly 4 billions of native speakers. This is because the convergence between language and physical properties of the stimuli clearly breaks down for the human body (i.e., more relevant and functional body parts are not necessarily larger in size). Our findings indicate that the human body as extracted from language does not retain its actual physical proportions; instead, it resembles the distorted human-like figure known as the sensory homunculus, whose form depicts the amount of cortical area dedicated to sensorimotor functions of each body part (and, thus, their relative functional relevance). This demonstrates that the surface-level statistical structure of language opens a window into how humans represent the world they live in, rather than into the world itself.
+
+- id: capuano2021semantic
+  status: published
+  year: 2021
+  authors:
+  - Capuano, F.
+  - Dudschig, C.
+  - Günther, F.
+  - Kaup, B.
+  title: Semantic Similarity of Alternatives fostered by Conversational Negation
+  venue: Cognitive Science
+  volume: '45'
+  pages: e13015
+  doi: 10.1111/cogs.13015
+  url: https://doi.org/10.1111/cogs.13015
+  data: https://osf.io/p762c/
+  abstract: 'Conversational negation often behaves differently from negation as a logical operator: when rejecting a state of affairs, it does not present all members of the complement set as equally plausible alternatives, but it rather suggests some of them as more plausible than others (e.g., “This is not a dog, it is a wolf/\*screwdriver”). Entities that are semantically similar to a negated entity tend to be judged as better alternatives (Kruszewski et al., 2016). In fact, Kruszewski et al. (2016) show that the cosine similarity scores between the distributional semantics representations of a negated noun and its potential alternatives are highly correlated with the negated noun-alternatives human plausibility ratings. In a series of cloze tasks, we show that negation likewise restricts the production of plausible alternatives to similar entities. Furthermore, completions to negative sentences appear to be even more restricted than completions to an affirmative conjunctive context, hinting at a peculiarity of negation.'
+
+- id: gupta2021combining
+  status: published
+  type: proceedings
+  year: 2021
+  authors:
+  - Gupta, A.
+  - Günther, F.
+  - Plag, I.
+  - Kallmeyer, L.
+  - Conrad, S.
+  title: 'Combining text and vision in compound semantics: Towards a cognitively plausible multimodal model'
+  venue: Proceedings of the 17th Conference on Natural Language Processing (KONVENS 2021)
+  editors: K. Evang, L. Kallmeyer, R. Osswald, J. Waszczuk, & T. Zesch
+  pages: 218–222
+  publisher: 'Düsseldorf, Germany: KONVENS 2021 Organizers'
+  url: https://aclanthology.org/2021.konvens-1.0.pdf
+  data: https://doi.org/10.17026/dans-xdp-3qhj
+  abstract: In the current state-of-the art distributional semantics model of the meaning of noun-noun compounds (such as *chainsaw*, *butterfly*, *home phone*), CAOSS (Marelli et al. 2017), the semantic vectors of the individual constituents are combined, and enriched by position-specific information for each constituent in its role as either modifier or head. Most recently there have been attempts to include vision-based embeddings in these models (Günther et al., 2020b), using the linear architecture implemented in the CAOSS model. In the present paper, we extend this line of research and demonstrate that moving to nonlinear models improves the results for vision while linear models are a good choice for text. Simply concatenating text and vision vectors does not currently (yet) improve the prediction of human behavioral data over models using text- and vision-based measures separately.
+
+- id: petilli2021data
+  status: published
+  year: 2021
+  authors:
+  - Petilli, M. A.
+  - Günther, F.
+  - Vergallito, A.
+  - Ciapparelli, M.
+  - Marelli, M.
+  title: Data-driven computational models reveal perceptual simulation in word processing
+  venue: Journal of Memory and Language
+  volume: '117'
+  pages: '104194'
+  doi: 10.1016/j.jml.2020.104194
+  url: https://doi.org/10.1016/j.jml.2020.104194
+  pdf: https://psyarxiv.com/98z72/download
+  data: https://osf.io/n7gqa/
+  abstract: In their strongest formulation, theories of grounded cognition claim that concepts are made up of sensorimotor information. Following such equivalence, perceptual properties of objects should consistently influence processing, even in purely linguistic tasks, where perceptual information is neither solicited nor required. Previous studies have tested this prediction in semantic priming tasks, but they have not observed perceptual influences on participants’ performances. However, those findings suffer from critical shortcomings, which may have prevented potential visually grounded/perceptual effects from being detected. Here, we investigate this topic by applying an innovative method expected to increase the sensitivity in detecting such perceptual effects. Specifically, we adopt an objective, data-driven, computational approach to independently quantify vision-based and language-based similarities for prime-target pairs on a continuous scale. We test whether these measures predict behavioural performance in a semantic priming mega-study with various experimental settings. Vision-based similarity is found to facilitate performance, but a dissociation between vision-based and language-based effects was also observed. Thus, in line with theories of grounded cognition, perceptual properties can facilitate word processing even in purely linguistic tasks, but the behavioural dissociation at the same time challenges strong claims of sensorimotor and conceptual equivalence.
+
+- id: amenta2020distributional
+  status: published
+  year: 2020
+  authors:
+  - Amenta, S.*
+  - Günther, F.*
+  - Marelli, M.*
+  title: A (distributional) semantic perspective on the processing of morphologically complex words
+  venue: The Mental Lexicon
+  volume: '15'
+  pages: 62–78
+  url: https://benjamins.com/catalog/ml.00014.ame
+  pdf: https://drive.google.com/file/d/1AFHeUpaH34u8ZMpwNG7wgDPDm6GgI4XM/view?usp=sharing
+  notes: '* shared first authorship'
+  abstract: While morphemes are theoretically defined as linguistic units linking form and meaning, semantic effects in morphological processing are not reported consistently in the literature on derived and compound words. The lack of consistency in this line of research has often been attributed to methodological differences between studies or contextual effects. In this paper, we advance a different proposal where semantic effects emerge quite consistently if semantics is defined in a dynamic and flexible way, relying on distributional semantics approaches. In this light, we revisit morphological processing, taking a markedly cognitive perspective, as allowed by models that focus on morphology as systematic meaning transformation or that focus on the mapping between the orthographic form of words and their meanings.
+
+- id: guenther2020trying
+  status: published
+  year: 2020
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: 'Trying to make it work: Compositional effects in the processing of compound "nonwords"'
+  venue: Quarterly Journal of Experimental Psychology
+  volume: '73'
+  pages: 1082–1091
+  doi: 10.1177/1747021820902019
+  url: https://journals.sagepub.com/doi/10.1177/1747021820902019
+  pdf: https://psyarxiv.com/72szg/
+  data: https://doi.org/10.6084/m9.figshare.7867772.v1
+  abstract: Speakers of languages with synchronically productive compounding systems, such as English, are likely to encounter new compounds on a daily basis. These can only be useful for communication if speakers are able to rapidly compose their meanings. However, while compositional meanings can be obtained for some novel compounds such as *bridgemill*, this is far harder for others such as *radiosauce*; accordingly, processing speed should be affected by the ease of such a compositional process. To rigorously test this hypothesis, we employed a fully implemented computational model based on distributional semantics to quantitatively measure the degree of semantic compositionality of novel compounds. In two large-scale studies, we collected timed sensibility judgements and lexical decisions for hundreds of morphologically structured nonwords in English. Response times were predicted by the constituents’ semantic contribution to the compositional process, with slower rejections for more compositional nonwords. We found no indication of a difference in these compositional effects between the tasks, suggesting that speakers automatically engage in a compositional process whenever they encounter morphologically structured stimuli, even when it is not required by the task at hand. Such compositional effects in the processing of novel compounds have important implications for studies that employ such stimuli as filler material or “nonwords,” as response times for these items can differ greatly depending on their compositionality.
+
+- id: guenther2020semantic
+  status: published
+  year: 2020
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  - Bölte, J.
+  title: 'Semantic transparency effects in German compounds: A large dataset and multiple-task investigation'
+  venue: Behavior Research Methods
+  volume: '52'
+  pages: 1208–1224
+  doi: 10.3758/s13428-019-01311-4
+  url: https://link.springer.com/article/10.3758/s13428-019-01311-4
+  pdf: https://psyarxiv.com/dwxb6/
+  data: https://doi.org/10.6084/m9.figshare.8295101
+  abstract: 'In the present study, we provide a comprehensive analysis and a multi-dimensional dataset of semantic transparency measures for 1,810 German compound words. Compound words are considered semantically transparent when the contribution of the constituents’ meaning to the compound meaning is clear (as in *airport*), but the degree of semantic transparency varies between compounds (compare *strawberry* or *sandman*). Our dataset includes both compositional and relatedness-based semantic transparency measures, also differentiated by constituents. The measures are obtained from a computational and fully implemented semantic model based on distributional semantics. We validate the measures using data from four behavioral experiments: Explicit transparency ratings, two different lexical decision tasks using different nonwords, and an eye-tracking study. We demonstrate that different semantic effects emerge in different behavioral tasks, which can only be captured using a multi-dimensional approach to semantic transparency. We further provide the semantic transparency measures derived from the model for a dataset of 40,475 additional German compounds, as well as for 2,061 novel German compounds.'
+
+- id: guenther2020immediate
+  status: published
+  year: 2020
+  authors:
+  - Günther, F.
+  - Nguyen, T.
+  - Chen, L.
+  - Dudschig, C.
+  - Kaup, B.
+  - Glenberg, A. M.
+  title: Immediate sensorimotor grounding of novel concepts learned from language alone
+  venue: Journal of Memory and Language
+  volume: '115'
+  pages: '104172'
+  url: https://www.sciencedirect.com/science/article/pii/S0749596X20300863
+  pdf: https://psyarxiv.com/gs69k/download
+  data: https://doi.org/10.17605/OSF.IO/FTXJY
+  abstract: Theories of grounded cognition postulate that concepts are grounded in sensorimotor experience. But how can that be for concepts like *Atlantis* for which we do not have that experience? We claim that such concepts obtain their sensorimotor grounding indirectly, via already-known concepts used to describe them. Participants learned novel words referring to up or down concepts (*mende* = enhanced head or *mende* = bionic foot). In a first experiment, participants then judged the sensibility of sentences implying up or down actions (e.g., “You scratch your bionic foot”) by performing up or down hand movements. Reactions were faster when the hand movement matched the direction of the implied movement. In the second experiment, we observed the same congruency effect for sentences like, “You scratch your mende”, whose implied direction depended entirely on the learning phase. This offers a perspective on how concepts learned without direct experience can nonetheless be grounded in sensorimotor experience.
+
+- id: guenther2020semantictransparency
+  status: published
+  year: 2020
+  authors:
+  - Günther, F.
+  - Petilli, M. A.
+  - Marelli, M.
+  title: 'Semantic transparency is not invisibility: A computational model of perceptually-grounded conceptual combination in word processing'
+  venue: Journal of Memory and Language
+  volume: '112'
+  pages: '104104'
+  url: https://www.sciencedirect.com/science/article/pii/S0749596X20300188#f0005
+  pdf: https://psyarxiv.com/7dvpw/
+  data: https://doi.org/10.17605/OSF.IO/KMRV7
+  abstract: Previous studies found that an automatic meaning-composition process affects the processing of morphologically complex words, and related this operation to conceptual combination. However, research on embodied cognition demonstrates that concepts are more than just lexical meanings, rather being also grounded in perceptual experience. Therefore, perception-based information should also be involved in mental operations on concepts, such as conceptual combination. Consequently, we should expect to find perceptual effects in the processing of morphologically complex words. In order to investigate this hypothesis, we present the first fully-implemented and data-driven model of perception-based (more specifically, vision-based) conceptual combination, and use the predictions of such a model to investigate processing times for compound words in four large-scale behavioral experiments employing three paradigms (naming, lexical decision, and timed sensibility judgments). We observe facilitatory effects of vision-based compositionality in all three paradigms, over and above a strong language-based (lexical and semantic) baseline, thus demonstrating for the first time perceptually grounded effects at the sub-lexical level. This suggests that perceptually-grounded information is not only utilized according to specific task demands but rather automatically activated when available.
+
+- id: forthmann2019application
+  status: published
+  year: 2019
+  authors:
+  - Forthmann, B.
+  - Oyebade, O.
+  - Ojo, A.
+  - Günther, F.
+  - Holling, H.
+  title: Application of latent semantic analysis to divergent thinking is biased by elaboration
+  venue: Journal of Creative Behavior
+  volume: '53'
+  pages: 559–575
+  doi: 10.1002/jocb.240
+  url: https://onlinelibrary.wiley.com/doi/abs/10.1002/jocb.240
+  abstract: Scoring divergent-thinking response sets has always been challenging because such responses are not only open-ended in terms of number of ideas, but each idea may also be expressed by a varying number of concepts and, thus, by a varying number of words (elaboration). While many current studies have attempted to score the semantic distance in divergent-thinking responses by applying latent semantic analysis (LSA), it is known from other areas of research that LSA-based approaches are biased according to the number of words in a response. Thus, the current article aimed to identify and demonstrate this elaboration bias in LSA-based divergent-thinking scores by means of a simulation. In addition, we show that this elaboration bias can be reduced by removing the stop words (for example, *and*, *or*, *for* and so forth) prior to analysis. Furthermore, the residual bias after stop word removal can be reduced by simulation-based corrections. Finally, we give an empirical illustration for alternate uses and consequences tasks. Results suggest that when both stop word removal and simulation-based bias correction are applied, convergent validity should be expected to be highest.
+
+- id: guenther2019enter
+  status: published
+  year: 2019
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: 'Enter sand-man: Compound processing and semantic transparency in a compositional perspective'
+  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
+  volume: '45'
+  pages: 1872–1882
+  doi: 10.1037/xlm0000677
+  url: http://psycnet.apa.org/doiLanding?doi=10.1037%2Fxlm0000677
+  pdf: https://drive.google.com/open?id=1UCte7aRFoCOv-mbPydgpz-gPcbjUMPHs
+  data: http://dx.doi.org/10.1037/xlm0000677.supp
+  abstract: Effects of semantic transparency, reflected in processing differences between semantically transparent (*teabag*) and opaque (*ladybird*) compounds, have received considerable attention in the investigation of the role of constituents in compound processing. However, previous studies have yielded inconsistent results. In the present article, we argue that this is due to semantic transparency’s often being conceptualized only as the semantic relatedness between the compound and constituent meanings as separate units. This neglects the fact that compounds are inherently productive constructions. We argue that compound processing is routinely impacted by a compositional process aimed at computing a compositional meaning, which would cause compositional semantic transparency effects to emerge in compound processing. We employ recent developments in compositional distributional semantics to quantify relatedness- as well as composition-based semantic transparency measures and use these to predict lexical decision times in a large-scale data set. We observed semantic transparency effects on compound processing that are not captured in relatedness terms but only by adopting a compositional perspective.
+
+- id: guenther2019vector
+  status: published
+  year: 2019
+  authors:
+  - Günther, F.
+  - Rinaldi, L.
+  - Marelli, M.
+  title: 'Vector-space models of semantic representation from a cognitive perspective: A discussion of common misconceptions'
+  venue: Perspectives on Psychological Science
+  volume: '14'
+  pages: 1006–1033
+  doi: 10.1177/1745691619861372
+  url: https://journals.sagepub.com/doi/10.1177/1745691619861372
+  pdf: https://drive.google.com/open?id=1jDmCzBXIfJrhodTDgp1wTZoACGYGOX2K
+  abstract: Models that represent meaning as high-dimensional numerical vectors—such as latent semantic analysis (LSA), hyperspace analogue to language (HAL), bound encoding of the aggregate language environment (BEAGLE), topic models, global vectors (GloVe), and word2vec—have been introduced as extremely powerful machine-learning proxies for human semantic representations and have seen an explosive rise in popularity over the past 2 decades. However, despite their considerable advancements and spread in the cognitive sciences, one can observe problems associated with the adequate presentation and understanding of some of their features. Indeed, when these models are examined from a cognitive perspective, a number of unfounded arguments tend to appear in the psychological literature. In this article, we review the most common of these arguments and discuss (a) what exactly these models represent at the implementational level and their plausibility as a cognitive theory, (b) how they deal with various aspects of meaning such as polysemy or compositionality, and (c) how they relate to the debate on embodied and grounded cognition. We identify common misconceptions that arise as a result of incomplete descriptions, outdated arguments, and unclear distinctions between theory and implementation of the models. We clarify and amend these points to provide a theoretical basis for future research and discussions on vector models of semantic representation.
+
+- id: guenther2019understanding
+  status: published
+  year: 2019
+  authors:
+  - Günther, F.
+  - Smolka, E.
+  - Marelli, M.
+  title: '''Understanding'' differs between English and German: Capturing Systematic Language Differences of Complex Words'
+  venue: Cortex
+  volume: '116'
+  pages: 168–175
+  url: https://www.sciencedirect.com/science/article/pii/S0010945218302946?via%3Dihub
+  pdf: https://drive.google.com/open?id=1pJgSPuaRftJnSFHWw7qphwT2JbGWfDWq
+  data: https://doi.org/10.1016/j.cortex.2018.09.007
+  abstract: In morphological processing, research has repeatedly found different priming effects by English and German native speakers in the overt priming paradigm. In English, priming effects were found for word pairs with a morphological and semantic relation (*SUCCESSFUL-success*), but not for pairs without a semantic relation (*SUCCESSOR-success*). By contrast, morphological priming effects in German occurred for pairs both with a semantic relation (*AUFSTEHEN-stehen*, *‘stand up’-‘stand’*) and without (*VERSTEHEN-stehen*, *‘understand’-‘stand’*). These behavioural differences have been taken to indicate differential language processing and memory representations in these languages. We examine whether these behavioural differences can be explained with differences in the language structure between English and German. To this end, we employed new developments in distributional semantics as a computational method to obtain both observed and compositional representations for transparent and opaque complex word meanings, that can in turn be used to quantify the degree of semantic predictability of the morphological system of a language. We compared the similarities between transparent and opaque words and their stems, and observed a difference between German and English, with German showing a higher morphological systematicity. The present results indicate that the investigated cross-linguistic effect can be attributed to quantitatively-characterized differences in the speakers' language experience, as approximated by linguistic corpora.
+
+- id: guenther2018symbol
+  status: published
+  year: 2018
+  authors:
+  - Günther, F.
+  - Dudschig, C.
+  - Kaup, B.
+  title: 'Symbol grounding without direct experience: Do words inherit sensorimotor activation from purely linguistic context?'
+  venue: Cognitive Science
+  volume: '42'
+  pages: 336–374
+  doi: 10.1111/cogs.12549
+  url: http://onlinelibrary.wiley.com/doi/10.1111/cogs.12549/abstract
+  pdf: https://drive.google.com/open?id=1UXlnb8wsLc79YWBBGwx7Z69OCBhohdRN
+  data: https://doi.org/10.6084/m9.figshare.5357470.v1
+  abstract: 'Theories of embodied cognition assume that concepts are grounded in non-linguistic, sensorimotor experience. In support of this assumption, previous studies have shown that upwards response movements are faster than downwards movements after participants have been presented with words whose referents are typically located in the upper vertical space (and vice versa for downwards responses). This is taken as evidence that processing these words reactivates sensorimotor experiential traces. This congruency effect was also found for novel words, after participants learned these words as labels for novel objects that they encountered either in their upper or lower visual field. While this indicates that direct experience with a word’s referent is sufficient to evoke said congruency effects, the present study investigates whether this direct experience is also a necessary condition. To this end, we conducted five experiments in which participants learned novel words from purely linguistic input: Novel words were presented in pairs with real up- or down-words (Experiment 1); they were presented in natural sentences where they replaced these real words (Experiment 2); they were presented as new labels for these real words (Experiment 3); and they were presented as labels for novel combined concepts based on these real words (Experiment 4 and 5). In all five experiments, we did not find any congruency effects elicited by the novel words; however, participants were always able to make correct explicit judgements about the vertical dimension associated to the novel words. These results suggest that direct experience is necessary for reactivating experiential traces, but this reactivation is not a necessary condition for understanding (in the sense of storing and accessing) the corresponding aspects of word meaning.'
+
+- id: guenther2018language
+  status: published
+  type: proceedings
+  year: 2018
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: 'The language-invariant aspect of compounding: Predicting compound meanings across languages'
+  venue: Proceedings of the Fifth Italian Conference on Computational Linguistics
+  editors: E. Cabrio, A. Mazzei, & F. Tamburini
+  pages: 230–234
+  publisher: 'Turin, Italy: Accademia University Press'
+  url: https://www.aaccademia.it/scheda-libro?aaref=1259
+  pdf: http://ceur-ws.org/Vol-2253/paper01.pdf
+  data: http://doi.org/10.17605/OSF.IO/KMYH8
+  abstract: In the present study, we investigated to what extent compounding involves general-level cognitive abilities related to conceptual combination. If that was the case, the compounding mechanism should be largely invariant across different languages. Under this assumption, a compositional model trained on word representations in one language should be able to predict compound meanings in other languages. We investigated this hypothesis by training a word embedding-based compositional model on a set of English compounds, and subsequently applied this model to German and Italian test compounds. The model partially predicted compound meanings in German, but not in Italian.
+
+- id: guenther2016predicting
+  status: published
+  year: 2016
+  authors:
+  - Günther, F.
+  - Dudschig, C.
+  - Kaup, B.
+  title: 'Predicting lexical priming effects from distributional semantic similarities: A replication with extension'
+  venue: Frontiers in Psychology
+  volume: '7'
+  pages: '1646'
+  doi: 10.3389/fpsyg.2016.01646
+  url: https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01646/full
+  data: https://doi.org/10.6084/m9.figshare.4057695.v1
+  abstract: In two experiments, we attempted to replicate findings by Günther, Dudschig & Kaup (2016) that word similarity measures obtained from distributional semantics models - Latent Semantic Analysis (LSA) and Hyperspace Analogue to Language (HAL) - predict lexical priming effects. To this end, we used the pseudo-random method to generate item material while systematically controlling for word similarities introduced by Günther et al., which was based on LSA cosine similarities (Experiment 1) and HAL cosine similarities (Experiment 2). Contrary to the original study, we used semantic spaces created from far larger corpora, and implemented several additional methodological improvements. In Experiment 1, we only found a significant effect of HAL cosines on lexical decision times, while we found significant effects for both LSA and HAL cosines in Experiment 2. As further supported by an analysis of the pooled data from both experiments, this indicates that HAL cosines are a better predictor of priming effects than LSA cosines. Taken together, the results replicate the finding that priming effects can be predicted from distributional semantic similarity measures.
+
+- id: guenther2016latent
+  status: published
+  year: 2016
+  authors:
+  - Günther, F.
+  - Dudschig, C.
+  - Kaup, B.
+  title: 'Latent Semantic Analysis cosines as a cognitive similarity measure: Evidence from priming studies'
+  venue: Quarterly Journal of Experimental Psychology
+  volume: '69'
+  pages: 626–653
+  doi: 10.1080/17470218.2015.1038280
+  url: http://www.tandfonline.com/doi/abs/10.1080/17470218.2015.1038280
+  pdf: https://drive.google.com/open?id=1-piAszR98rS_RPDeF5uN3aMdzkQKdJjb
+  data: https://doi.org/10.6084/m9.figshare.4056513.v1
+  abstract: In distributional semantics models (DSMs) such as latent semantic analysis (LSA), words are represented as vectors in a high-dimensional vector space. This allows for computing word similarities as the cosine of the angle between two such vectors. In two experiments, we investigated whether LSA cosine similarities predict priming effects, in that higher cosine similarities are associated with shorter reaction times (RTs). Critically, we applied a pseudo-random procedure in generating the item material to ensure that we directly manipulated LSA cosines as an independent variable. We employed two lexical priming experiments with lexical decision tasks (LDTs). In Experiment 1 we presented participants with 200 different prime words, each paired with one unique target. We found a significant effect of cosine similarities on RTs. The same was true for Experiment 2, where we reversed the prime-target order (primes of Experiment 1 were targets in Experiment 2, and vice versa). The results of these experiments confirm that LSA cosine similarities can predict priming effects, supporting the view that they are psychologically relevant. The present study thereby provides evidence for qualifying LSA cosine similarities not only as a linguistic measure, but also as a cognitive similarity measure. However, it is also shown that other DSMs can outperform LSA as a predictor of priming effects.
+
+- id: guenther2016understanding
+  status: published
+  year: 2016
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: 'Understanding Karma Police: The Perceived Plausibility of Noun Compounds as Predicted by Distributional Models of Semantic Representation'
+  venue: PLoS One
+  volume: '11'
+  issue: '10'
+  pages: e0163200
+  doi: 10.1371/journal.pone.0163200
+  url: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163200
+  data: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163200#sec043
+  abstract: 'Noun compounds, consisting of two nouns (the head and the modifier) that are combined into a single concept, differ in terms of their plausibility: *school bus* is a more plausible compound than *saddle olive*. The present study investigates which factors influence the plausibility of attested and novel noun compounds. Distributional Semantic Models (DSMs) are used to obtain formal (vector) representations of word meanings, and compositional methods in DSMs are employed to obtain such representations for noun compounds. From these representations, different plausibility measures are computed. Three of those measures contribute in predicting the plausibility of noun compounds: The relatedness between the meaning of the head noun and the compound (Head Proximity), the relatedness between the meaning of modifier noun and the compound (Modifier Proximity), and the similarity between the head noun and the modifier noun (Constituent Similarity). We find nonlinear interactions between Head Proximity and Modifier Proximity, as well as between Modifier Proximity and Constituent Similarity. Furthermore, Constituent Similarity interacts non-linearly with the familiarity with the compound. These results suggest that a compound is perceived as more plausible if it can be categorized as an instance of the category denoted by the head noun, if the contribution of the modifier to the compound meaning is clear but not redundant, and if the constituents are sufficiently similar in cases where this contribution is not clear. Furthermore, compounds are perceived to be more plausible if they are more familiar, but mostly for cases where the relation between the constituents is less clear.'
+
+- id: guenther2015lsafun
+  status: published
+  year: 2015
+  authors:
+  - Günther, F.
+  - Dudschig, C.
+  - Kaup, B.
+  title: LSAfun – An R package for computations based on Latent Semantic Analysis
+  venue: Behavior Research Methods
+  volume: '47'
+  pages: 930–944
+  doi: 10.3758/s13428-014-0529-0
+  url: https://link.springer.com/article/10.3758/s13428-014-0529-0
+  pdf: https://drive.google.com/open?id=1aplYVVJ1SLtO5Z04EY2ZJG16l-eAQLSO
+  abstract: In this article, the R package *LSAfun* is presented. This package enables a variety of functions and computations based on Vector Semantic Models such as Latent Semantic Analysis (LSA) Landauer, Foltz and Laham (*Discourse Processes* 25:259–284, ), which are procedures to obtain a high-dimensional vector representation for words (and documents) from a text corpus. Such representations are thought to capture the semantic meaning of a word (or document) and allow for semantic similarity comparisons between words to be calculated as the cosine of the angle between their associated vectors. *LSAfun* uses pre-created LSA spaces and provides functions for (a) *Similarity Computations* between words, word lists, and documents; (b) *Neighborhood Computations*, such as obtaining a word’s or document’s most similar words, (c) plotting such a neighborhood, as well as similarity structures for any word lists, in a two- or three-dimensional approximation using Multidimensional Scaling, (d) *Applied Functions*, such as computing the coherence of a text, answering multiple choice questions and producing generic text summaries; and (e) *Composition Methods* for obtaining vector representations for two-word phrases. The purpose of this package is to allow convenient access to computations based on LSA.

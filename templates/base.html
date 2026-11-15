@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% set page_title = (page.title ~ " · " ~ site.title) if page and not page.is_home else site.title %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ (page.description if page and page.description else site.description) | trim }}">
+{% if page %}<link rel="canonical" href="{{ site.base_url }}{{ page.url }}">{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ site.description | trim }}">
+{% if page %}<meta property="og:url" content="{{ site.base_url }}{{ page.url }}">{% endif %}
+<meta name="theme-color" content="#0d1b2a">
+<link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/static/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/css/site.css?v={{ version }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="band{% block bandclass %}{% endblock %}">
+  <canvas class="space" aria-hidden="true"></canvas>
+  <div class="container">
+    <nav class="topnav" aria-label="Main">
+      <a class="brand" href="/">{{ site.title }}<span>.</span></a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="links" id="navlinks">
+        {% for item in nav %}
+        {% set active = page and (page.slug == item.slug or (page.parent and page.parent.slug == item.slug)) %}
+        <a href="{{ item.url }}"{% if active %} class="on" aria-current="page"{% endif %}>{{ item.nav_title }}</a>
+        {% endfor %}
+      </div>
+    </nav>
+    {% block band %}
+    <div class="pagehead">
+      {% if page and page.parent %}<a class="crumb" href="{{ page.parent.url }}">← {{ page.parent.title }}</a>{% endif %}
+      <h1>{{ page.title if page else "Page not found" }}</h1>
+      {% if page and page.summary %}<p>{{ page.summary }}</p>{% endif %}
+    </div>
+    {% endblock %}
+  </div>
+</header>
+
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <span>© {{ year }} {{ profile.name or site.title }}{% if profile.university %} · {{ profile.university }}{% endif %}</span>
+    <span class="footer-links">
+      {% if profile._mail %}<a class="js-mail" data-m="{{ profile._mail }}" href="/contact/">Email</a>{% endif %}
+      {% for l in profile.links %}<a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endfor %}
+      {% if "imprint" in pages %}<a href="{{ pages['imprint'].url }}">{{ pages['imprint'].title }}</a>{% endif %}
+    </span>
+  </div>
+</footer>
+<script src="/static/js/site.js?v={{ version }}" defer></script>
+</body>
+</html>

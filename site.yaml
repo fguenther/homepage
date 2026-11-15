@@ -1,0 +1,28 @@
+# Site-wide settings and home-page sections.
+# Page texts live in content/*.md, publications in data/publications.yaml,
+# personal details and profile links in data/profile.yaml.
+
+title: Fritz Günther
+base_url: https://fritzguenther.de
+description: >-
+  Fritz Günther — Emmy Noether junior research group leader (Computational Modelling),
+  Department of Psychology, Humboldt-Universität zu Berlin.
+language: en
+
+# Name as it appears in author lists; highlighted in bold on the publications page.
+self_author: "Günther, F."
+
+# Big headline in the home-page banner (the text below it is content/home.md).
+headline: "Meaning from<br>experience."
+
+# Number of publications shown under "Recent publications" on the home page.
+recent_publications: 5
+
+# Research themes on the home page.
+themes:
+  - title: Distributional semantics
+    text: Models that learn word meaning from large text corpora, and how well they capture human cognition.
+  - title: Vision & grounding
+    text: Image-based representations (ViSpa) and how perceptual experience complements language.
+  - title: Novel words & LLMs
+    text: How people — and language models — interpret words and concepts they have never encountered.
