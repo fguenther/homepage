@@ -153,3 +153,15 @@ document.querySelectorAll('a.js-mail[data-m]').forEach(a => {
   const addr = a.dataset.m.replace(/ ta /g, '@').replace(/ tod /g, '.').split('').reverse().join('');
   a.href = 'mailto:' + addr;
 });
+
+// --- co-author network: load the graph library and script only when the stage comes into view ---
+(() => {
+  const st = document.getElementById('coauthor-stage');
+  if (!st) return;
+  const load = src => new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
+  const go = () => load(st.dataset.lib).then(() => load(st.dataset.script))
+    .catch(() => { document.getElementById('stage-msg').textContent = 'The network could not be loaded.'; });
+  if (!('IntersectionObserver' in window)) return go();
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: '300px' });
+  io.observe(st);
+})();

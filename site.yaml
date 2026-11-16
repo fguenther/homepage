@@ -22,15 +22,15 @@ hero_links: [scholar, orcid]
 
 # Research themes on the home page. `topics` = keys from publication_topics below (linked, with paper counts).
 themes:
-  - title: Distributional semantics
-    text: Models that learn word meaning from large text corpora, and how well they capture human cognition.
-    topics: [dsm, compounds]
+  - title: Distributional semantics & LLMs
+    text: Models that learn word meaning from large text corpora — from word embeddings to large language models — and how well they capture human cognition.
+    topics: [dsm, llm]
   - title: Vision & grounding
     text: Image-based representations (ViSpa) and how perceptual experience complements language.
     topics: [vision, grounding]
-  - title: Novel words & LLMs
-    text: How people — and language models — interpret words and concepts they have never encountered.
-    topics: [novel, llm]
+  - title: Compounds & novel words
+    text: How people build and interpret complex words, and how they make sense of words they have never encountered — novel compounds and pseudowords.
+    topics: [compounds, novel]
 
 # Topic filter on the publications page (in this order). Each publication lists keys under `topics:`.
 publication_topics:

@@ -10,6 +10,7 @@ into a static site; GitHub Actions builds and publishes it to GitHub Pages on ev
 | Home-page intro text | `content/home.md` |
 | Headline, research themes on the home page | `site.yaml` |
 | Topic filter on the publications page | `site.yaml` (`publication_topics`) + `topics:` on each publication |
+| Co-author network on the publications page | built automatically from the author lists in `data/publications.yaml` (`coauthor_network` in `build.py`, drawn by `static/js/coauthors.js`; colours = the home-page `themes`) |
 | Name, position, e-mail, profile links, current projects | `data/profile.yaml` |
 | Publications | `data/publications.yaml` (field reference at the top of the file) |
 | Other pages (CV, Data, Resources, Media, …) | `content/*.md` — front matter: `title`, `nav_order` (top menu), `parent` (sub-page), `summary` |

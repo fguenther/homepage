@@ -2,6 +2,33 @@
 {% block main %}
 <section class="alt"><div class="container">
   {% if page.html | trim %}<div class="prose">{{ page.html }}</div>{% endif %}
+  {% if coauthors.people %}
+  <div class="net-head">
+    <h2>Co-author network</h2>
+    <p>{{ coauthors.people }} co-authors on {{ publications | length }} publications, {{ coauthors.repeat }} of them on more than one.
+       The more papers we share, the larger the dot and the thicker the line. Click a person for our joint papers.</p>
+  </div>
+  <div class="stage" id="coauthor-stage" data-src="/coauthors.json?v={{ coauthors.data_version }}"
+       data-lib="/static/js/vendor/vis-network.min.js" data-script="/static/js/coauthors.js?v={{ version }}">
+    <div id="network" aria-label="Co-author network (interactive graph)"></div>
+    <div class="stage-msg" id="stage-msg">Loading the network…</div>
+    <div class="hud">
+      <label class="net-search glass"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="net-search" list="net-names" placeholder="Find a co-author" autocomplete="off" aria-label="Find a co-author"><datalist id="net-names"></datalist></label>
+      <div class="seg glass" id="net-min" role="group" aria-label="Show co-authors with at least">
+        <button type="button" data-k="1" class="on">All</button><button type="button" data-k="2">2+ papers</button><button type="button" data-k="3">3+ papers</button>
+      </div>
+    </div>
+    <div class="key glass" id="net-key"></div>
+    <div class="zoom glass">
+      <button type="button" id="net-zin" aria-label="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button type="button" id="net-zout" aria-label="Zoom out"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+      <button type="button" id="net-fit" aria-label="Show everything"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+    <aside class="sheet glass" id="net-sheet" aria-live="polite"><button type="button" class="x" id="net-close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="scroll" id="net-body"></div></aside>
+  </div>
+  <p class="net-hint">Drag to move · Ctrl + scroll or pinch to zoom · data from this publication list</p>
+  {% endif %}
   <div class="toolbar" role="search">
     <div class="chips" data-kind="year" aria-label="Filter by year">
       {% for c in chips %}<button type="button" class="chip{% if loop.first %} on{% endif %}" data-f="{{ c.f }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ c.label }}</button>{% endfor %}

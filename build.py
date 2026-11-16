@@ -15,9 +15,11 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import re
 import shutil
 import sys
+import unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -313,6 +315,179 @@ def recent_publications(pubs: list[dict], n: int) -> list[dict]:
     return (accepted + published)[:n]
 
 
+# --------------------------------------------------------------------------- co-author network
+
+THEME_COLORS = ["#60a5fa", "#2dd4bf", "#fbbf24", "#c084fc"]   # home-page themes, in order (dark stage)
+OTHER_COLOR = "#94a3b8"
+
+
+def _fold(s: str) -> str:
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss"), ("Ä", "Ae"), ("Ö", "Oe"), ("Ü", "Ue")):
+        s = s.replace(a, b)
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z]", "", s)
+
+
+def _author_key(a: str) -> str | None:
+    """'Marelli, M.' → 'marelli_m' (surname + first initial); None for '…' and malformed names."""
+    a = str(a).strip().rstrip("*").strip()
+    if "," not in a:
+        return None
+    last, first = a.split(",", 1)
+    return f"{_fold(last)}_{_fold(first)[:1]}" if _fold(last) else None
+
+
+def network_layout(n_nodes: int, me_lengths: list[float], pair_edges: list[list[int]], seed: int = 11) -> list[list[float]]:
+    """Force layout for the co-author network, computed at build time (instant and stable in the browser).
+
+    Node 0 is me, fixed at the centre; node i+1 is co-author i. Springs pull each co-author to its
+    distance from the centre (closer = more joint papers) and pull co-authors of the same paper together;
+    all nodes repel each other.
+    """
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    n = n_nodes + 1
+    ang = rng.uniform(0, 2 * np.pi, n)
+    rad = np.array([0.0] + list(me_lengths))
+    pos = np.stack([np.cos(ang) * rad, np.sin(ang) * rad], axis=1)
+    src = [0] * n_nodes + [a + 1 for a, b, k in pair_edges]
+    dst = list(range(1, n)) + [b + 1 for a, b, k in pair_edges]
+    rest = np.array(list(me_lengths) + [55.0] * len(pair_edges))
+    stiff = np.array([0.06] * n_nodes + [0.004 + 0.01 * min(k, 4) for a, b, k in pair_edges])
+    src, dst = np.array(src), np.array(dst)
+    step = 1.0
+    for it in range(600):
+        d = pos[:, None, :] - pos[None, :, :]
+        dist2 = (d ** 2).sum(-1) + 1e-6
+        np.fill_diagonal(dist2, np.inf)
+        rep = (d / dist2[..., None] * 60000.0 / np.sqrt(dist2)[..., None]).sum(1)   # ~ 1/d²
+        vec = pos[dst] - pos[src]
+        length = np.sqrt((vec ** 2).sum(1)) + 1e-6
+        f = (stiff * (length - rest))[:, None] * vec / length[:, None]
+        spring = np.zeros_like(pos)
+        np.add.at(spring, src, f)
+        np.add.at(spring, dst, -f)
+        move = (rep + spring) * step
+        cap = 25.0 * step
+        norm = np.sqrt((move ** 2).sum(1))[:, None]
+        move = np.where(norm > cap, move / norm * cap, move)
+        move[0] = 0.0
+        pos += move
+        r = np.sqrt((pos[1:] ** 2).sum(1))[:, None]          # keep a clear ring around the centre (its label)
+        pos[1:] = np.where(r < 210, pos[1:] / np.maximum(r, 1e-6) * 210, pos[1:])
+        step = max(0.05, step * 0.993)
+    return [[round(float(x), 1), round(float(y), 1)] for x, y in pos]
+
+
+R_IN, R_OUT = 210.0, 560.0     # network rings: most joint papers … one joint paper
+
+
+def radial_positions(nodes: list[dict], force_pos: list[list[float]], radius) -> list[list[float]]:
+    """Put every co-author on the ring for its number of joint papers, keeping the order around the
+    circle from the force layout. One-paper co-authors are spread evenly over two staggered rings;
+    the others are nudged apart along their ring until they don't overlap."""
+    import math
+    ang = [math.atan2(y, x) for x, y in force_pos]
+    out: list[list[float]] = [[0.0, 0.0] for _ in nodes]
+    ones = sorted((i for i, nd in enumerate(nodes) if nd["n"] == 1), key=lambda i: ang[i])
+    for k, i in enumerate(ones):
+        a = (ang[ones[0]] if ones else 0) + 2 * math.pi * k / len(ones)
+        r = radius(1) + (0 if k % 2 else 34)
+        out[i] = [r * math.cos(a), r * math.sin(a)]
+    inner = [i for i, nd in enumerate(nodes) if nd["n"] > 1]
+    a = {i: ang[i] for i in inner}
+    r = {i: radius(nodes[i]["n"]) for i in inner}
+    for _ in range(1500):                      # push overlapping neighbours apart along the ring
+        moved = False
+        for x in inner:
+            for y in inner:
+                if x >= y:
+                    continue
+                dx = r[x] * math.cos(a[x]) - r[y] * math.cos(a[y])
+                dy = r[x] * math.sin(a[x]) - r[y] * math.sin(a[y])
+                if dx * dx + dy * dy < 66 ** 2:
+                    d = (a[x] - a[y] + math.pi) % (2 * math.pi) - math.pi or 1e-3
+                    step = 0.012 * (1 if d > 0 else -1)
+                    a[x] += step
+                    a[y] -= step
+                    moved = True
+        if not moved:
+            break
+    for i in inner:
+        out[i] = [r[i] * math.cos(a[i]), r[i] * math.sin(a[i])]
+    return [[round(x, 1), round(y, 1)] for x, y in out]
+
+
+def coauthor_network(pubs: list[dict], self_author: str, themes: list[dict], me_name: str = "") -> dict:
+    """Data for the co-author network on the publications page (built from publications.yaml only).
+
+    nodes: every co-author with the joint papers (indices into `papers`) and a theme (the home-page
+    theme most of the joint papers belong to); edges: [a, b, n] for co-authors who appear together on
+    n of the papers (n = 1 pairs only shape the layout, the page draws n ≥ 2).
+    """
+    me = _author_key(self_author)
+    papers, members = [], []
+    for p in pubs:
+        ks = []
+        for a in p["authors"]:
+            k = _author_key(a)
+            if k and k != me and k not in ks:
+                ks.append(k)
+        papers.append({"id": p["id"], "t": p["title"], "y": p["year"] if p["status"] != "accepted" else "accepted",
+                       "v": p.get("venue") or ("Preprint" if p["status"] == "preprint" else ""),
+                       "topics": p.get("topics") or []})
+        members.append(ks)
+    names: dict[str, dict[str, int]] = {}
+    for p, ks in zip(pubs, members):
+        for a in p["authors"]:
+            k = _author_key(a)
+            if k in ks:
+                spelled = str(a).strip().rstrip("*").strip()
+                names.setdefault(k, {}).setdefault(spelled, 0)
+                names[k][spelled] += 1
+    joint: dict[str, list[int]] = {}
+    for i, ks in enumerate(members):
+        for k in ks:
+            joint.setdefault(k, []).append(i)
+    order = sorted(joint, key=lambda k: (-len(joint[k]), k))
+    index = {k: i for i, k in enumerate(order)}
+    theme_sets = [set(t.get("topics") or []) for t in themes]
+    nodes = []
+    for k in order:
+        spelled = max(names[k].items(), key=lambda kv: (kv[1], len(kv[0])))[0]
+        last, first = spelled.split(",", 1)
+        hits = [sum(bool(ts & set(papers[i]["topics"])) for i in joint[k]) for ts in theme_sets]
+        theme = hits.index(max(hits)) if hits and max(hits) > 0 else -1
+        nodes.append({"name": f"{first.strip()} {last.strip()}", "sort": spelled, "n": len(joint[k]),
+                      "theme": theme, "papers": joint[k]})
+    pairs: dict[tuple[int, int], int] = {}
+    for ks in members:
+        ids = sorted(index[k] for k in ks)
+        for a in range(len(ids)):
+            for b in range(a + 1, len(ids)):
+                pairs[(ids[a], ids[b])] = pairs.get((ids[a], ids[b]), 0) + 1
+    for p in papers:
+        del p["topics"]
+    edges = [[a, b, n] for (a, b), n in sorted(pairs.items())]
+    top = max(nd["n"] for nd in nodes) if nodes else 1
+    radius = lambda k: R_IN + (R_OUT - R_IN) * (1 - ((k - 1) / max(1, top - 1)) ** 0.5)
+    # angles from a force layout (co-authors of the same papers end up side by side),
+    # radius from the number of joint papers (rings: closest collaborators in the middle)
+    pos = network_layout(len(nodes), [radius(nd["n"]) for nd in nodes], edges)
+    for nd, xy in zip(nodes, radial_positions(nodes, pos[1:], radius)):
+        nd["x"], nd["y"] = xy
+    ring_ns = sorted({1, 2, 3, 5, 10, top} & set(range(1, top + 1)))
+    return {
+        "rings": [[k, round(radius(k), 1)] for k in ring_ns],
+        "me": me_name or (self_author.split(",")[1].strip() + " " + self_author.split(",")[0].strip()),
+        "papers": papers,
+        "nodes": nodes,
+        "edges": edges,
+        "themes": [{"title": t["title"], "color": THEME_COLORS[i % len(THEME_COLORS)]} for i, t in enumerate(themes)]
+                  + [{"title": "Other", "color": OTHER_COLOR}],
+    }
+
+
 def filter_chips(pubs: list[dict]) -> list[dict]:
     chips = [{"f": "all", "label": "All"}]
     if any(p["status"] == "accepted" for p in pubs):
@@ -384,6 +559,8 @@ def build(out: Path, check_only: bool) -> int:
     topic_counts = {k: sum(k in (p.get("topics") or []) for p in pubs) for k in topics}
     nav = sorted((p for p in pages.values() if p.parent is None and p.nav_order is not None),
                  key=lambda p: p.nav_order)
+    net = coauthor_network(pubs, site.get("self_author", ""), site.get("themes") or [], profile.get("name", ""))
+    net_json = json.dumps(net, ensure_ascii=False, separators=(",", ":"))
     ctx = {
         "site": site,
         "profile": profile,
@@ -396,10 +573,12 @@ def build(out: Path, check_only: bool) -> int:
         "topics": topics,
         "topic_counts": topic_counts,
         "recent": recent_publications(pubs, site.get("recent_publications", 5)),
+        "coauthors": {"people": len(net["nodes"]), "repeat": sum(n["n"] > 1 for n in net["nodes"]),
+                      "data_version": hashlib.sha1(net_json.encode()).hexdigest()[:10]},
         "year": date.today().year,
         # cache-buster for CSS/JS: changes whenever their content changes
         "version": hashlib.sha1(b"".join((ROOT / "static" / f).read_bytes()
-                                         for f in ("css/site.css", "js/site.js"))).hexdigest()[:10],
+                                         for f in ("css/site.css", "js/site.js", "js/coauthors.js"))).hexdigest()[:10],
     }
 
     if out.exists():
@@ -415,6 +594,7 @@ def build(out: Path, check_only: bool) -> int:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
 
+    (out / "coauthors.json").write_text(net_json, encoding="utf-8")   # loaded by static/js/coauthors.js
     (out / "publications.bib").write_text("\n\n".join(p["_bibtex"] for p in pubs) + "\n", encoding="utf-8")
     (out / "404.html").write_text(env.get_template("404.html").render(page=None, **ctx), encoding="utf-8")
     base = site.get("base_url", "").rstrip("/")
