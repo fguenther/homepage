@@ -3,6 +3,7 @@ title: Semantic Spaces
 summary: "Ready-to-use semantic spaces for English, German, Italian, Spanish and French."
 nav_order: 2
 parent: software-resources
+kind: Download
 permalink: /software-resources/semantic_spaces/
 source: https://sites.google.com/site/fritzgntr/software-resources/semantic_spaces
 ---

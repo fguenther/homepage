@@ -3,6 +3,7 @@ title: Semantic Transparency Measures for German Compounds
 summary: "Semantic transparency measures for German compounds, validated in multiple tasks."
 nav_order: 9
 parent: software-resources
+kind: Dataset
 permalink: /software-resources/german_st/
 source: https://sites.google.com/site/fritzgntr/software-resources/german_st
 ---

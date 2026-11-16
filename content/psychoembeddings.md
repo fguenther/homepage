@@ -3,6 +3,7 @@ title: PsychoEmbeddings
 summary: "Python package for contextualised word embeddings from LLMs."
 nav_order: 6
 parent: software-resources
+kind: Python package
 permalink: /software-resources/psychoembeddings/
 source: https://sites.google.com/site/fritzgntr/software-resources/psychoembeddings
 ---

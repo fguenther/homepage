@@ -60,9 +60,10 @@
 // --- publications: filter chips, search, BibTeX toggles ----------------------
 (() => {
   document.querySelectorAll('.pub .toggle').forEach(btn => btn.addEventListener('click', () => {
-    const box = btn.closest('.pub').querySelector('.' + btn.dataset.target);
+    const pub = btn.closest('.pub'), box = pub.querySelector('.' + btn.dataset.target);
     box.hidden = !box.hidden;
     btn.setAttribute('aria-expanded', !box.hidden);
+    pub.classList.toggle('open', !!pub.querySelector('.abs:not([hidden]), .bib:not([hidden])'));
   }));
 
   const chips = document.querySelectorAll('.chip'), search = document.querySelector('.search');
@@ -71,13 +72,16 @@
   const groups = document.querySelectorAll('.pubgroup');
   const count = document.getElementById('pubcount'), empty = document.querySelector('.empty');
   pubs.forEach(p => { p._text = p.textContent.toLowerCase(); });
-  let filter = 'all';
+  // one active chip per row: year/status row (data-tags) and topic row (data-topics)
+  const filter = { year: 'all', topic: 'all' };
+  const attr = { year: 'tags', topic: 'topics' };
 
   function apply() {
     const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     pubs.forEach(p => {
-      const ok = (filter === 'all' || p.dataset.tags.split(' ').includes(filter)) &&
+      const ok = Object.keys(filter).every(k => filter[k] === 'all' ||
+                   (p.dataset[attr[k]] || '').split(' ').includes(filter[k])) &&
                  terms.every(t => p._text.includes(t));
       p.hidden = !ok; if (ok) shown++;
     });
@@ -85,15 +89,26 @@
     count.textContent = shown;
     empty.hidden = shown > 0;
   }
-  chips.forEach(chip => chip.addEventListener('click', () => {
-    chips.forEach(c => { c.classList.remove('on'); c.setAttribute('aria-pressed', 'false'); });
+  function select(kind, f) {
+    const row = document.querySelector(`.chips[data-kind="${kind}"]`);
+    if (!row) return;
+    const chip = row.querySelector(`.chip[data-f="${f}"]`) || row.querySelector('.chip');
+    row.querySelectorAll('.chip').forEach(c => { c.classList.remove('on'); c.setAttribute('aria-pressed', 'false'); });
     chip.classList.add('on'); chip.setAttribute('aria-pressed', 'true');
-    filter = chip.dataset.f; apply();
+    filter[kind] = chip.dataset.f; apply();
+  }
+  chips.forEach(chip => chip.addEventListener('click', () => select(chip.closest('.chips').dataset.kind, chip.dataset.f)));
+  // topic labels on each entry select that topic
+  document.querySelectorAll('.pub .tp a[data-topic]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); select('topic', a.dataset.topic);
+    document.querySelector('.toolbar').scrollIntoView({ behavior: 'smooth' });
   }));
   search.addEventListener('input', apply);
-  // allow links like /publications/?q=ViSpa
-  const q = new URLSearchParams(location.search).get('q');
-  if (q) { search.value = q; apply(); }
+  // allow links like /publications/?q=ViSpa or ?topic=llm
+  const params = new URLSearchParams(location.search);
+  if (params.get('q')) search.value = params.get('q');
+  if (params.get('topic')) select('topic', params.get('topic'));
+  if (params.get('q')) apply();
 })();
 
 // --- YouTube embeds: load only after a click (no requests to Google before consent) ---

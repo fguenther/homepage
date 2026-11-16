@@ -80,9 +80,17 @@ Field reference (see the comment block at the top of `data/publications.yaml` fo
   data: https://osf.io/xxxxx/            # data, material & scripts
   extra_links: [{label: Trained model, url: https://huggingface.co/...}]
   notes: "* equal contribution"
+  topics: [llm, novel]                  # keys from site.yaml → publication_topics
 ```
 Book chapters / proceedings: add `type: chapter` or `type: proceedings` (and `editors`, `publisher`
 where known), `venue` = book or proceedings title.
+
+### 4b. Assign topics
+Every entry gets `topics:` — one or more keys from `publication_topics` in `site.yaml`
+(e.g. `dsm`, `llm`, `vision`, `grounding`, `compounds`, `novel`, `production`, `emotion`, `crossling`,
+`methods`). Pick them from title and abstract (usually 1–3; `methods` for datasets, norms, tools and
+methods papers) and mention your choice to Fritz when showing the entry. `build.py --check` rejects unknown
+keys and warns about entries without topics. A new topic = a new line in `site.yaml`, only if Fritz asks.
 
 ### 5. Build and show it
 1. `build.py --check` must print `OK` with no warnings about the new entry (a warning like

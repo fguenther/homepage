@@ -14,6 +14,7 @@ Usage:  python build.py [--out site] [--check]
 from __future__ import annotations
 
 import argparse
+import hashlib
 import re
 import shutil
 import sys
@@ -60,7 +61,7 @@ def norm_links(links) -> list[dict]:
     if not links:
         return []
     if isinstance(links, dict):
-        return [{"label": LINK_LABELS.get(k, k), "url": v} for k, v in links.items() if v]
+        return [{"key": k, "label": LINK_LABELS.get(k, k), "url": v} for k, v in links.items() if v]
     out = []
     for item in links:
         if isinstance(item, dict):
@@ -93,7 +94,8 @@ class Page:
         self.parent: Page | None = None
         self.children: list[Page] = []
         if meta.get("permalink"):
-            self.url = "/" + meta["permalink"].strip("/") + "/"
+            p = meta["permalink"].strip("/")
+            self.url = "/" + p + "/" if p else "/"
         elif self.is_home:
             self.url = "/"
         else:
@@ -210,7 +212,8 @@ def make_bibtex(p: dict) -> str:
     return f"@{btype}{{{p['id']},\n{body}\n}}"
 
 
-def load_publications(path: Path, self_author: str, errors: list[str], warnings: list[str]) -> list[dict]:
+def load_publications(path: Path, self_author: str, topics: dict, errors: list[str],
+                      warnings: list[str]) -> list[dict]:
     pubs = load_yaml(path, [])
     if not isinstance(pubs, list):
         errors.append(f"{path.name}: expected a list of publications")
@@ -230,6 +233,15 @@ def load_publications(path: Path, self_author: str, errors: list[str], warnings:
         if not isinstance(p.get("authors", []), list):
             errors.append(f"{where}: 'authors' must be a list")
             p["authors"] = [str(p["authors"])]
+        p_topics = p.get("topics") or []
+        if not isinstance(p_topics, list):
+            errors.append(f"{where}: 'topics' must be a list")
+            p["topics"] = p_topics = []
+        for t in p_topics:
+            if t not in topics:
+                errors.append(f"{where}: unknown topic '{t}' (allowed: {', '.join(topics)})")
+        if topics and not p_topics:
+            warnings.append(f"{where}: no 'topics' (it won't appear under any topic filter)")
         if p.get("id") in ids:
             errors.append(f"{where}: duplicate id (also entry {ids[p['id']]})")
         ids.setdefault(p.get("id"), i)
@@ -270,6 +282,7 @@ def load_publications(path: Path, self_author: str, errors: list[str], warnings:
         else:
             tags = [p["status"]]
         p["_tags"] = " ".join(tags)
+        p["_topics"] = [{"key": t, "label": topics[t]} for t in topics if t in (p.get("topics") or [])]
     return pubs
 
 
@@ -307,6 +320,12 @@ def filter_chips(pubs: list[dict]) -> list[dict]:
     return chips
 
 
+def topic_chips(pubs: list[dict], topics: dict) -> list[dict]:
+    used = {t for p in pubs for t in (p.get("topics") or [])}
+    chips = [{"f": "all", "label": "All topics"}]
+    return chips + [{"f": k, "label": v} for k, v in topics.items() if k in used]
+
+
 # --------------------------------------------------------------------------- build
 
 def build(out: Path, check_only: bool) -> int:
@@ -325,7 +344,9 @@ def build(out: Path, check_only: bool) -> int:
     if profile.get("email"):  # obfuscated; site.js turns it back into a mailto: link
         profile["_mail"] = profile["email"][::-1].replace("@", " ta ").replace(".", " tod ")
     pages = load_pages(ROOT / "content", errors)
-    pubs = load_publications(ROOT / "data" / "publications.yaml", site.get("self_author", ""), errors, warnings)
+    topics = {str(k): str(v) for k, v in (site.get("publication_topics") or {}).items()}
+    pubs = load_publications(ROOT / "data" / "publications.yaml", site.get("self_author", ""), topics,
+                             errors, warnings)
     if "home" not in pages:
         errors.append("content/home.md is missing")
 
@@ -344,6 +365,17 @@ def build(out: Path, check_only: bool) -> int:
         trim_blocks=True,
         lstrip_blocks=True,
     )
+    md_card = markdown.Markdown(extensions=["extra"])
+
+    def md_filter(text, block: bool = False) -> Markup:
+        """Markdown for short texts in front matter (cards, timeline); inline unless block=True."""
+        html = md_card.reset().convert(str(text or ""))
+        if not block and html.startswith("<p>") and html.endswith("</p>") and html.count("<p>") == 1:
+            html = html[3:-4]
+        return Markup(html)
+
+    env.filters["md"] = md_filter
+    topic_counts = {k: sum(k in (p.get("topics") or []) for p in pubs) for k in topics}
     nav = sorted((p for p in pages.values() if p.parent is None and p.nav_order is not None),
                  key=lambda p: p.nav_order)
     ctx = {
@@ -354,9 +386,14 @@ def build(out: Path, check_only: bool) -> int:
         "publications": pubs,
         "groups": group_publications(pubs),
         "chips": filter_chips(pubs),
+        "topic_chips": topic_chips(pubs, topics) if topics else [],
+        "topics": topics,
+        "topic_counts": topic_counts,
         "recent": recent_publications(pubs, site.get("recent_publications", 5)),
         "year": date.today().year,
-        "version": date.today().strftime("%Y%m%d"),
+        # cache-buster for CSS/JS: changes whenever their content changes
+        "version": hashlib.sha1(b"".join((ROOT / "static" / f).read_bytes()
+                                         for f in ("css/site.css", "js/site.js"))).hexdigest()[:10],
     }
 
     if out.exists():

@@ -29,7 +29,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 PUBS = ROOT / "data" / "publications.yaml"
 KEY_ORDER = ["id", "status", "type", "year", "authors", "title", "venue", "editors", "edition", "volume", "issue", "pages", "publisher",
-             "doi", "url", "pdf", "data", "extra_links", "notes", "featured", "abstract"]
+             "doi", "url", "pdf", "data", "extra_links", "notes", "featured", "topics", "abstract"]
 USER_AGENT = "homepage-publication-tool/1.0 (static site maintenance script)"
 STOPWORDS = {"a", "an", "the", "on", "of", "in", "and", "for", "to", "from", "with", "is", "are", "do", "does", "how", "what", "why"}
 

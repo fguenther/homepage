@@ -21,7 +21,7 @@
     <div class="intro">{{ page.html }}</div>
     <div class="meta">
       {% if profile._mail %}<a class="js-mail" data-m="{{ profile._mail }}" href="/contact/">Email</a>{% endif %}
-      {% for l in profile.links %}<a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endfor %}
+      {% for l in profile.links if not site.hero_links or l.key in site.hero_links %}<a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endfor %}
       {% if profile.cv_pdf %}<a href="{{ profile.cv_pdf }}" rel="noopener">CV (PDF)</a>{% elif "cv" in pages %}<a href="{{ pages['cv'].url }}">CV</a>{% endif %}
     </div>
   </div>
@@ -40,7 +40,14 @@
   <h2>What I work on</h2>
   <div class="themes">
     {% for t in site.themes %}
-    <div class="theme"><div class="num">{{ "%02d" % loop.index }}</div><h3>{{ t.title }}</h3><p>{{ t.text }}</p></div>
+    <div class="theme">
+      <div class="num">{{ "%02d" % loop.index }}</div><h3>{{ t.title }}</h3><p>{{ t.text }}</p>
+      {% if t.topics %}
+      <div class="theme-links">
+        {% for k in t.topics if k in topics %}<a href="/publications/?topic={{ k }}">{{ topics[k] }} <span>{{ topic_counts[k] }} papers →</span></a>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
     {% endfor %}
   </div>
 </div></section>
@@ -73,7 +80,9 @@
 <section><div class="container">
   <div class="label">Output</div>
   <h2>Recent publications</h2>
-  {% for p in recent %}{% with show_status=true %}{% include "_pub.html" %}{% endwith %}{% endfor %}
+  <div class="cards">
+  {% for p in recent %}{% with show_status=true, compact=true %}{% include "_pub.html" %}{% endwith %}{% endfor %}
+  </div>
   {% if "publications" in pages %}<a class="more" href="{{ pages['publications'].url }}">All publications →</a>{% endif %}
 </div></section>
 {% endif %}
@@ -84,7 +93,7 @@
   <h2>Data, software &amp; resources</h2>
   <div class="tiles">
     {% for c in pages["software-resources"].children[:6] %}
-    <a class="tile" href="{{ c.url }}"><h3>{{ c.title }}</h3>{% if c.summary %}<p>{{ c.summary }}</p>{% endif %}</a>
+    <a class="tile" href="{{ c.url }}">{% if c.meta.kind %}<div class="card-label">{{ c.meta.kind }}</div>{% endif %}<h3>{{ c.title }}</h3>{% if c.summary %}<p>{{ c.summary }}</p>{% endif %}</a>
     {% endfor %}
   </div>
   <a class="more" href="{{ pages['software-resources'].url }}">All resources →</a>

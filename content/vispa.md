@@ -3,6 +3,7 @@ title: ViSpa (Vision Spaces)
 summary: "Vision-based semantic spaces: an online tool and downloadable representations."
 nav_order: 3
 parent: software-resources
+kind: Web tool & download
 permalink: /software-resources/vispa/
 source: https://sites.google.com/site/fritzgntr/software-resources/vispa
 ---

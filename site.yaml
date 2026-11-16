@@ -16,13 +16,31 @@ self_author: "Günther, F."
 headline: "Meaning from<br>experience."
 
 # Number of publications shown under "Recent publications" on the home page.
-recent_publications: 5
+recent_publications: 6
+# Profile buttons in the home-page banner (keys from data/profile.yaml → links); Email and CV are always shown.
+hero_links: [scholar, orcid]
 
-# Research themes on the home page.
+# Research themes on the home page. `topics` = keys from publication_topics below (linked, with paper counts).
 themes:
   - title: Distributional semantics
     text: Models that learn word meaning from large text corpora, and how well they capture human cognition.
+    topics: [dsm, compounds]
   - title: Vision & grounding
     text: Image-based representations (ViSpa) and how perceptual experience complements language.
+    topics: [vision, grounding]
   - title: Novel words & LLMs
     text: How people — and language models — interpret words and concepts they have never encountered.
+    topics: [novel, llm]
+
+# Topic filter on the publications page (in this order). Each publication lists keys under `topics:`.
+publication_topics:
+  dsm: Distributional semantics
+  llm: Large language models
+  vision: Vision & images
+  grounding: Grounded cognition
+  compounds: Compounds & morphology
+  novel: Novel words & pseudowords
+  production: Production & communication
+  emotion: Emotion & valence
+  crossling: Cross-linguistic
+  methods: Datasets & tools

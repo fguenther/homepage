@@ -9,11 +9,16 @@ into a static site; GitHub Actions builds and publishes it to GitHub Pages on ev
 |---|---|
 | Home-page intro text | `content/home.md` |
 | Headline, research themes on the home page | `site.yaml` |
+| Topic filter on the publications page | `site.yaml` (`publication_topics`) + `topics:` on each publication |
 | Name, position, e-mail, profile links, current projects | `data/profile.yaml` |
 | Publications | `data/publications.yaml` (field reference at the top of the file) |
 | Other pages (CV, Data, Resources, Media, …) | `content/*.md` — front matter: `title`, `nav_order` (top menu), `parent` (sub-page), `summary` |
 | Design | `templates/*.html`, `static/css/site.css`, `static/js/site.js` |
 | Portrait, fonts | `static/img/`, `static/fonts/` |
+
+CV, Contact, Media and Profiles are built from lists at the top of their files (`timeline:` and `cards:`,
+see the comments there and in `templates/page.html`): to add a media item, copy one card block.
+Resource sub-pages carry a `kind:` (e.g. Dataset) shown as a label on their tile.
 
 A page without `nav_order` and without `parent` is not in the menu (e.g. `imprint.md`, linked in the footer).
 

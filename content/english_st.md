@@ -3,6 +3,7 @@ title: Semantic transparency measures for English compounds
 summary: "Semantic transparency measures for 1,865 English compounds."
 nav_order: 8
 parent: software-resources
+kind: Dataset
 permalink: /software-resources/english_st/
 source: https://sites.google.com/site/fritzgntr/software-resources/english_st
 ---

@@ -3,16 +3,30 @@ title: Profiles
 nav_order: 7
 permalink: /profiles/
 source: https://sites.google.com/site/fritzgntr/profiles
+# One card per profile; the whole card links to it.
+cards:
+  - label: Institution
+    title: Humboldt-Universität zu Berlin
+    text: My institutional homepage at the Department of Psychology.
+    url: https://www.psychologie.hu-berlin.de/de/mitarbeiter/1693894
+  - label: Funding
+    title: DFG GEPRIS
+    text: My projects funded by the Deutsche Forschungsgemeinschaft (DFG).
+    url: https://gepris.dfg.de/gepris/person/392119874?language=en
+  - label: Research network
+    title: ResearchGate
+    text: Publications and full texts.
+    url: https://www.researchgate.net/profile/Fritz_Guenther
+  - label: Citations
+    title: Google Scholar
+    text: Publication list and citation metrics.
+    url: https://scholar.google.de/citations?user=PFp5HhQAAAAJ
+  - label: Researcher ID
+    title: ORCID
+    text: "0000-0002-9205-6786"
+    url: https://orcid.org/0000-0002-9205-6786
+  - label: Citations
+    title: Scopus
+    text: Author profile and citation data.
+    url: https://www.scopus.com/authid/detail.uri?authorId=56430641000
 ---
-
-My [Institutional Homepage at Humboldt-Universität zu Berlin](https://www.psychologie.hu-berlin.de/de/mitarbeiter/1693894)
-
-My [projects funded by the Deutsche Forschungsgemeinschaft (DFG)](https://gepris.dfg.de/gepris/person/392119874?language=en)
-
-My [ResearchGate](https://www.researchgate.net/profile/Fritz_Guenther) profile
-
-My [Google Scholar](https://scholar.google.de/citations?user=PFp5HhQAAAAJ) profile
-
-My [ORCID: 0000-0002-9205-6786](https://orcid.org/0000-0002-9205-6786)
-
-On [Scopus](https://www.scopus.com/authid/detail.uri?authorId=56430641000)
