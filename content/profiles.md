@@ -3,7 +3,7 @@ title: Profiles
 nav_order: 7
 permalink: /profiles/
 source: https://sites.google.com/site/fritzgntr/profiles
-# One card per profile; the whole card links to it.
+# One card per profile (in this order); the whole card links to it.
 cards:
   - label: Institution
     title: Humboldt-Universität zu Berlin
@@ -13,20 +13,20 @@ cards:
     title: DFG GEPRIS
     text: My projects funded by the Deutsche Forschungsgemeinschaft (DFG).
     url: https://gepris.dfg.de/gepris/person/392119874?language=en
-  - label: Research network
-    title: ResearchGate
-    text: Publications and full texts.
-    url: https://www.researchgate.net/profile/Fritz_Guenther
   - label: Citations
     title: Google Scholar
     text: Publication list and citation metrics.
     url: https://scholar.google.de/citations?user=PFp5HhQAAAAJ
-  - label: Researcher ID
-    title: ORCID
-    text: "0000-0002-9205-6786"
-    url: https://orcid.org/0000-0002-9205-6786
   - label: Citations
     title: Scopus
     text: Author profile and citation data.
     url: https://www.scopus.com/authid/detail.uri?authorId=56430641000
+  - label: Researcher ID
+    title: ORCID
+    text: "0000-0002-9205-6786"
+    url: https://orcid.org/0000-0002-9205-6786
+  - label: Research network
+    title: ResearchGate
+    text: Publications and full texts.
+    url: https://www.researchgate.net/profile/Fritz_Guenther
 ---

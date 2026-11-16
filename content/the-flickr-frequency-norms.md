@@ -4,6 +4,7 @@ summary: "Word frequencies from 17 years of Flickr image tags."
 nav_order: 7
 parent: software-resources
 kind: Dataset
+group: Datasets
 permalink: /software-resources/the-flickr-frequency-norms/
 source: https://sites.google.com/site/fritzgntr/software-resources/the-flickr-frequency-norms
 ---

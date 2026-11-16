@@ -43,11 +43,24 @@
   {% endif %}
 
   {% if page.children %}
+  {% for grp in page.meta.groups or [] %}
+  {% set items = page.children | selectattr("meta.group", "equalto", grp) | list %}
+  {% if items %}
+  <h2 class="tl-head">{{ grp }}</h2>
+  <div class="tiles">
+    {% for c in items %}
+    {# label only where it adds something (not "Dataset" under "Datasets") #}
+    <a class="tile" href="{{ c.url }}">{% if c.meta.kind and c.meta.kind ~ "s" != grp %}<div class="card-label">{{ c.meta.kind }}</div>{% endif %}<h3>{{ c.title }}</h3>{% if c.summary %}<p>{{ c.summary }}</p>{% endif %}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% else %}
   <div class="tiles">
     {% for c in page.children %}
     <a class="tile" href="{{ c.url }}">{% if c.meta.kind %}<div class="card-label">{{ c.meta.kind }}</div>{% endif %}<h3>{{ c.title }}</h3>{% if c.summary %}<p>{{ c.summary }}</p>{% endif %}</a>
     {% endfor %}
   </div>
+  {% endfor %}
   {% endif %}
 </div></section>
 {% endblock %}

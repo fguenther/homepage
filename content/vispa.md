@@ -4,6 +4,7 @@ summary: "Vision-based semantic spaces: an online tool and downloadable represen
 nav_order: 3
 parent: software-resources
 kind: Web tool & download
+group: Resources
 permalink: /software-resources/vispa/
 source: https://sites.google.com/site/fritzgntr/software-resources/vispa
 ---

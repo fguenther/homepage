@@ -4,6 +4,7 @@ summary: "Infer concept representations from open-ended word responses."
 nav_order: 5
 parent: software-resources
 kind: Method
+group: Methods
 permalink: /software-resources/centroid-analysis/
 source: https://sites.google.com/site/fritzgntr/software-resources/centroid-analysis
 ---

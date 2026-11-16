@@ -126,7 +126,13 @@ def load_pages(content_dir: Path, errors: list[str]) -> dict[str, Page]:
         if page.url is None:
             prefix = f"{page.parent.slug}/" if page.parent else ""
             page.url = f"/{prefix}{page.slug}/"
-        page.children.sort(key=lambda p: (p.nav_order is None, p.nav_order or 0, p.title.lower()))
+        # sub-pages: by the parent's `groups:` order (if the child has a `group:`), then nav_order, then title
+        groups = page.meta.get("groups") or []
+        for c in page.children:
+            if groups and c.meta.get("group") not in groups:
+                errors.append(f"content/{c.slug}.md: group must be one of {', '.join(groups)} (see {page.slug}.md)")
+        page.children.sort(key=lambda p: (groups.index(p.meta["group"]) if p.meta.get("group") in groups else 99,
+                                          p.nav_order is None, p.nav_order or 0, p.title.lower()))
     return pages
 
 

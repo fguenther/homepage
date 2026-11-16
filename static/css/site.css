@@ -252,3 +252,5 @@ main h2 { font: 700 32px/1.15 var(--head); letter-spacing: -.02em; margin: 0 0 2
   .timeline li { grid-template-columns: 1fr; gap: 0; }
 }
 .prose + .tiles, .prose + .cardgrid { margin-top: 28px; }
+.count .reset { margin-left: 14px; font: 600 13px var(--head); color: var(--accent-text); background: none; border: 0; padding: 0; cursor: pointer; }
+.count .reset:hover { text-decoration: underline; }

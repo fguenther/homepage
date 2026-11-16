@@ -4,6 +4,7 @@ summary: "Vision-based transparency measures for 736 English compounds."
 nav_order: 10
 parent: software-resources
 kind: Dataset
+group: Datasets
 permalink: /software-resources/vision-based-semantic-transparency-measures-for-english-compounds/
 source: https://sites.google.com/site/fritzgntr/software-resources/vision-based-semantic-transparency-measures-for-english-compounds
 ---

@@ -4,6 +4,7 @@ summary: "LSAfun — R functions for working with semantic spaces (on CRAN)."
 nav_order: 1
 parent: software-resources
 kind: R package
+group: Packages
 permalink: /software-resources/r_packages/
 source: https://sites.google.com/site/fritzgntr/software-resources/r_packages
 ---

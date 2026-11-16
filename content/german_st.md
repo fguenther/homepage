@@ -4,6 +4,7 @@ summary: "Semantic transparency measures for German compounds, validated in mult
 nav_order: 9
 parent: software-resources
 kind: Dataset
+group: Datasets
 permalink: /software-resources/german_st/
 source: https://sites.google.com/site/fritzgntr/software-resources/german_st
 ---

@@ -3,7 +3,8 @@ title: Video Tutorials
 summary: "Video walkthroughs for LSAfun in R, with text-based and vision-based (ViSpa) spaces."
 nav_order: 4
 parent: software-resources
-kind: Tutorials
+kind: Video
+group: Tutorials
 permalink: /software-resources/video_tutorials/
 source: https://sites.google.com/site/fritzgntr/software-resources/video_tutorials
 ---

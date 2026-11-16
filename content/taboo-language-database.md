@@ -4,6 +4,7 @@ summary: "Taboo words and expressions in 13 languages, with ratings."
 nav_order: 11
 parent: software-resources
 kind: Dataset
+group: Datasets
 permalink: /software-resources/taboo-language-database/
 source: https://sites.google.com/site/fritzgntr/software-resources/taboo-language-database
 ---

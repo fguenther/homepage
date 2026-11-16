@@ -72,43 +72,63 @@
   const groups = document.querySelectorAll('.pubgroup');
   const count = document.getElementById('pubcount'), empty = document.querySelector('.empty');
   pubs.forEach(p => { p._text = p.textContent.toLowerCase(); });
-  // one active chip per row: year/status row (data-tags) and topic row (data-topics)
-  const filter = { year: 'all', topic: 'all' };
+  // Several chips per row can be on. Within a row an entry needs ANY selected value
+  // (2024 or 2025; LLMs or novel words), across rows and search ALL must match.
+  // "All" (= nothing selected) clears its row.
+  const filter = { year: new Set(), topic: new Set() };
   const attr = { year: 'tags', topic: 'topics' };
+  const reset = document.querySelector('.reset');
 
   function apply() {
     const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     pubs.forEach(p => {
-      const ok = Object.keys(filter).every(k => filter[k] === 'all' ||
-                   (p.dataset[attr[k]] || '').split(' ').includes(filter[k])) &&
+      const ok = Object.keys(filter).every(k => !filter[k].size ||
+                   (p.dataset[attr[k]] || '').split(' ').some(v => filter[k].has(v))) &&
                  terms.every(t => p._text.includes(t));
       p.hidden = !ok; if (ok) shown++;
     });
     groups.forEach(g => { g.hidden = !g.querySelector('.pub:not([hidden])'); });
     count.textContent = shown;
     empty.hidden = shown > 0;
+    if (reset) reset.hidden = !(filter.year.size || filter.topic.size || terms.length);
   }
-  function select(kind, f) {
+  function render(kind) {
     const row = document.querySelector(`.chips[data-kind="${kind}"]`);
     if (!row) return;
-    const chip = row.querySelector(`.chip[data-f="${f}"]`) || row.querySelector('.chip');
-    row.querySelectorAll('.chip').forEach(c => { c.classList.remove('on'); c.setAttribute('aria-pressed', 'false'); });
-    chip.classList.add('on'); chip.setAttribute('aria-pressed', 'true');
-    filter[kind] = chip.dataset.f; apply();
+    row.querySelectorAll('.chip').forEach(c => {
+      const on = c.dataset.f === 'all' ? !filter[kind].size : filter[kind].has(c.dataset.f);
+      c.classList.toggle('on', on); c.setAttribute('aria-pressed', on);
+    });
   }
-  chips.forEach(chip => chip.addEventListener('click', () => select(chip.closest('.chips').dataset.kind, chip.dataset.f)));
-  // topic labels on each entry select that topic
+  function toggle(kind, f) {
+    if (f === 'all') filter[kind].clear();
+    else if (filter[kind].has(f)) filter[kind].delete(f);
+    else filter[kind].add(f);
+    render(kind); apply();
+  }
+  function only(kind, values) {
+    const row = document.querySelector(`.chips[data-kind="${kind}"]`);
+    filter[kind] = new Set(values.filter(v => row && row.querySelector(`.chip[data-f="${v}"]`)));
+    render(kind); apply();
+  }
+  chips.forEach(chip => chip.addEventListener('click', () => toggle(chip.closest('.chips').dataset.kind, chip.dataset.f)));
+  // a topic label on an entry shows just that topic
   document.querySelectorAll('.pub .tp a[data-topic]').forEach(a => a.addEventListener('click', e => {
-    e.preventDefault(); select('topic', a.dataset.topic);
+    e.preventDefault(); only('topic', [a.dataset.topic]);
     document.querySelector('.toolbar').scrollIntoView({ behavior: 'smooth' });
   }));
+  if (reset) reset.addEventListener('click', () => {
+    search.value = ''; only('year', []); only('topic', []);
+  });
   search.addEventListener('input', apply);
-  // allow links like /publications/?q=ViSpa or ?topic=llm
+  // allow links like /publications/?q=ViSpa, ?topic=llm or ?topic=llm,novel&year=2025,2024
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
-  if (params.get('topic')) select('topic', params.get('topic'));
-  if (params.get('q')) apply();
+  const list = k => (params.get(k) || '').split(',').filter(Boolean);
+  if (list('topic').length) only('topic', list('topic'));
+  if (list('year').length) only('year', list('year'));
+  apply();
 })();
 
 // --- YouTube embeds: load only after a click (no requests to Google before consent) ---

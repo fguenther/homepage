@@ -75,6 +75,7 @@
   url: https://doi.org/10.48550/arXiv.2602.00628
   data: https://github.com/schiekiera/llm-association-geometry
   topics:
+  - dsm
   - llm
   abstract: We investigate the extent to which an LLM's hidden-state geometry can be recovered from its behavior in psycholinguistic experiments. Across eight instruction-tuned transformer models, we run two experimental paradigms -- similarity-based forced choice and free association -- over a shared 5,000-word vocabulary, collecting 17.5M+ trials to build behavior-based similarity matrices. Using representational similarity analysis, we compare behavioral geometries to layerwise hidden-state similarity and benchmark against FastText, BERT, and cross-model consensus. We find that forced-choice behavior aligns substantially more with hidden-state geometry than free association. In a held-out-words regression, behavioral similarity (especially forced choice) predicts unseen hidden-state similarities beyond lexical baselines and cross-model consensus, indicating that behavior-only measurements retain recoverable information about internal semantic geometry. Finally, we discuss implications for the ability of behavioral tasks to uncover hidden cognitive states.
 
@@ -98,6 +99,7 @@
   url: https://doi.org/10.48550/arXiv.2605.07632
   topics:
   - llm
+  - methods
   abstract: Large language models (LLMs) are increasingly used as surrogates for human participants, but it remains unclear which models best capture human behavior and why. To address this, we introduce Psych-201, a novel dataset that enables us to measure behavioral alignment at scale. We find that post-training -- the stage that turns base models into useful assistants -- consistently reduces alignment with human behavior across model families, sizes, and objectives. Moreover, this misalignment widens in newer model generations even as base models continue to improve. Finally, we find that persona-induction -- a popular technique for eliciting human-like behavior by conditioning models on participant-specific information -- does not improve predictions at the level of individuals. Taken together, our results suggest that the very processes that are currently employed to turn LLMs into useful assistants also make them less accurate models of human behavior.
 
 - id: cassani2023meaning
@@ -206,6 +208,7 @@
   url: https://doi.org/10.48550/arXiv.2605.21299
   topics:
   - llm
+  - crossling
   abstract: 'Humans effortlessly go beyond literal meanings: If you mow the lawn, I will give you fifty dollars, is typically understood as implying that the speaker will pay only if the lawn is mowed, whereas If you are hungry, there is pizza in the oven implies that pizza is available regardless of the hearers hunger. Large Language Models - LLMs - show human-like performance on many tasks, yet it remains unclear whether they reason like humans. To address this, we conducted a population-matching experiment assessing how twentyfive LLMs compute conditional inferences across four languages, compared to an equal number of humans per language. We find that humans enrich logical reasoning through pragmatic inferences across languages. Model behavior is more variable. Some LLMs perfectly follow the truth-table of conditionals but they ignore pragmatic inferences, while others deviate from the truth-table, adhering to a single interpretation across the board, thus reflecting accurate rule-based processing but not human-like reasoning. Overall, LLMs are accurate semantic operators, but fail to capture the pragmatic enrichments characteristic of human reasoning. Crucially, LLM accuracy is neither predicted nor boosted by open vs. closed status, training orientation, or architecture type, suggesting that pragmatic reasoning is still an emerging ability in the cognitive toolkit of artificial systems.'
 
 - id: schiekiera2026harmonized
@@ -360,6 +363,7 @@
   url: https://doi.org/10.1026/0033-3042/a000788
   topics:
   - llm
+  - methods
   abstract: 'The rapid development of artificial intelligence (AI) is fundamentally changing psychological research and teaching. So far, the debate has focused primarily on risks, such as hallucinations, lack of transparency, bias, data-protection issues, ecological costs, and new forms of „bypassing” in learning. In contrast, this article sketches a realistic and ambitious best-case scenario for the year 2030, in which AI acts as a scientific assistance system in a scientist-in-the-loop setup: AI takes on scalable routine tasks throughout the entire research cycle, supporting methodology, data analysis, open science, and personalized teaching, while theoretical work, evaluation, interpretation, and responsibility remain clearly with humans. Against this background, the article derives key structural prerequisites: (1) widely available, legally secure access to powerful, open, European AI infrastructures, (2) binding guidelines for transparent, documented, and fair use of AI across all phases of the research process, and (3) teaching and examination practices that specifically strengthen and test critical thinking, deep reading, and self-regulation, even under AI conditions. The responsibility then remains with humans; even if AI can support and consolidate scientific practice, it must not replace a transparent, critical, and human-centered culture of discussion.'
 
 - id: gatti2026zero
@@ -398,7 +402,9 @@
   url: https://doi.org/10.1016/B978-0-323-95504-1.00749-3
   pdf: https://osf.io/preprints/psyarxiv/cvnam_v1
   topics:
+  - dsm
   - llm
+  - methods
   abstract: We are currently witnessing a veritable explosion of studies employing Large Language Models (LLMs) in the cognitive sciences. Here, we focus on their use in psycholinguistics, that is, for the study of human language processing. LLMs are primarily trained to predict upcoming or masked words in a given context. We briefly describe the transformer architecture which endows LLMs with impressive abilities to achieve this objectives, and review how the components of this architecture are of interest to psycholinguistics. We then review how LLMs are applied in research, focusing on (1) measuring surprisal/probabilities of a word given a context; (2) extracting representations/embeddings these models produce, and (3) prompting/probing these models to produce an output, treating them similarly to human participants.
 
 - id: guenther2026cross
@@ -439,6 +445,7 @@
   url: https://doi.org/10.1016/B978-0-323-95504-1.00399-9
   pdf: https://doi.org/10.31234/osf.io/t3krs_v1
   topics:
+  - compounds
   - novel
   - methods
   abstract: The lexicon of a language is subject to constant change, and new words constantly enter the lexicon. In principle, any word form that is not currently in the lexicon but adheres to the orthotactic rules of a language can be a novel word, including morphologically complex words but also pseudowords. However, such novel words differ in their semantic interpretability—how easily speakers can come up with an interpretation for them—which is of interest as both an independent and dependent variable in theory-building, computational modeling, and empirical studies. Here, we provide an overview of studies that make available (large) norms of semantic interpretability ratings and judgments, which will serve as a useful resource for future research.
@@ -462,6 +469,7 @@
   pdf: https://doi.org/10.31234/osf.io/bkw3g
   topics:
   - compounds
+  - methods
   abstract: According to Frege's principle of compositionality, the meaning of a complex expression is determined as a function of its constituents and the type of construction that combines the constituents. For a given expression, the compositionality refers to the degree to which the expression fulfills this principle, in particular when determined for complex words such as blackbird or globalize. Here, we present an overview of studies providing compositionality estimates for complex words, by defining a classification system that includes (1) the type of expression (compound nouns, particle verbs, derivations), (2) the language, (3) the level of description (i.e., focusing on individual constituents vs. the entire complex word), and (4) the information source providing the estimate (human judgments vs. computational models). Typical applications for compositionality estimates are discussed.
 
 - id: leivada2026sentence
@@ -543,6 +551,7 @@
   url: https://doi.org/10.1016/B978-0-323-95504-1.00221-0
   topics:
   - vision
+  - methods
   abstract: A Vision Space (ViSpa) is a mathematical structure in which concept's visual features are represented in a high-dimensional vector space, enabling quantitative analyses of relationships between them. By representing concepts as numeric vectors, ViSpa integrates visual knowledge into semantic models of concept representation, enriching how language research characterizes word meaning. The article presents the main approach for creating ViSpa systems, discusses studies demonstrating their validity as psychological models of concept representations with a special focus on language processing, and highlights their utility in addressing theoretical questions empirically. Additionally, it indicates some accessible resources and tools facilitating the creation and use of ViSpa.
 
 - id: petrenco2026centroid
@@ -700,6 +709,7 @@
   doi: 10.1038/s41598-025-32189-2
   url: https://doi.org/10.1038/s41598-025-32189-2
   topics:
+  - dsm
   - grounding
   abstract: Grounded cognition theories propose that interactions with situations establish experiential memory traces that constitute conceptual meaning. However, as abstract scientific concepts are frequently learned through language, a proposed indirect grounding mechanism postulates that modal representations are extrapolated from distributional language-based representations, which are themselves mapped onto existing modal representations. Using functional magnetic resonance imaging (n = 51), we tested the mapping of distributed language representations on modal representations by asking whether semantic similarity of distributional language representations of scientific concepts corresponds to the similarity of neural activation patterns in modal brain systems. Semantic similarity based on both distributed language representations and experiential features was reflected in the multi-voxel activity pattern within occipital and fronto-parietal cortex, overlapping with activation induced by real visual perception and hand action, in addition to multimodal areas outside the brain regions sensitive to perception or action. Although its functional relevance for extrapolating modal representations remains to be determined, this mapping between language and the visuo-motor system is a fundamental element of the indirect grounding mechanism. This mechanism provides sensory-motor experience for the unseen and enriches knowledge for concepts learned exclusively from language.
 
@@ -759,6 +769,7 @@
   pdf: https://storage.googleapis.com/jnl-up-j-jc-files/journals/1/articles/347/65bba19831b02.pdf
   data: https://osf.io/dnt2p
   topics:
+  - dsm
   - vision
   - grounding
   abstract: The human body is perhaps the most ubiquitous and salient visual stimulus that we encounter in our daily lives. Given the prevalence of images of human bodies innatural scene statistics, it is no surprise that our mental representations of the body are thought to strongly originate from visual experience. Yet, little is still known about high-level cognitive representations of the body. Here, we retrieved a body map from natural language, taking this as a window into high-level cognitive processes. We first extracted a matrix of distances between body parts from natural language data and employed this matrix to extrapolate a body map. To test the effectiveness of this high-level body map, we then conducted a series of experiments in which participants were asked to classify the distance between pairs of body parts, presented either as words or images. We found that the high-level body map was systematically activated when participants were making these distance judgments. Crucially, the linguistic map explained participants’ performance over and above the visual body map, indicating that the former cannot be simply conceived as a by-product of perceptual experience. These findings, therefore, establish the existence of a behaviorally relevant, high-level representation of the human body.
@@ -873,6 +884,7 @@
   pdf: https://psyarxiv.com/7x8sb/
   data: https://osf.io/4xn83
   topics:
+  - dsm
   - novel
   - production
   abstract: We investigate the onomasiological question of which words speakers actually use and produce when trying to convey an intended meaning. This is not limited to selecting the best-fitting available existing word, but also includes word formation, the coinage of novel words. In the first two experiments, we introduce the taboo game paradigm in which participants were instructed to produce a single-word substitution for different words so that others can later identify them. Using distributional semantic models with the capability to produce quantitative representations for existing and novel word responses, we find that (a) responses tend to be semantically close to the targets and (b) existing words were represented closer than novel words, but (c) even novel compounds were often closer than the targets’ free associates. In a final third experiment, we find that other participants are more likely to guess the correct original word (a) for responses closer to the original targets, and (b) for novel compound responses as compared to existing word responses. This shows that the production of both existing and novel words can be accurately captured in a unified computational framework of the semantic mechanisms driving word choice.
@@ -973,6 +985,7 @@
   url: https://doi.org/10.1016/j.ecoinf.2023.102332
   topics:
   - dsm
+  - emotion
   - methods
   abstract: Outdoor recreation provides vital interactions between humans and ecological systems with a range of mental and physical benefits for people. Despite the increased number of studies using crowdsourced online data to assess how people interact with the landscape during recreational activities, the focus remains largely on mapping the spatial distribution of visitors or analyzing the content of shared images and little work has been done to quantify the perceptions and emotions people assign to the landscape. In this study, we used crowdsourced textual data from an outdoor activity-sharing platform (Wikiloc), and applied Natural Language Processing (NLP) methods and correlation analysis to capture hikers' perceptions associated with landscape features and physical outdoor activities. Our results indicate eight clusters based on the semantic similarity between words ranging from four clusters describing landscape features (“ecosystems, animals & plants”, “geodiversity”, “climate & weather”, and “built cultural heritage”), to one cluster describing the range of physical outdoor activities and three clusters indicating hikers' perceptions and emotions (“aesthetics”, “joy & restoration” and “physical effort sensation”). The association analysis revealed that the cluster “ecosystems, animals & plants” is likely to stimulate all three identified perceptions, suggesting that these natural features are important for hikers during their outdoor experience. Moreover, hikers strongly associate the cluster “outdoor physical activities” with both “joy & restoration” and “physical effort sensation” perceptions, highlighting the health and well-being benefits of physical activities in natural landscapes. Our study shows the potential of Wikiloc as a valuable data source to assess human-nature interactions and how textual data can provide significant advances in understanding peoples' preferences and perceptions while recreating. These findings can help inform outdoor recreation planners in the study region by focusing on the elements of the landscape that peoples perceive to be important (i.e. “ecosystems, animals & plants”).
 
@@ -1034,6 +1047,7 @@
   data: https://doi.org/10.17605/OSF.IO/QVW9C
   topics:
   - vision
+  - methods
   abstract: 'Quantitative, data-driven models for mental representations have long enjoyed popularity and success in psychology (for example, distributional semantic models in the language domain), but have largely been missing for the visual domain. To overcome this, we present ViSpa (Vision Spaces), high-dimensional vector spaces that include vision-based representation for naturalistic images as well as concept prototypes. These vectors are derived directly from visual stimuli through a deep convolutional neural network (DCNN) trained to classify images, and allow us to compute vision-based similarity scores between any pair of images and/or concept prototypes. We successfully evaluate these similarities against human behavioral data in a series of large-scale studies, including off-line judgments – visual similarity judgments for the referents of word pairs (Study 1) and for image pairs (Study 2), and typicality judgments for images given a label (Study 3) – as well as on-line processing times and error rates in a discrimination (Study 4) and priming task (Study 5) with naturalistic image material. ViSpa similarities predict behavioral data across all tasks, which renders ViSpa a theoretically appealing model for vision-based representations and a valuable research tool for data analysis and the construction of experimental material: ViSpa allows for precise control over experimental material consisting of images (also in combination with words), and introduces a specifically vision-based similarity for word pairs. To make ViSpa available to a wide audience, this article a) includes (video) tutorials on how to use ViSpa in R, and b) presents a user-friendly web interface at [http://vispa.fritzguenther.de](http://vispa.fritzguenther.de).'
 
 - id: koerner2023embodied
@@ -1080,6 +1094,7 @@
   topics:
   - dsm
   - compounds
+  - novel
   abstract: While distributional semantic models that represent word meanings as high-dimensional vectors induced from large text corpora have been shown to successfully predict human behavior across a wide range of tasks, they have also received criticism from different directions. These include concerns over their interpretability (how can numbers specifying abstract, latent dimensions represent meaning?) and their ability to capture variation in meaning (how can a single vector representation capture multiple different interpretations for the same expression?). Here, we demonstrate that semantic vectors can indeed rise up to these challenges, by training a mapping system (a simple linear regression) that predicts inter-individual variation in relational interpretations for compounds such as *wood brush* (for example *brush FOR wood*, or *brush MADE OF wood*) from (compositional) semantic vectors representing the meanings of these compounds. These predictions consistently beat different random baselines, both for familiar compounds (*moon light*, Experiment 1) as well as novel compounds (*wood brush*, Experiment 2), demonstrating that distributional semantic vectors encode variations in qualitative interpretations that can be decoded using techniques as simple as linear regression.
 
 - id: guenther2022images
@@ -1099,6 +1114,7 @@
   pdf: https://link.springer.com/content/pdf/10.1007/s00426-020-01429-7.pdf
   data: https://doi.org/10.17605/OSF.IO/45HDZ
   topics:
+  - dsm
   - vision
   - grounding
   abstract: 'Theories of grounded cognition assume that conceptual representations are grounded in sensorimotor experience. However, abstract concepts such as *jealousy* or *childhood* have no directly associated referents with which such sensorimotor experience can be made; therefore, the grounding of abstract concepts has long been a topic of debate. Here, we propose (a) that systematic relations exist between semantic representations learned from language on the one hand and perceptual experience on the other hand, (b) that these relations can be learned in a bottom-up fashion, and (c) that it is possible to extrapolate from this learning experience to predict expected perceptual representations for words even where direct experience is missing. To test this, we implement a data-driven computational model that is trained to map language-based representations (obtained from text corpora, representing language experience) onto vision-based representations (obtained from an image database, representing perceptual experience), and apply its mapping function onto language-based representations for abstract and concrete words outside the training set. In three experiments, we present participants with these words, accompanied by two images: the image predicted by the model and a random control image. Results show that participants’ judgements were in line with model predictions even for the most abstract words. This preference was stronger for more concrete items and decreased for the more abstract ones. Taken together, our findings have substantial implications in support of the grounding of abstract words, suggesting that we can tap into our previous experience to create possible visual representation we don’t have.'
@@ -1121,6 +1137,7 @@
   data: https://doi.org/10.17605/OSF.IO/VXRHN
   topics:
   - grounding
+  - novel
   abstract: While a number of studies have repeatedly demonstrated an automatic activation of sensorimotor experience during language processing in the form of action-congruency effects, as predicted by theories of grounded cognition, more recent research has not found these effects for words that were just learned from linguistic input alone, without sensorimotor experience with their referents. In the present study, we investigate whether this absence of effects can be attributed to a lack of repeated experience and consolidation of the associations between words and sensorimotor experience in memory. To address these issues, we conducted four experiments in which (1 and 2) participants engaged in two separate learning phases in which they learned novel words from language alone, with an intervening period of memory-consolidating sleep, and (3 and 4) we employed familiar words whose referents speakers have no direct experience with (such as *plankton*). However, we again did not observe action-congruency effects in subsequent test phases in any of the experiments. This indicates that direct sensorimotor experience with word referents is a necessary requirement for automatic sensorimotor activation during word processing.
 
 - id: guenther2022language
@@ -1180,6 +1197,7 @@
   url: https://aclanthology.org/2021.konvens-1.0.pdf
   data: https://doi.org/10.17026/dans-xdp-3qhj
   topics:
+  - dsm
   - vision
   - compounds
   abstract: In the current state-of-the art distributional semantics model of the meaning of noun-noun compounds (such as *chainsaw*, *butterfly*, *home phone*), CAOSS (Marelli et al. 2017), the semantic vectors of the individual constituents are combined, and enriched by position-specific information for each constituent in its role as either modifier or head. Most recently there have been attempts to include vision-based embeddings in these models (Günther et al., 2020b), using the linear architecture implemented in the CAOSS model. In the present paper, we extend this line of research and demonstrate that moving to nonlinear models improves the results for vision while linear models are a good choice for text. Simply concatenating text and vision vectors does not currently (yet) improve the prediction of human behavioral data over models using text- and vision-based measures separately.
@@ -1202,6 +1220,7 @@
   pdf: https://psyarxiv.com/98z72/download
   data: https://osf.io/n7gqa/
   topics:
+  - dsm
   - vision
   - grounding
   abstract: In their strongest formulation, theories of grounded cognition claim that concepts are made up of sensorimotor information. Following such equivalence, perceptual properties of objects should consistently influence processing, even in purely linguistic tasks, where perceptual information is neither solicited nor required. Previous studies have tested this prediction in semantic priming tasks, but they have not observed perceptual influences on participants’ performances. However, those findings suffer from critical shortcomings, which may have prevented potential visually grounded/perceptual effects from being detected. Here, we investigate this topic by applying an innovative method expected to increase the sensitivity in detecting such perceptual effects. Specifically, we adopt an objective, data-driven, computational approach to independently quantify vision-based and language-based similarities for prime-target pairs on a continuous scale. We test whether these measures predict behavioural performance in a semantic priming mega-study with various experimental settings. Vision-based similarity is found to facilitate performance, but a dissociation between vision-based and language-based effects was also observed. Thus, in line with theories of grounded cognition, perceptual properties can facilitate word processing even in purely linguistic tasks, but the behavioural dissociation at the same time challenges strong claims of sensorimotor and conceptual equivalence.
@@ -1285,6 +1304,7 @@
   data: https://doi.org/10.17605/OSF.IO/FTXJY
   topics:
   - grounding
+  - novel
   abstract: Theories of grounded cognition postulate that concepts are grounded in sensorimotor experience. But how can that be for concepts like *Atlantis* for which we do not have that experience? We claim that such concepts obtain their sensorimotor grounding indirectly, via already-known concepts used to describe them. Participants learned novel words referring to up or down concepts (*mende* = enhanced head or *mende* = bionic foot). In a first experiment, participants then judged the sensibility of sentences implying up or down actions (e.g., “You scratch your bionic foot”) by performing up or down hand movements. Reactions were faster when the hand movement matched the direction of the implied movement. In the second experiment, we observed the same congruency effect for sentences like, “You scratch your mende”, whose implied direction depended entirely on the learning phase. This offers a perspective on how concepts learned without direct experience can nonetheless be grounded in sensorimotor experience.
 
 - id: guenther2020semantictransparency
@@ -1302,6 +1322,7 @@
   pdf: https://psyarxiv.com/7dvpw/
   data: https://doi.org/10.17605/OSF.IO/KMRV7
   topics:
+  - dsm
   - vision
   - grounding
   - compounds
@@ -1401,6 +1422,7 @@
   data: https://doi.org/10.6084/m9.figshare.5357470.v1
   topics:
   - grounding
+  - novel
   abstract: 'Theories of embodied cognition assume that concepts are grounded in non-linguistic, sensorimotor experience. In support of this assumption, previous studies have shown that upwards response movements are faster than downwards movements after participants have been presented with words whose referents are typically located in the upper vertical space (and vice versa for downwards responses). This is taken as evidence that processing these words reactivates sensorimotor experiential traces. This congruency effect was also found for novel words, after participants learned these words as labels for novel objects that they encountered either in their upper or lower visual field. While this indicates that direct experience with a word’s referent is sufficient to evoke said congruency effects, the present study investigates whether this direct experience is also a necessary condition. To this end, we conducted five experiments in which participants learned novel words from purely linguistic input: Novel words were presented in pairs with real up- or down-words (Experiment 1); they were presented in natural sentences where they replaced these real words (Experiment 2); they were presented as new labels for these real words (Experiment 3); and they were presented as labels for novel combined concepts based on these real words (Experiment 4 and 5). In all five experiments, we did not find any congruency effects elicited by the novel words; however, participants were always able to make correct explicit judgements about the vertical dimension associated to the novel words. These results suggest that direct experience is necessary for reactivating experiential traces, but this reactivation is not a necessary condition for understanding (in the sense of storing and accessing) the corresponding aspects of word meaning.'
 
 - id: guenther2018language
@@ -1478,6 +1500,7 @@
   topics:
   - dsm
   - compounds
+  - novel
   abstract: 'Noun compounds, consisting of two nouns (the head and the modifier) that are combined into a single concept, differ in terms of their plausibility: *school bus* is a more plausible compound than *saddle olive*. The present study investigates which factors influence the plausibility of attested and novel noun compounds. Distributional Semantic Models (DSMs) are used to obtain formal (vector) representations of word meanings, and compositional methods in DSMs are employed to obtain such representations for noun compounds. From these representations, different plausibility measures are computed. Three of those measures contribute in predicting the plausibility of noun compounds: The relatedness between the meaning of the head noun and the compound (Head Proximity), the relatedness between the meaning of modifier noun and the compound (Modifier Proximity), and the similarity between the head noun and the modifier noun (Constituent Similarity). We find nonlinear interactions between Head Proximity and Modifier Proximity, as well as between Modifier Proximity and Constituent Similarity. Furthermore, Constituent Similarity interacts non-linearly with the familiarity with the compound. These results suggest that a compound is perceived as more plausible if it can be categorized as an instance of the category denoted by the head noun, if the contribution of the modifier to the compound meaning is clear but not redundant, and if the constituents are sufficiently similar in cases where this contribution is not clear. Furthermore, compounds are perceived to be more plausible if they are more familiar, but mostly for cases where the relation between the constituents is less clear.'
 
 - id: guenther2015lsafun

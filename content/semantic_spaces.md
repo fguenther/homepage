@@ -4,6 +4,7 @@ summary: "Ready-to-use semantic spaces for English, German, Italian, Spanish and
 nav_order: 2
 parent: software-resources
 kind: Download
+group: Resources
 permalink: /software-resources/semantic_spaces/
 source: https://sites.google.com/site/fritzgntr/software-resources/semantic_spaces
 ---
