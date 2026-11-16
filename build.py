@@ -591,6 +591,16 @@ def build(out: Path, check_only: bool) -> int:
     shutil.copytree(ROOT / "static", out / "static")
 
     for page in pages.values():
+        if page.meta.get("redirect"):     # moved page: forward old links (GitHub Pages has no server redirects)
+            to = escape(page.meta["redirect"])
+            html = (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>'
+                    f'<meta http-equiv="refresh" content="0; url={to}"><link rel="canonical" href="{to}">'
+                    f'<meta name="robots" content="noindex"></head><body><p>This page has moved: '
+                    f'<a href="{to}">{to}</a></p></body></html>\n')
+            target = out / page.out_file
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(html, encoding="utf-8")
+            continue
         template = page.template or ("home.html" if page.is_home else
                                      "publications.html" if page.slug == "publications" else "page.html")
         html = env.get_template(template).render(page=page, **ctx)
@@ -602,7 +612,7 @@ def build(out: Path, check_only: bool) -> int:
     (out / "publications.bib").write_text("\n\n".join(p["_bibtex"] for p in pubs) + "\n", encoding="utf-8")
     (out / "404.html").write_text(env.get_template("404.html").render(page=None, **ctx), encoding="utf-8")
     base = site.get("base_url", "").rstrip("/")
-    urls = "\n".join(f"  <url><loc>{base}{p.url}</loc></url>" for p in pages.values())
+    urls = "\n".join(f"  <url><loc>{base}{p.url}</loc></url>" for p in pages.values() if not p.meta.get("redirect"))
     (out / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n'
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n', encoding="utf-8")

@@ -13,7 +13,7 @@ into a static site; GitHub Actions builds and publishes it to GitHub Pages on ev
 | Co-author network on the publications page | built automatically from the author lists in `data/publications.yaml` (`coauthor_network` in `build.py`, drawn by `static/js/coauthors.js`; colours = the home-page `themes`) |
 | Name, position, e-mail, profile links, current projects | `data/profile.yaml` |
 | Publications | `data/publications.yaml` (field reference at the top of the file) |
-| Other pages (CV, Data, Resources, Media, …) | `content/*.md` — front matter: `title`, `nav_order` (top menu), `parent` (sub-page), `summary` |
+| Other pages (CV, Data & Resources, Media, …) | `content/*.md` — front matter: `title`, `nav_order` (top menu), `parent` (sub-page), `summary` |
 | Design | `templates/*.html`, `static/css/site.css`, `static/js/site.js` |
 | Portrait, fonts | `static/img/`, `static/fonts/` |
 
