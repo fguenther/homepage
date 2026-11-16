@@ -6,7 +6,7 @@
   <div class="net-head">
     <h2>Co-author network</h2>
     <p>{{ coauthors.people }} co-authors on {{ publications | length }} publications, {{ coauthors.repeat }} of them on more than one.
-       The more papers we share, the larger the dot and the thicker the line. Click a person for our joint papers.</p>
+       Click a person for our joint papers.</p>
   </div>
   <div class="stage" id="coauthor-stage" data-src="/coauthors.json?v={{ coauthors.data_version }}"
        data-lib="/static/js/vendor/vis-network.min.js" data-script="/static/js/coauthors.js?v={{ version }}">

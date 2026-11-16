@@ -2,8 +2,9 @@
    Data: /coauthors.json, written by build.py from data/publications.yaml.
    Encodings (kept apart on purpose):
      dot size + line thickness = number of joint papers (lines from the centre: with me;
-                                 lines between co-authors: papers they share on my list, drawn from 2 on)
-     colour                    = home-page research theme most joint papers belong to
+                                 lines between co-authors: papers they share on my list; single ones faint)
+     colour                    = home-page research theme most joint papers belong to; split left/right
+                                 when the joint papers clearly span two themes
      selection                 = everything unrelated fades; the selected person's lines take their colour
    Loaded by site.js once the stage scrolls into view; needs vis-network (static/js/vendor). */
 (async () => {
@@ -21,6 +22,7 @@
   const size = n => 6 + 15 * s01(n);
   const width = n => 0.7 + 8.5 * s01(n);
   const colorOf = n => D.themes[n.theme >= 0 ? n.theme : D.themes.length - 1].color;
+  const color2Of = n => n.theme2 >= 0 ? D.themes[n.theme2].color : null;
   const initials = name => name.split(/\s+/).filter(w => /^[A-ZÀ-Ý]/.test(w)).map(w => w[0]).slice(-2).join('');
   const surname = n => n.sort.split(',')[0];
   const plural = k => k === 1 ? 'joint paper' : 'joint papers';
@@ -33,7 +35,9 @@
 
   // ---------- legend ----------
   const used = new Set(N.map(n => n.theme >= 0 ? n.theme : D.themes.length - 1));
+  const two = N.find(n => n.theme2 >= 0);
   $('net-key').innerHTML = D.themes.map((t, i) => used.has(i) ? `<span><i style="background:${t.color}"></i>${esc(t.title)}</span>` : '').join('')
+    + (two ? `<span><i style="background:linear-gradient(90deg, ${D.themes[0].color} 50%, ${D.themes[2] ? D.themes[2].color : D.themes[1].color} 50%)"></i>two themes</span>` : '')
     + `<span>${[1, Math.round(maxN / 3), maxN].map(k => `<svg width="20" height="${Math.ceil(width(k)) + 2}" aria-hidden="true"><line x1="1" y1="50%" x2="19" y2="50%" stroke="rgba(255,255,255,.6)" stroke-width="${width(k)}" stroke-linecap="round"/></svg>`).join('')} 1–${maxN} joint papers</span>`;
   $('net-names').innerHTML = [...N].sort((a, b) => a.sort.localeCompare(b.sort)).map(n => `<option value="${esc(n.name)}">`).join('');
 
@@ -59,15 +63,16 @@
       font: { size: 13, face: FONT, color: '#eef3f8', strokeWidth: 4, strokeColor: STAGE },
       title: `${n.name} · ${n.n} ${plural(n.n)}` }, nodeStyle(n, true))),
   ]);
-  const EDGE = 'rgba(214,226,240,0.20)', EDGE_PAIR = 'rgba(214,226,240,0.26)', EDGE_FADE = 'rgba(214,226,240,0.035)';
+  const EDGE = 'rgba(214,226,240,0.20)', EDGE_PAIR = 'rgba(214,226,240,0.30)', EDGE_ONE = 'rgba(214,226,240,0.075)', EDGE_FADE = 'rgba(214,226,240,0.03)';
+  const pairColor = k => k >= 2 ? EDGE_PAIR : EDGE_ONE;
   const edges = new vis.DataSet([
     // centre → co-author: shorter for close collaborators
     ...N.map(n => ({ id: 'm' + n.id, from: ME, to: n.id, k: n.n, width: width(n.n),
       color: { color: EDGE, highlight: EDGE, hover: EDGE }, smooth: false, title: `${D.me} – ${n.name}: ${n.n} ${plural(n.n)}` })),
-    // co-author ↔ co-author: all shaped the layout (computed in build.py), only repeated ones are drawn
-    ...D.edges.map(([a, b, k], i) => ({ id: 'p' + i, from: a, to: b, k, hidden: k < 2,
-      width: width(k), color: { color: EDGE_PAIR, highlight: EDGE_PAIR, hover: EDGE_PAIR },
-      smooth: { enabled: true, type: 'curvedCW', roundness: 0.18 }, title: `${N[a].name} – ${N[b].name}: ${k} ${plural(k)}` })),
+    // co-author ↔ co-author: every pair that appears together on one of my papers (single papers faint)
+    ...D.edges.map(([a, b, k], i) => ({ id: 'p' + i, from: a, to: b, k,
+      width: k >= 2 ? width(k) : 0.6, color: { color: pairColor(k), highlight: pairColor(k), hover: pairColor(k) },
+      smooth: k >= 2 ? { enabled: true, type: 'curvedCW', roundness: 0.18 } : false, title: `${N[a].name} – ${N[b].name}: ${k} ${plural(k)}` })),
   ]);
   const network = new vis.Network($('network'), { nodes, edges }, {
     layout: { improvedLayout: false },
@@ -76,6 +81,15 @@
     edges: { selectionWidth: 0, hoverWidth: 0 },
   });
   network.once('afterDrawing', () => { stage.classList.add('ready'); });
+  // two themes: paint the right half of the dot in the second colour
+  network.on('afterDrawing', ctx => {
+    const pos = network.getPositions(N.filter(n => n.theme2 >= 0 && n.n >= minPapers).map(n => n.id));
+    for (const id in pos) {
+      const n = N[id], on = !focus || focus.ids.has(n.id), r = size(n.n) - 0.6, { x, y } = pos[id];
+      ctx.beginPath(); ctx.arc(x, y, r, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+      ctx.fillStyle = on ? color2Of(n) : rgba(color2Of(n), 0.16); ctx.fill();
+    }
+  });
   // faint guide rings: distance from the centre = number of joint papers
   network.on('beforeDrawing', ctx => {
     const px = 1 / network.getScale();
@@ -110,7 +124,7 @@
     if (!force && lastScale && Math.abs(sc / lastScale - 1) < 0.08) return;
     lastScale = sc;
     const z = sc >= 1.1, px = v => v / Math.min(1.6, sc);
-    const named = $('network').clientWidth < 600 ? 9 : 4;     // on phones only the closest collaborators
+    const named = $('network').clientWidth < 600 ? 6 : 2;     // on phones only the closer collaborators
     nodes.update(N.map(n => ({ id: n.id, label: (n.n >= named || z || (focus && focus.ids.has(n.id))) && n.n >= minPapers ? n.name : '',
       font: { size: px(n.n >= 6 ? 13.5 : 12.5), strokeWidth: px(4) } })));
     nodes.update([{ id: ME, font: { size: px(16), strokeWidth: px(5) } }]);
@@ -128,10 +142,10 @@
       return { id: 'm' + n.id, color: { color: c, highlight: c, hover: c } };
     }));
     edges.update(D.edges.map(([a, b, k], i) => {
-      let c = EDGE_PAIR;
+      let c = pairColor(k);
       if (f) c = f.kind === 'edge' ? (f.edge === 'p' + i ? '#ffffff' : EDGE_FADE)
         : f.kind === 'node' && (a === f.center || b === f.center) ? rgba(colorOf(N[a === f.center ? b : a]), 0.85) : EDGE_FADE;
-      return { id: 'p' + i, hidden: k < 2 || N[a].n < minPapers || N[b].n < minPapers, color: { color: c, highlight: c, hover: c } };
+      return { id: 'p' + i, hidden: N[a].n < minPapers || N[b].n < minPapers, color: { color: c, highlight: c, hover: c } };
     }));
     updateLabels(true);
   }
@@ -156,7 +170,7 @@
   function viewNode(i) {
     const n = N[i], ps = pairs[i].filter(([j]) => N[j].n >= minPapers).slice(0, 12), fy = firstYear(n);
     open(`${avatar(n)}<h3>${esc(n.name)}</h3><div class="sub">${n.n} ${plural(n.n)}${isFinite(fy) ? ` · since ${fy}` : ''}</div>
-      <span class="pill"><i style="background:${theme(n).color}"></i>${esc(theme(n).title)}</span>
+      <span class="pill"><i style="background:${theme(n).color}"></i>${esc(theme(n).title)}</span>${n.theme2 >= 0 ? ` <span class="pill"><i style="background:${D.themes[n.theme2].color}"></i>${esc(D.themes[n.theme2].title)}</span>` : ''}
       <div class="btns"><button type="button" class="primary" data-list="${esc(surname(n))}">Show in the list below</button>
         <a href="https://scholar.google.com/scholar?q=${encodeURIComponent('author:"' + n.name + '" ' + D.me)}" target="_blank" rel="noopener">Google Scholar ↗</a></div>
       <div class="lbl">Joint papers</div>${paperList(n.papers)}
@@ -183,7 +197,7 @@
     network.fit({ nodes: ids, animation: animate ? ANIM : false, minZoomLevel: 0.1 });
   }
   function selectNode(i, zoom) {
-    const n = N[i], ids = new Set([ME, i, ...pairs[i].filter(([, k]) => k >= 2).map(([j]) => j)]);
+    const n = N[i], ids = new Set([ME, i, ...pairs[i].map(([j]) => j)]);
     network.selectNodes([i], false); setFocus({ kind: 'node', center: i, ids }); viewNode(i);
     if (zoom) { const p = network.getPositions([i])[i], sc = Math.max(network.getScale(), 1.1), w = $('network').clientWidth;
       network.moveTo({ position: { x: p.x + (w > 760 ? 190 / sc : 0), y: p.y }, scale: sc, animation: ANIM }); }

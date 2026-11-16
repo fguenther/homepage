@@ -405,7 +405,7 @@ def radial_positions(nodes: list[dict], force_pos: list[list[float]], radius) ->
                     continue
                 dx = r[x] * math.cos(a[x]) - r[y] * math.cos(a[y])
                 dy = r[x] * math.sin(a[x]) - r[y] * math.sin(a[y])
-                if dx * dx + dy * dy < 66 ** 2:
+                if (abs(dx) < 105 and abs(dy) < 36) or dx * dx + dy * dy < 46 ** 2:   # label-sized box
                     d = (a[x] - a[y] + math.pi) % (2 * math.pi) - math.pi or 1e-3
                     step = 0.012 * (1 if d > 0 else -1)
                     a[x] += step
@@ -457,9 +457,13 @@ def coauthor_network(pubs: list[dict], self_author: str, themes: list[dict], me_
         spelled = max(names[k].items(), key=lambda kv: (kv[1], len(kv[0])))[0]
         last, first = spelled.split(",", 1)
         hits = [sum(bool(ts & set(papers[i]["topics"])) for i in joint[k]) for ts in theme_sets]
-        theme = hits.index(max(hits)) if hits and max(hits) > 0 else -1
+        ranked = sorted(range(len(hits)), key=lambda t: (-hits[t], t))
+        theme = ranked[0] if hits and hits[ranked[0]] > 0 else -1
+        # second colour when the joint papers clearly span two themes (at least half as many in the second)
+        theme2 = ranked[1] if theme >= 0 and len(ranked) > 1 and hits[ranked[1]] > 0 \
+            and hits[ranked[1]] * 2 >= hits[ranked[0]] else -1
         nodes.append({"name": f"{first.strip()} {last.strip()}", "sort": spelled, "n": len(joint[k]),
-                      "theme": theme, "papers": joint[k]})
+                      "theme": theme, "theme2": theme2, "papers": joint[k]})
     pairs: dict[tuple[int, int], int] = {}
     for ks in members:
         ids = sorted(index[k] for k in ks)
