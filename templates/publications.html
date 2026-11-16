@@ -40,7 +40,9 @@
     {% for c in topic_chips %}<button type="button" class="chip{% if loop.first %} on{% endif %}" data-f="{{ c.f }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ c.label }}</button>{% endfor %}
   </div>
   {% endif %}
-  <p class="count"><span id="pubcount">{{ publications | length }}</span> publications · <a href="/publications.bib" download>Download all as BibTeX</a><button type="button" class="reset" hidden>× Reset filters</button></p>
+  <p class="count"><span class="combine" role="group" aria-label="Combine filters with">Combine filters
+      <button type="button" data-m="and" class="on" aria-pressed="true">AND</button><button type="button" data-m="or" aria-pressed="false">OR</button></span>
+    <span id="pubcount">{{ publications | length }}</span> publications · <a href="/publications.bib" download>Download all as BibTeX</a><button type="button" class="reset" hidden>× Reset filters</button></p>
   {% for g in groups %}
   <div class="pubgroup" data-group="{{ g.key }}">
     <h2 class="grouphead">{{ g.label }}</h2>

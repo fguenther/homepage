@@ -72,20 +72,30 @@
   const groups = document.querySelectorAll('.pubgroup');
   const count = document.getElementById('pubcount'), empty = document.querySelector('.empty');
   pubs.forEach(p => { p._text = p.textContent.toLowerCase(); });
-  // Several chips per row can be on. Within a row an entry needs ANY selected value
-  // (2024 or 2025; LLMs or novel words), across rows and search ALL must match.
-  // "All" (= nothing selected) clears its row.
+  // Several chips per row can be on; "All" (= nothing selected) clears its row.
+  // AND (default): an entry needs every selected topic and one of the selected years
+  //                (a paper has only one year, so years always count as alternatives).
+  // OR:            an entry matching any selected chip is shown.
+  // The search always narrows the result further.
   const filter = { year: new Set(), topic: new Set() };
   const attr = { year: 'tags', topic: 'topics' };
   const reset = document.querySelector('.reset');
+  let mode = 'and';
+  const values = (p, k) => (p.dataset[attr[k]] || '').split(' ');
+  function chipsMatch(p) {
+    const yearSel = filter.year.size, topicSel = filter.topic.size;
+    if (!yearSel && !topicSel) return true;
+    const yearHit = values(p, 'year').some(v => filter.year.has(v));
+    if (mode === 'or') return yearHit || values(p, 'topic').some(v => filter.topic.has(v));
+    const topics = values(p, 'topic');
+    return (!yearSel || yearHit) && [...filter.topic].every(t => topics.includes(t));
+  }
 
   function apply() {
     const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     pubs.forEach(p => {
-      const ok = Object.keys(filter).every(k => !filter[k].size ||
-                   (p.dataset[attr[k]] || '').split(' ').some(v => filter[k].has(v))) &&
-                 terms.every(t => p._text.includes(t));
+      const ok = chipsMatch(p) && terms.every(t => p._text.includes(t));
       p.hidden = !ok; if (ok) shown++;
     });
     groups.forEach(g => { g.hidden = !g.querySelector('.pub:not([hidden])'); });
@@ -122,9 +132,17 @@
     search.value = ''; only('year', []); only('topic', []);
   });
   search.addEventListener('input', apply);
-  // allow links like /publications/?q=ViSpa, ?topic=llm or ?topic=llm,novel&year=2025,2024
+  const combine = document.querySelectorAll('.combine button');
+  function setMode(m) {
+    mode = m === 'or' ? 'or' : 'and';
+    combine.forEach(b => { const on = b.dataset.m === mode; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    apply();
+  }
+  combine.forEach(b => b.addEventListener('click', () => setMode(b.dataset.m)));
+  // allow links like /publications/?q=ViSpa, ?topic=llm or ?topic=llm,novel&year=2025,2024&match=or
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
+  if (params.get('match')) setMode(params.get('match'));
   const list = k => (params.get(k) || '').split(',').filter(Boolean);
   if (list('topic').length) only('topic', list('topic'));
   if (list('year').length) only('year', list('year'));

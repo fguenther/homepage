@@ -350,3 +350,10 @@ main h2 { font: 700 32px/1.15 var(--head); letter-spacing: -.02em; margin: 0 0 2
 @media (prefers-reduced-motion: reduce) { #coauthor-stage * { transition: none !important; } }
 .pub.flash { animation: flash 1.6s ease-out; }
 @keyframes flash { 0%, 30% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: 0 0 0 3px transparent; } }
+/* AND / OR switch for the publication filters */
+.count .combine { display: inline-flex; align-items: center; gap: 0; margin-right: 14px; font: 600 12.5px var(--head); color: var(--muted); }
+.count .combine button { font: 700 11.5px var(--head); letter-spacing: .04em; padding: 3px 9px; border: 1px solid var(--rule); background: var(--paper);
+                         color: var(--muted); cursor: pointer; }
+.count .combine button:first-of-type { margin-left: 8px; border-radius: 4px 0 0 4px; }
+.count .combine button:last-of-type { border-left: 0; border-radius: 0 4px 4px 0; }
+.count .combine button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
