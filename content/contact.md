@@ -3,12 +3,12 @@ title: Contact
 nav_order: 8
 permalink: /contact/
 source: https://sites.google.com/site/fritzgntr/contact
-# Cards: label, title, lines (address lines) or text, optional url + link_text; mail: true = e-mail button.
+# Cards: label, title, lines (address lines) or text, optional url + link_text.
+# The e-mail address stays written out (-dot-, [AT]) and is deliberately not a link (spam).
 cards:
   - label: E-mail
     title: Please contact me preferably via e-mail
     lines: ["fritz -dot- guenther [AT] hu-berlin -dot- de"]
-    mail: true
   - label: Office
     title: Office address
     lines:

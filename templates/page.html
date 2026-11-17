@@ -3,8 +3,9 @@
   Generic page. Besides the Markdown body, the front matter can add:
     cv_button: true      → "Full CV (PDF)" button (link from data/profile.yaml)
     timeline: [{heading, items: [{when, title, text}]}]        (CV)
-    cards:    [{label, title, text | lines, meta, url, link_text, mail}]
-              url without link_text → the whole card is a link; mail: true → e-mail button
+    cards:    [{label, title, text | lines, meta, url, link_text}]
+              url without link_text → the whole card is a link
+              (no e-mail links on purpose: they attract spam)
   and sub-pages (parent: <this page>) are shown as tiles, labelled with their `kind`.
 #}
 {% block main %}
@@ -27,15 +28,14 @@
   {% if page.meta.cards %}
   <div class="cardgrid">
     {% for c in page.meta.cards %}
-    {% set whole = c.url and not c.link_text and not c.mail %}
+    {% set whole = c.url and not c.link_text %}
     <{{ "a" if whole else "div" }} class="card{% if whole %} card--link{% endif %}"{% if whole %} href="{{ c.url }}" rel="noopener"{% endif %}>
       {% if c.label %}<div class="card-label">{{ c.label }}</div>{% endif %}
       {% if c.title %}<h3>{{ c.title | md }}</h3>{% endif %}
       {% if c.lines %}<p>{% for l in c.lines %}{{ l }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>{% endif %}
       {% if c.text %}<p>{{ c.text | md }}</p>{% endif %}
       {% if c.meta %}<div class="card-meta">{{ c.meta }}</div>{% endif %}
-      {% if c.mail and profile._mail %}<a class="card-go js-mail" data-m="{{ profile._mail }}" href="/contact/">{{ c.link_text or "Write an e-mail" }} →</a>
-      {% elif c.url and c.link_text %}<a class="card-go" href="{{ c.url }}" rel="noopener">{{ c.link_text }} →</a>
+      {% if c.url and c.link_text %}<a class="card-go" href="{{ c.url }}" rel="noopener">{{ c.link_text }} →</a>
       {% elif whole %}<span class="card-go">{{ c.url.split("/")[2] | replace("www.", "") }} →</span>{% endif %}
     </{{ "a" if whole else "div" }}>
     {% endfor %}

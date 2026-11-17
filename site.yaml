@@ -17,7 +17,7 @@ headline: "Meaning from<br>experience."
 
 # Number of publications shown under "Recent publications" on the home page.
 recent_publications: 6
-# Profile buttons in the home-page banner (keys from data/profile.yaml → links); Email and CV are always shown.
+# Profile buttons in the home-page banner (keys from data/profile.yaml → links); the CV button is always shown.
 hero_links: [scholar, orcid]
 
 # Research themes on the home page. `topics` = keys from publication_topics below (linked, with paper counts).

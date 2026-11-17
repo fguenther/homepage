@@ -50,7 +50,6 @@
   <div class="container">
     <span>© {{ year }} {{ profile.name or site.title }}{% if profile.university %} · {{ profile.university }}{% endif %}</span>
     <span class="footer-links">
-      {% if profile._mail %}<a class="js-mail" data-m="{{ profile._mail }}" href="/contact/">Email</a>{% endif %}
       {% for l in profile.links %}<a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endfor %}
       {% if "imprint" in pages %}<a href="{{ pages['imprint'].url }}">{{ pages['imprint'].title }}</a>{% endif %}
     </span>

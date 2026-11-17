@@ -20,7 +20,6 @@
     <h1>{{ site.headline | safe }}</h1>
     <div class="intro">{{ page.html }}</div>
     <div class="meta">
-      {% if profile._mail %}<a class="js-mail" data-m="{{ profile._mail }}" href="/contact/">Email</a>{% endif %}
       {% for l in profile.links if not site.hero_links or l.key in site.hero_links %}<a href="{{ l.url }}" rel="me noopener">{{ l.label }}</a>{% endfor %}
       {% if profile.cv_pdf %}<a href="{{ profile.cv_pdf }}" rel="noopener">CV (PDF)</a>{% elif "cv" in pages %}<a href="{{ pages['cv'].url }}">CV</a>{% endif %}
     </div>

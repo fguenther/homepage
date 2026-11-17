@@ -166,12 +166,6 @@
   });
 })();
 
-// --- e-mail links: the address is stored reversed/obfuscated in the HTML to deter harvesters ---
-document.querySelectorAll('a.js-mail[data-m]').forEach(a => {
-  const addr = a.dataset.m.replace(/ ta /g, '@').replace(/ tod /g, '.').split('').reverse().join('');
-  a.href = 'mailto:' + addr;
-});
-
 // --- co-author network: load the graph library and script only when the stage comes into view ---
 (() => {
   const st = document.getElementById('coauthor-stage');

@@ -524,10 +524,9 @@ def build(out: Path, check_only: bool) -> int:
         raw_links = dict(sorted(raw_links.items(), key=lambda kv: PROFILE_LINK_ORDER.index(kv[0])
                                 if kv[0] in PROFILE_LINK_ORDER else 99))
     profile["links"] = norm_links(raw_links)
-    if profile.get("email_display") and not profile.get("email"):  # "name -dot- x [AT] y -dot- de"
-        profile["email"] = profile["email_display"].replace(" -dot- ", ".").replace(" [AT] ", "@")
-    if profile.get("email"):  # obfuscated; site.js turns it back into a mailto: link
-        profile["_mail"] = profile["email"][::-1].replace("@", " ta ").replace(".", " tod ")
+    # No e-mail links on purpose (spam): the address only appears written out ("-dot-", "[AT]")
+    # on the Contact and Imprint pages, never as a usable address in the HTML.
+    profile.pop("email", None)
     pages = load_pages(ROOT / "content", errors)
     topics = {str(k): str(v) for k, v in (site.get("publication_topics") or {}).items()}
     pubs = load_publications(ROOT / "data" / "publications.yaml", site.get("self_author", ""), topics,

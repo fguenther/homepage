@@ -9,7 +9,7 @@ group_url: https://www.psychologie.hu-berlin.de/de/prof/emmy/komputationelle_mod
 department: Department of Psychology
 university: Humboldt-Universität zu Berlin
 department_url: https://www.psychology.hu-berlin.de/de/1695813/1693894
-# E-mail written out like this on purpose (spam protection); the site turns it into a mailto: link.
+# E-mail written out like this on purpose (spam protection). The site shows it only as text, never as a link.
 email_display: fritz -dot- guenther [AT] hu-berlin -dot- de
 office_address:
 - Dr. Fritz Günther
