@@ -21,64 +21,6 @@
 #   topics      list of topic keys for the topic filter, defined in site.yaml (publication_topics):
 #               dsm llm vision grounding compounds novel production emotion crossling methods
 
-- id: moskvina2026multilingual
-  status: accepted
-  authors:
-  - Moskvina, N. B.
-  - Montero, R.
-  - Yoshida, M.
-  - Hubers, F.
-  - Morosi, P.
-  - Irhaymi, W.
-  - Yan, J.
-  - Serrano, T.
-  - Pagliarini, E.
-  - Günther, F.
-  - Leivada, E.
-  title: Multilingual Large Language Models do not comprehend all natural languages to equal degrees
-  venue: Scientific Reports
-  doi: 10.1038/s41598-026-69546-8
-  url: https://doi.org/10.1038/s41598-026-69546-8
-  data: https://osf.io/tvybq/overview?view_only=0d6da027a8c14aeebd9c39ed00e9970f
-  topics:
-  - llm
-  - crossling
-  abstract: Large Language Models (LLMs) play a critical role in how humans access information. While their core use relies on comprehending written requests, our understanding of this ability is currently limited, because most benchmarks evaluate LLMs in high-resource languages predominantly spoken by Western, Educated, Industrialised, Rich, and Democratic (WEIRD) communities. The default assumption is that English is the best-performing language for LLMs, while smaller, low-resource languages are linked to less reliable outputs, even in multilingual, state-of-the-art models. To track variation in the comprehension abilities of LLMs, we prompt 3 popular models on a language comprehension task across 12 languages, representing the Indo-European, Afro-Asiatic, Turkic, Sino-Tibetan, and Japonic language families. Our results suggest that the models exhibit remarkable linguistic accuracy across typologically diverse languages, yet they fall behind human baselines in all of them, albeit to different degrees. Contrary to what was expected, English is not the best-performing language, as it was systematically outperformed by several Romance languages, even lower-resource ones. We frame the results by discussing the role of several factors that drive LLM performance, such as tokenization, language distance from Spanish and English, size of training data, and data origin in high- vs. low-resource languages and WEIRD vs. non-WEIRD communities.
-
-- id: raveling2026predicting
-  status: accepted
-  authors:
-  - Raveling, L.
-  - Günther, F.
-  title: Predicting the Rate of Novel Words from Word-Level Semantic Measures in a Taboo Game Setting
-  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
-  doi: 10.31219/osf.io/4cxtw_v1
-  url: https://doi.org/10.31219/osf.io/4cxtw_v1
-  data: https://osf.io/vyjrz
-  topics:
-  - dsm
-  - novel
-  - production
-  abstract: The present study investigates novel word production rates for word meaning expressed by single words in an exploratory-confirmatory design. To capture a wide variety of semantic nuances of word meaning that influence individual processes of word creation we quantify distributional categorical and psychological semantic factors of single words. These features are tested for their correlation with novel word response rates in an online study employing the Taboo Game Paradigm, where speakers are presented with a word for which they have to express one meaning as accurately as possible in a single word. They are not allowed to use the target word itself. We first investigate a range of semantic predictors from a distributional semantic model (word2vec), a hierarchical taxonomic network model (WordNet) and psychological semantic ratings in an exploratory study. In a next step, we conduct a larger, preregistered confirmatory study to examine whether the identified effects can be replicated. Based on the results from these studies, we conclude that participants produce a higher rate of novel words for more concrete word meanings, as well as for word meanings that have lower connectivity within a network of taxonomically related words.
-
-- id: schiekiera2026associations
-  status: accepted
-  authors:
-  - Schiekiera, L.
-  - Zimmer, M.
-  - Roux, C.
-  - Pokutta, S.
-  - Günther, F.
-  title: 'From Associations to Activations: Comparing Behavioral and Hidden-State Semantic Geometry in LLMs'
-  venue: 43rd International Conference on Machine Learning (ICML)
-  doi: 10.48550/arXiv.2602.00628
-  url: https://doi.org/10.48550/arXiv.2602.00628
-  data: https://github.com/schiekiera/llm-association-geometry
-  topics:
-  - dsm
-  - llm
-  abstract: We investigate the extent to which an LLM's hidden-state geometry can be recovered from its behavior in psycholinguistic experiments. Across eight instruction-tuned transformer models, we run two experimental paradigms -- similarity-based forced choice and free association -- over a shared 5,000-word vocabulary, collecting 17.5M+ trials to build behavior-based similarity matrices. Using representational similarity analysis, we compare behavioral geometries to layerwise hidden-state similarity and benchmark against FastText, BERT, and cross-model consensus. We find that forced-choice behavior aligns substantially more with hidden-state geometry than free association. In a held-out-words regression, behavioral similarity (especially forced choice) predicts unseen hidden-state similarities beyond lexical baselines and cross-model consensus, indicating that behavior-only measurements retain recoverable information about internal semantic geometry. Finally, we discuss implications for the ability of behavioral tasks to uncover hidden cognitive states.
-
 - id: binz2026post
   status: preprint
   year: 2026
@@ -139,7 +81,7 @@
 
 - id: leivada2024multi
   status: preprint
-  year: 2024
+  year: 2026
   authors:
   - Leivada, E.
   - Günther, F.
@@ -148,7 +90,8 @@
   - Westergaard, M.
   title: A multi-metric analysis of 50,000 linguistic profiles provides sparse evidence that language distance modulates bilingual cognition
   venue: PsyArXiv preprint
-  url: https://psyarxiv.com/9uqbm
+  doi: 10.31234/osf.io/9uqbm_v5
+  url: https://doi.org/10.31234/osf.io/9uqbm_v5
   data: https://osf.io/kwmrp/
   topics:
   - crossling
@@ -276,11 +219,11 @@
 
 - id: schoenegger2025large
   status: preprint
-  year: 2025
+  year: 2026
   authors:
-  - Schoenegger, P.*
-  - Salvi, F.*
   - Liu, J.*
+  - Salvi, F.*
+  - Schoenegger, P.*
   - Nan, X.*
   - Debnath, R.*
   - Fasolo, B.**
@@ -318,10 +261,11 @@
   - Grossmann, I.
   - Salatiello, A.
   - Karger, E.
-  title: Large Language Models Are More Persuasive Than Incentivized Human Persuaders
+  title: When Large Language Models are More Persuasive Than Incentivized Humans, and Why
   venue: arXiv preprint
+  doi: 10.48550/arXiv.2505.09662
   url: https://arxiv.org/abs/2505.09662
-  notes: '* equal contribution; ** equal contribution'
+  notes: '* equal contribution: co-first authors; ** equal contribution: team leads'
   topics:
   - llm
   - production
@@ -472,6 +416,29 @@
   - methods
   abstract: According to Frege's principle of compositionality, the meaning of a complex expression is determined as a function of its constituents and the type of construction that combines the constituents. For a given expression, the compositionality refers to the degree to which the expression fulfills this principle, in particular when determined for complex words such as blackbird or globalize. Here, we present an overview of studies providing compositionality estimates for complex words, by defining a classification system that includes (1) the type of expression (compound nouns, particle verbs, derivations), (2) the language, (3) the level of description (i.e., focusing on individual constituents vs. the entire complex word), and (4) the information source providing the estimate (human judgments vs. computational models). Typical applications for compositionality estimates are discussed.
 
+- id: guenther2025monkeylope
+  status: published
+  year: 2026
+  authors:
+  - Günther, F.
+  - Raveling, L.
+  - Baier, F.
+  - Petrenco, A.
+  title: '"This is a monkeylope!" - A registered report on the factors of novel word creation'
+  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
+  volume: '52'
+  issue: '7'
+  pages: 1242–1264
+  doi: 10.1037/xlm0001531
+  url: https://doi.org/10.1037/xlm0001531
+  pdf: https://doi.org/10.31234/osf.io/s6p7j_v1
+  data: https://osf.io/bzpuv/
+  topics:
+  - compounds
+  - novel
+  - production
+  abstract: While native speakers of a language have tens of thousands of words at their disposal, they still regularly create and use novel words. Since this comes with communicative risks and costs – most importantly, not being understood by recipients – there have to be (perceived) advantages to creating novel words that outweigh these issues. We systematically explore these factors in a controlled experimental setting. We presented participants with images of existing and new animals with increasing degrees of conceptual distance to existing animals. Participants have to refer to these images either in an open format or with single words. The images are presented either in isolation (Experiment 1), or with two distractors created from different (Experiment 2) or the same base animals (Experiment 3). Each image is repeatedly presented to investigate effects of repeated reference and presentation. We measure how often participants create novel word labels for the stimuli, and derive hypotheses for the main effects and key interactions of conceptual distance, target frequency, distractor frequency, response format, and task setting from a theoretical framework based on the Gricean pragmatic principles as well as the concept of common ground. Conceptual distance, response format, and experimental task setting have clear effects on the number of novel word responses. However, we observe no effects for target or distractor frequency, suggesting no effect of common ground in our experimental setting. Participants also tend to over-specify their responses, rather than strictly adhering to pragmatic principles.
+
 - id: leivada2026sentence
   status: published
   year: 2026
@@ -511,6 +478,32 @@
   - novel
   - emotion
   abstract: Affective dimensions (i.e., valence and arousal) and discrete basic emotions (i.e., anger, disgust, fear, happiness, sadness) are the main affective sources of information that explain the semantic features of words. Recent studies suggest that humans are able to assign emotionality even to pseudowords, plausible verbal stimuli that do not belong to a given language which serve as proxies for never encountered, real words (i.e., novel words). So far, evidence at our disposal is mainly limited to valence (i.e., the hedonic tone of a words’ reference, from pleasant to unpleasant), while investigating discrete emotionality is required for a more refined understanding of the processes at hand. Here, across three experiments, we probed i) humans’ ability to convey discrete emotions when generating novel word stimuli to express the meanings of given emotional words, and ii) humans’ ability to decode or understand such emotionality when processing these human-generated novel words. Leveraging estimates from a word embedding model, results showed that individuals can reliably encode and decode novel conceptual information carrying emotional information, with a better performance for anger and happiness stimuli. Theoretically, these processes can be interpreted from an evolutionary perspective and, more broadly, they can be traced back to humans’ ability to process systematic, non-arbitrary form-meaning information.
+
+- id: moskvina2026multilingual
+  status: published
+  year: 2026
+  authors:
+  - Moskvina, N. B.
+  - Montero, R.
+  - Yoshida, M.
+  - Hubers, F.
+  - Morosi, P.
+  - Irhaymi, W.
+  - Yan, J.
+  - Serrano, T.
+  - Pagliarini, E.
+  - Günther, F.
+  - Leivada, E.
+  title: Multilingual Large Language Models do not comprehend all natural languages to equal degrees
+  venue: Scientific Reports
+  doi: 10.1038/s41598-026-69546-8
+  url: https://doi.org/10.1038/s41598-026-69546-8
+  data: https://osf.io/tvybq/overview?view_only=0d6da027a8c14aeebd9c39ed00e9970f
+  notes: Advance online publication
+  topics:
+  - llm
+  - crossling
+  abstract: Large Language Models (LLMs) play a critical role in how humans access information. While their core use relies on comprehending written requests, our understanding of this ability is currently limited, because most benchmarks evaluate LLMs in high-resource languages predominantly spoken by Western, Educated, Industrialised, Rich, and Democratic (WEIRD) communities. The default assumption is that English is the best-performing language for LLMs, while smaller, low-resource languages are linked to less reliable outputs, even in multilingual, state-of-the-art models. To track variation in the comprehension abilities of LLMs, we prompt 3 popular models on a language comprehension task across 12 languages, representing the Indo-European, Afro-Asiatic, Turkic, Sino-Tibetan, and Japonic language families. Our results suggest that the models exhibit remarkable linguistic accuracy across typologically diverse languages, yet they fall behind human baselines in all of them, albeit to different degrees. Contrary to what was expected, English is not the best-performing language, as it was systematically outperformed by several Romance languages, even lower-resource ones. We frame the results by discussing the role of several factors that drive LLM performance, such as tokenization, language distance from Spanish and English, size of training data, and data origin in high- vs. low-resource languages and WEIRD vs. non-WEIRD communities.
 
 - id: petilli2026image
   status: published
@@ -572,6 +565,52 @@
   - methods
   abstract: The present research proposes and evaluates a novel method - centroid analysis - for measuring representations and concepts at both individual and group levels by mapping open-ended responses onto a pre-existing semantic vector space. Centroid analysis allows to retrace the target concept as the geometric center of the semantic vectors of the responses generated by this concept. At the group level, centroid analysis enables researchers to compare conceptual structures across different populations to investigate how factors such as language, culture, cognitive differences, educational background, or exposure to specific narratives shape shared representations. At the individual level, centroid analysis allows for fine-grained assessments of how personal experiences, expertise, cognitive styles, or even temporary contextual influences affect conceptual representations. We evaluate this method using two distributional semantic models across several calculation methods, reference lexicon sizes, response types, and datasets with tasks ranging from single word substitutions to single and multiple free associations and multiple feature generation. We conclude that at the group level, the best method to retrace the response-generating concept as a vector in a multi-dimensional semantic space from the averaged vectors of participant responses is to collect multiple free associations (70 unique and 245 total responses per cue), use fastText for meaning-to-vector mapping for responses and cues, and to consider each response in the centroid calculation as often as it occurred in the data. At the individual level, the best results are achieved by employing fastText and considering at least 8 responses per item per participant in the centroid calculation.
 
+- id: raveling2026predicting
+  status: published
+  year: 2026
+  authors:
+  - Raveling, L.
+  - Günther, F.
+  title: Predicting the Rate of Novel Words from Word-Level Semantic Measures in a Taboo Game Setting
+  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
+  doi: 10.1037/xlm0001615
+  url: https://doi.org/10.1037/xlm0001615
+  pdf: https://doi.org/10.31219/osf.io/4cxtw_v1
+  data: https://osf.io/vyjrz
+  notes: Advance online publication
+  topics:
+  - dsm
+  - novel
+  - production
+  abstract: The present study investigates novel word production rates for word meaning expressed by single words in an exploratory-confirmatory design. To capture a wide variety of semantic nuances of word meaning that influence individual processes of word creation we quantify distributional categorical and psychological semantic factors of single words. These features are tested for their correlation with novel word response rates in an online study employing the Taboo Game Paradigm, where speakers are presented with a word for which they have to express one meaning as accurately as possible in a single word. They are not allowed to use the target word itself. We first investigate a range of semantic predictors from a distributional semantic model (word2vec), a hierarchical taxonomic network model (WordNet) and psychological semantic ratings in an exploratory study. In a next step, we conduct a larger, preregistered confirmatory study to examine whether the identified effects can be replicated. Based on the results from these studies, we conclude that participants produce a higher rate of novel words for more concrete word meanings, as well as for word meanings that have lower connectivity within a network of taxonomically related words.
+
+- id: schiekiera2026associations
+  status: published
+  type: proceedings
+  year: 2026
+  authors:
+  - Schiekiera, L.
+  - Zimmer, M.
+  - Roux, C.
+  - Pokutta, S.
+  - Günther, F.
+  title: 'From Associations to Activations: Comparing Behavioral and Hidden-State Semantic Geometry in LLMs'
+  venue: Proceedings of the 43rd International Conference on Machine Learning (ICML 2026)
+  editors: T. Zhang, M. Dudík, M. Jaggi, A. Agarwal, S. Li, D. Schuurmans, J. Zhu, F. Berkenkamp, H. Dong, & A. Bietti
+  volume: '306'
+  pages: 108177–108203
+  publisher: PMLR
+  url: https://proceedings.mlr.press/v306/schiekiera26a.html
+  pdf: https://raw.githubusercontent.com/mlresearch/v306/main/assets/schiekiera26a/schiekiera26a.pdf
+  data: https://github.com/schiekiera/llm-association-geometry
+  extra_links:
+  - label: Preprint
+    url: https://doi.org/10.48550/arXiv.2602.00628
+  topics:
+  - dsm
+  - llm
+  abstract: We investigate the extent to which an LLM's hidden-state geometry can be recovered from its behavior in psycholinguistic experiments. Across eight instruction-tuned transformer models, we run two experimental paradigms -- similarity-based forced choice and free association -- over a shared 5,000-word vocabulary, collecting 17.5M+ trials to build behavior-based similarity matrices. Using representational similarity analysis, we compare behavioral geometries to layerwise hidden-state similarity and benchmark against FastText, BERT, and cross-model consensus. We find that forced-choice behavior aligns substantially more with hidden-state geometry than free association. In a held-out-words regression, behavioral similarity (especially forced choice) predicts unseen hidden-state similarities beyond lexical baselines and cross-model consensus, indicating that behavior-only measurements retain recoverable information about internal semantic geometry. Finally, we discuss implications for the ability of behavioral tasks to uncover hidden cognitive states.
+
 - id: wang2026adding
   status: published
   year: 2026
@@ -609,27 +648,6 @@
   topics:
   - llm
   abstract: Understanding the limits of language is a prerequisite for Large Language Models (LLMs) to act as theories of natural language. LLM performance in some language tasks presents both quantitative and qualitative differences from that of humans, however it remains to be determined whether such differences are amenable to model size. This work investigates the critical role of model scaling, determining whether increases in size make up for such differences between humans and models. We test three LLMs from different families (Bard, 137 billion parameters; ChatGPT-3.5, 175 billion; ChatGPT-4, 1.5 trillion) on a grammaticality judgment task featuring anaphora, center embedding, comparatives, and negative polarity. N = 1,200 judgments are collected and scored for *accuracy*, *stability*, and *improvements in accuracy* upon repeated presentation of a prompt. Results of the best performing LLM, ChatGPT-4, are compared to results of n = 80 humans on the same stimuli. We find that humans are overall less accurate than ChatGPT-4 (76% vs. 80% accuracy, respectively), but that this is due to ChatGPT-4 outperforming humans only in one task condition, namely on grammatical sentences. Additionally, ChatGPT-4 wavers more than humans in its answers (12.5% vs. 9.6% likelihood of an oscillating answer, respectively). Thus, while increased model size may lead to better performance, LLMs are still not sensitive to (un)grammaticality the same way as humans are. It seems possible but unlikely that scaling alone can fix this issue. We interpret these results by comparing language learning in vivo and in silico, identifying three critical differences concerning (i) the type of evidence, (ii) the poverty of the stimulus, and (iii) the occurrence of semantic hallucinations due to impenetrable linguistic reference.
-
-- id: guenther2025monkeylope
-  status: published
-  year: 2025
-  authors:
-  - Günther, F.
-  - Raveling, L.
-  - Baier, F.
-  - Petrenco, A.
-  title: '"This is a monkeylope!" - A registered report on the factors of novel word creation'
-  venue: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
-  doi: 10.1037/xlm0001531
-  url: https://doi.org/10.1037/xlm0001531
-  pdf: https://doi.org/10.31234/osf.io/s6p7j_v1
-  data: https://osf.io/bzpuv/
-  notes: Advance online publication
-  topics:
-  - compounds
-  - novel
-  - production
-  abstract: While native speakers of a language have tens of thousands of words at their disposal, they still regularly create and use novel words. Since this comes with communicative risks and costs – most importantly, not being understood by recipients – there have to be (perceived) advantages to creating novel words that outweigh these issues. We systematically explore these factors in a controlled experimental setting. We presented participants with images of existing and new animals with increasing degrees of conceptual distance to existing animals. Participants have to refer to these images either in an open format or with single words. The images are presented either in isolation (Experiment 1), or with two distractors created from different (Experiment 2) or the same base animals (Experiment 3). Each image is repeatedly presented to investigate effects of repeated reference and presentation. We measure how often participants create novel word labels for the stimuli, and derive hypotheses for the main effects and key interactions of conceptual distance, target frequency, distractor frequency, response format, and task setting from a theoretical framework based on the Gricean pragmatic principles as well as the concept of common ground. Conceptual distance, response format, and experimental task setting have clear effects on the number of novel word responses. However, we observe no effects for target or distractor frequency, suggesting no effect of common ground in our experimental setting. Participants also tend to over-specify their responses, rather than strictly adhering to pragmatic principles.
 
 - id: kaup2025interplay
   status: published
