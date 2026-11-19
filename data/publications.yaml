@@ -21,6 +21,20 @@
 #   topics      list of topic keys for the topic filter, defined in site.yaml (publication_topics):
 #               dsm llm vision grounding compounds novel production emotion crossling methods
 
+- id: guenther2026novelcompounds
+  status: accepted
+  type: chapter
+  authors:
+  - Günther, F.
+  - Marelli, M.
+  title: The compositionality of novel compounds
+  venue: Interdisciplinary, cross-lingual, diachronic and synchronic perspectives on the emergence and interpretation of multiword expression meanings
+  editors: F. Miletić, F. Günther, W. He, A. Villavicencio & S. Schulte im Walde
+  publisher: Springer
+  topics:
+  - compounds
+  - novel
+
 - id: binz2026post
   status: preprint
   year: 2026
@@ -61,6 +75,30 @@
   - dsm
   - llm
   abstract: 'Computational models of semantic representations have long assumed and produced a single static representation for each word type, ignoring the influence of linguistic context on semantic representations. Recent Large Language Models (LLMs) introduced in Natural Language Processing, however, learn token-level contextualised representations, holding promise to study how semantic representations change in different contexts. In this study we probe type- and token-level representations learned using a prominent example of such models, Bidirectional Encoder Representations from Transformers (BERT), for their ability to i) explain semantic effects found for isolated words (semantic relatedness and similarity ratings, lexical decision, and semantic priming), but critically also to ii) exhibit systematic interactions between lexical semantics and context, and iii) explain meaning modulations in context. Across a wide range of empirical studies on each of these topics, we show that BERT representations satisfy two desiderata for psychologically valid semantic representations: i) they have a stable semantic core which allows people to interpret words in isolation and prevents words to be used arbitrarily and ii) they interact with sentence context in systematic ways, with representations shifting as a function of their semantic core and the context. This demonstrates that a single, comprehensive model which simultaneously learns abstract, type-level prototype representations as well as mechanisms of how these interact with context can explain both isolated word effects and context-dependent variations. Notably, these variations are not limited to discrete word senses, eschewing a strict dichotomy between exemplar and prototype models and re-framing traditional notions of polysemy.'
+
+- id: guenther2026free
+  status: preprint
+  year: 2026
+  authors:
+  - Günther, F.
+  - Parent-Couture, M.
+  - Uyar, A.
+  - Wieczorke, K.
+  - Lueken, U.
+  - Evens, R.
+  - Wolff, M.
+  title: Free-text responses improve prediction of mental health outcomes after psychedelic experiences
+  venue: PsyArXiv preprint
+  doi: 10.31234/osf.io/e9wzk_v2
+  url: https://osf.io/preprints/psyarxiv/e9wzk_v2
+  pdf: https://osf.io/preprints/psyarxiv/e9wzk_v2
+  data: https://doi.org/10.5281/zenodo.24303102
+  extra_links:
+  - label: Code (GitHub)
+    url: https://github.com/fguenther/free-text-analysis-psychedelics
+  topics:
+  - llm
+  - methods
 
 - id: guenther2025gold
   status: preprint
