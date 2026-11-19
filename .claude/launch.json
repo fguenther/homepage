@@ -4,8 +4,8 @@
     {
       "name": "homepage",
       "runtimeExecutable": "wsl",
-      "runtimeArgs": ["-e", "bash", "-c", "cd /mnt/g/Berlin/Homepage && ~/.venvs/homepage/bin/python build.py && exec ~/.venvs/homepage/bin/python -m http.server 8000 -d site"],
-      "port": 8000
+      "runtimeArgs": ["-e", "bash", "-c", "cd /mnt/g/Berlin/Homepage && ~/.venvs/homepage/bin/python build.py && exec ~/.venvs/homepage/bin/python -m http.server 8010 -d site"],
+      "port": 8010
     }
   ]
 }

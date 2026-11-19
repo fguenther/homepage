@@ -102,6 +102,8 @@ main h2 { font: 700 32px/1.15 var(--head); letter-spacing: -.02em; margin: 0 0 2
        padding: 18px 20px 16px; scroll-margin-top: 20px; transition: box-shadow .15s, transform .15s; }
 .pub:hover { box-shadow: 0 8px 22px rgba(13,27,42,.09); transform: translateY(-2px); }
 .pub[data-tags~="accepted"] { border-top-color: var(--accent); }
+.pub.clickable { cursor: pointer; }
+.pub.clickable .abs, .pub.clickable .bib { cursor: auto; }
 .pub:target { box-shadow: 0 0 0 3px var(--accent); }
 .pub.open { grid-column: 1 / -1; transform: none; }     /* abstract / BibTeX open: card spans the full row */
 .pub > div:not(.y) { display: flex; flex-direction: column; flex: 1; }

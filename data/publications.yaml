@@ -34,6 +34,7 @@
   topics:
   - compounds
   - novel
+  abstract: New words constantly enter our lexicon, and especially novel compounds words present an extremely productive class of lexical innovation. From a pragmatic perspective, it stands to reason that the meaning of novel compounds should be highly predictable from their constituents – they should be highly compositional. In the present article, we investigate this assumption by comparing the compositionality of attested novel compounds which have actually been used by human speakers (in experimental studies, or with very few or only very recent uses in language corpora) with that of highly lexicalized existing compounds. We measure compositionality using a well-established computational framework rooted in distributional semantics. Across all datasets, we find that novel compounds are actually less compositional than existing compounds (Study 1 and Study 2), even though it is easily possible to generate highly-compositional novel compounds by shuffling constituents (Study 3). These findings run counter to common (but often un-tested) assumptions in the morphological literature, and may suggest a selection effect according to which highly-compositional compounds are more likely to have found their place in the lexicon as existing compounds.
 
 - id: binz2026post
   status: preprint

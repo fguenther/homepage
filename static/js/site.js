@@ -65,6 +65,18 @@
     btn.setAttribute('aria-expanded', !box.hidden);
     pub.classList.toggle('open', !!pub.querySelector('.abs:not([hidden]), .bib:not([hidden])'));
   }));
+  // clicking anywhere else on a card opens/closes its abstract (links, buttons,
+  // the open abstract/BibTeX and text selections are left alone)
+  document.querySelectorAll('.pub').forEach(pub => {
+    const btn = pub.querySelector('.toggle[data-target="abs"]');
+    if (!btn) return;
+    pub.classList.add('clickable');
+    pub.addEventListener('click', e => {
+      if (e.target.closest('a, button, .abs, .bib')) return;
+      if (String(window.getSelection())) return;
+      btn.click();
+    });
+  });
 
   const chips = document.querySelectorAll('.chip'), search = document.querySelector('.search');
   if (!chips.length) return;

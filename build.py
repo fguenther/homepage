@@ -337,57 +337,82 @@ def _author_key(a: str) -> str | None:
     return f"{_fold(last)}_{_fold(first)[:1]}" if _fold(last) else None
 
 
-def network_layout(n_nodes: int, me_lengths: list[float], pair_edges: list[list[int]], seed: int = 11) -> list[list[float]]:
-    """Force layout for the co-author network, computed at build time (instant and stable in the browser).
+def ring_angles(radii: list[float], pair_edges: list[list[int]], restarts: int = 2, seed: int = 11) -> list[float]:
+    """Angle around the centre for each co-author (radius already fixed by the number of joint papers),
+    so that people who share papers sit side by side.
 
-    Node 0 is me, fixed at the centre; node i+1 is co-author i. Springs pull each co-author to its
-    distance from the centre (closer = more joint papers) and pull co-authors of the same paper together;
-    all nodes repel each other.
+    Minimises springs between co-authors of the same papers (weight grows with the number of shared
+    papers; one-off pairs pull only lightly) plus repulsion between all nodes, over the angles only.
+    Starts from a spectral ordering of the co-author graph and from a few random angles and keeps the
+    lowest-energy result: a single force layout from random positions got stuck with close
+    collaborators on opposite sides of the circle.
     """
     import numpy as np
+    r = np.asarray(radii, float)
+    n = len(r)
+    if n < 3:
+        return [2 * np.pi * i / max(n, 1) for i in range(n)]
+    W = np.zeros((n, n))
+    for a, b, k in pair_edges:
+        W[a, b] = W[b, a] = k ** 1.5 if k >= 2 else 0.1
+    REP = 4.0e5
+
+    def energy_grad(th):
+        p = np.stack([r * np.cos(th), r * np.sin(th)], 1)
+        d = p[:, None, :] - p[None, :, :]
+        dist = np.sqrt((d ** 2).sum(-1) + 25.0) + np.eye(n)
+        e = (W * dist ** 2).sum() / 4 + REP * np.triu(1 / dist, 1).sum()
+        coef = W - REP / dist ** 3
+        np.fill_diagonal(coef, 0)
+        grad_p = (coef[..., None] * d).sum(1)
+        tangent = np.stack([-r * np.sin(th), r * np.cos(th)], 1)
+        return e, (grad_p * tangent).sum(1)
+
+    def descend(th):
+        lr = 0.05
+        e, g = energy_grad(th)
+        for _ in range(800):
+            th2 = th + np.clip(-g / (r ** 2 * (W.sum(1) + 1)), -lr, lr)
+            e2, g2 = energy_grad(th2)
+            if e2 < e:
+                th, e, g, lr = th2, e2, g2, min(0.2, lr * 1.1)
+            else:
+                lr *= 0.5
+                if lr < 1e-5:
+                    break
+        return e, th
+
+    vals, vecs = np.linalg.eigh(np.diag(W.sum(1)) - W)
+    v1, v2 = np.argsort(vals)[1:3]
     rng = np.random.default_rng(seed)
-    n = n_nodes + 1
-    ang = rng.uniform(0, 2 * np.pi, n)
-    rad = np.array([0.0] + list(me_lengths))
-    pos = np.stack([np.cos(ang) * rad, np.sin(ang) * rad], axis=1)
-    src = [0] * n_nodes + [a + 1 for a, b, k in pair_edges]
-    dst = list(range(1, n)) + [b + 1 for a, b, k in pair_edges]
-    rest = np.array(list(me_lengths) + [55.0] * len(pair_edges))
-    stiff = np.array([0.06] * n_nodes + [0.004 + 0.01 * min(k, 4) for a, b, k in pair_edges])
-    src, dst = np.array(src), np.array(dst)
-    step = 1.0
-    for it in range(600):
-        d = pos[:, None, :] - pos[None, :, :]
-        dist2 = (d ** 2).sum(-1) + 1e-6
-        np.fill_diagonal(dist2, np.inf)
-        rep = (d / dist2[..., None] * 60000.0 / np.sqrt(dist2)[..., None]).sum(1)   # ~ 1/d²
-        vec = pos[dst] - pos[src]
-        length = np.sqrt((vec ** 2).sum(1)) + 1e-6
-        f = (stiff * (length - rest))[:, None] * vec / length[:, None]
-        spring = np.zeros_like(pos)
-        np.add.at(spring, src, f)
-        np.add.at(spring, dst, -f)
-        move = (rep + spring) * step
-        cap = 25.0 * step
-        norm = np.sqrt((move ** 2).sum(1))[:, None]
-        move = np.where(norm > cap, move / norm * cap, move)
-        move[0] = 0.0
-        pos += move
-        r = np.sqrt((pos[1:] ** 2).sum(1))[:, None]          # keep a clear ring around the centre (its label)
-        pos[1:] = np.where(r < 210, pos[1:] / np.maximum(r, 1e-6) * 210, pos[1:])
-        step = max(0.05, step * 0.993)
-    return [[round(float(x), 1), round(float(y), 1)] for x, y in pos]
+    starts = [np.arctan2(vecs[:, v2], vecs[:, v1])] + [rng.uniform(-np.pi, np.pi, n) for _ in range(restarts)]
+    best = min((descend(s) for s in starts), key=lambda x: x[0])[1]
+    return [float(a) for a in best]
 
 
 R_IN, R_OUT = 210.0, 560.0     # network rings: most joint papers … one joint paper
 
 
-def radial_positions(nodes: list[dict], force_pos: list[list[float]], radius) -> list[list[float]]:
+def radial_positions(nodes: list[dict], angles: list[float], radius) -> list[list[float]]:
     """Put every co-author on the ring for its number of joint papers, keeping the order around the
-    circle from the force layout. One-paper co-authors are spread evenly over two staggered rings;
+    circle from ring_angles. One-paper co-authors are spread evenly over two staggered rings;
     the others are nudged apart along their ring until they don't overlap."""
     import math
-    ang = [math.atan2(y, x) for x, y in force_pos]
+    import numpy as np
+    # even out the density around the circle, keeping the order: the optimised angles bunch the
+    # well-connected collaborators on one side; this monotone warp (rank of the angle among all
+    # co-authors) spreads them over the full circle while neighbours stay neighbours
+    th = np.mod(np.asarray(angles, float), 2 * np.pi)
+    srt = np.sort(th)
+    cut = srt[int(np.argmax(np.diff(np.append(srt, srt[0] + 2 * np.pi))))] if len(srt) else 0.0
+    th = np.mod(th - cut - 1e-9, 2 * np.pi)                  # start just after the widest empty gap
+    # the one-paper co-authors are spaced evenly anyway; weight the others so they count as much
+    multi = np.array([nd["n"] > 1 for nd in nodes])
+    w = np.where(multi, max(1.0, (~multi).sum() / max(1, multi.sum())), 1.0)
+    order = np.argsort(th)
+    cdf = (np.cumsum(w[order]) - w[order] / 2) / w.sum() * 2 * np.pi
+    warped = np.interp(th, th[order], cdf)
+    ang = [float(a) for a in 0.8 * warped + 0.2 * th + cut]
     out: list[list[float]] = [[0.0, 0.0] for _ in nodes]
     ones = sorted((i for i, nd in enumerate(nodes) if nd["n"] == 1), key=lambda i: ang[i])
     for k, i in enumerate(ones):
@@ -475,10 +500,10 @@ def coauthor_network(pubs: list[dict], self_author: str, themes: list[dict], me_
     edges = [[a, b, n] for (a, b), n in sorted(pairs.items())]
     top = max(nd["n"] for nd in nodes) if nodes else 1
     radius = lambda k: R_IN + (R_OUT - R_IN) * (1 - ((k - 1) / max(1, top - 1)) ** 0.5)
-    # angles from a force layout (co-authors of the same papers end up side by side),
-    # radius from the number of joint papers (rings: closest collaborators in the middle)
-    pos = network_layout(len(nodes), [radius(nd["n"]) for nd in nodes], edges)
-    for nd, xy in zip(nodes, radial_positions(nodes, pos[1:], radius)):
+    # radius from the number of joint papers (rings: closest collaborators in the middle),
+    # angle from ring_angles (co-authors of the same papers end up side by side)
+    angles = ring_angles([radius(nd["n"]) for nd in nodes], edges)
+    for nd, xy in zip(nodes, radial_positions(nodes, angles, radius)):
         nd["x"], nd["y"] = xy
     ring_ns = sorted({1, 2, 3, 5, 10, top} & set(range(1, top + 1)))
     return {
